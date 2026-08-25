@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow+Semi+Condensed:wght@600;700;800&amp;family=Nunito:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<!-- Eventbrite Embedded Checkout Widget library. All payment/card processing happens inside
+     Eventbrite's PCI-compliant iframe/modal — no card data ever touches this page. -->
+<script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+<link rel="preload" href="assets/GothamRounded-Book.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="assets/GothamRounded-Medium.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="assets/GothamRounded-Bold.otf" as="font" type="font/otf" crossorigin>
+<style>
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Book.otf') format('opentype');font-weight:400 500;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
+@keyframes neonBuzz{0%,94%,100%{opacity:1}96%,97%{opacity:.82}}
+@keyframes neonOrange{0%,90%,100%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.6),0 0 26px rgba(232,121,44,.32)}91%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.55),0 0 26px rgba(79,195,232,.3)}92%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.6)}93.5%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 3px #4FC3E8,0 0 9px rgba(79,195,232,.5)}94.5%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.6)}}
+@keyframes neonBlue{0%,90%,100%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.6),0 0 26px rgba(79,195,232,.32)}91%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.55),0 0 26px rgba(232,121,44,.3)}92%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.6)}93.5%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 3px #E8792C,0 0 9px rgba(232,121,44,.5)}94.5%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.6)}}
+html{scroll-behavior:smooth}
+body{margin:0;background:#FAFAF8;font-family:'Gotham Rounded','Nunito',system-ui,sans-serif}
+a{color:#E8792C;text-decoration:none}
+a:hover{color:#0F1F35}
+@keyframes emberRise{0%{transform:translateY(0) scale(1);opacity:0}12%{opacity:.9}100%{transform:translateY(-420px) scale(.3);opacity:0}}
+@keyframes memberUnlock{0%{opacity:0;transform:translateY(-4px)}100%{opacity:1;transform:translateY(0)}}
+/*resp*/
+.nav-burger{display:none}
+@media (max-width:760px){
+.nav-links{display:none!important}
+.nav-burger{display:inline-flex!important}
+.nav-eyebrow{font-size:10.5px!important;padding:6px 16px!important;gap:6px!important;flex-wrap:wrap!important;text-align:center!important}
+.nav-bar{padding:12px 20px!important}
+}
+@keyframes menuDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width:920px){
+.co-side{position:static!important}
+.co-grid{grid-template-columns:1fr!important}
+.modal-grid{grid-template-columns:1fr!important}
+.slot-grid{grid-template-columns:1fr!important}
+}
+</style>
+</helmet>
+
+<!-- ═══════ NAV ═══════ -->
+<div style="position:fixed;top:0;left:0;right:0;z-index:100" data-screen-label="Global Nav">
+  <div class="nav-eyebrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;padding:7px 40px;background:#0F1F35;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff">
+    <span>Tuesday, November 10, 2026</span>
+    <span style="opacity:.6">·</span>
+    <span>American Sign Museum</span>
+    <span style="opacity:.6">·</span>
+    <a href="IGNITE Register.dc.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">Register</a>
+  </div>
+  <div class="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(10,21,32,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)">
+    <a href="IGNITE Homepage.dc.html" style="display:flex;align-items:center;gap:0;height:54px;overflow:hidden">
+      <img src="assets/IGNITE_Emblem.png" alt="IGNITE" style="flex:none;height:44px;width:auto">
+      <span style="display:block;overflow:hidden;max-width:{{ wordmarkW }};opacity:{{ wordmarkOp }};transition:max-width .55s cubic-bezier(.22,.9,.24,1),opacity .4s ease,margin-left .55s cubic-bezier(.22,.9,.24,1);margin-left:{{ wordmarkGap }}">
+        <img src="assets/IGNITE_Wordmark.png" alt="AMA Cincinnati Presents IGNITE" style="height:40px;width:auto;display:block;transform:translateX({{ wordmarkX }});transition:transform .55s cubic-bezier(.22,.9,.24,1)">
+      </span>
+    </a>
+    <nav class="nav-links" style="display:flex;flex:1;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-left:48px;font-size:13px;font-weight:700">
+      <a href="IGNITE Agenda.dc.html" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Agenda</a>
+      <a href="IGNITE Speakers.dc.html" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Speakers</a>
+      <a href="IGNITE Sponsors.dc.html" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Sponsors</a>
+      <a href="IGNITE Venue.dc.html" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Venue</a>
+      <a href="IGNITE FAQ.dc.html" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">FAQ</a>
+      <a href="IGNITE Register.dc.html" style="margin-left:auto;padding:10px 20px;border-radius:999px;background:#E8792C;color:#fff" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Register</a>
+    </nav>
+    <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}" style="align-items:center;justify-content:center;width:46px;height:46px;border:2px solid rgba(255,255,255,.3);border-radius:12px;background:rgba(255,255,255,.06);cursor:pointer;padding:0">
+      <span style="position:relative;display:block;width:20px;height:14px">
+        <span style="position:absolute;left:0;top:{{ burgTop1 }};width:100%;height:2px;background:#fff;border-radius:2px;transition:.3s;transform:{{ burgT1 }}"></span>
+        <span style="position:absolute;left:0;top:6px;width:100%;height:2px;background:#fff;border-radius:2px;transition:.3s;opacity:{{ burgMidOp }}"></span>
+        <span style="position:absolute;left:0;top:{{ burgTop3 }};width:100%;height:2px;background:#fff;border-radius:2px;transition:.3s;transform:{{ burgT3 }}"></span>
+      </span>
+    </button>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="background:rgba(10,21,32,.98);backdrop-filter:blur(12px);box-shadow:0 12px 30px rgba(0,0,0,.4);padding:8px 20px 22px;animation:menuDrop .28s ease">
+      <div style="display:flex;flex-direction:column;gap:2px;font-size:16px;font-weight:700">
+        <a href="IGNITE Agenda.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Agenda</a>
+        <a href="IGNITE Speakers.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Speakers</a>
+        <a href="IGNITE Sponsors.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Sponsors</a>
+        <a href="IGNITE Venue.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Venue</a>
+        <a href="IGNITE FAQ.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">FAQ</a>
+        <a href="IGNITE Register.dc.html" onClick="{{ closeMenu }}" style="margin-top:14px;text-align:center;padding:15px 0;border-radius:999px;background:#E8792C;color:#fff;font-weight:800">Register Now</a>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+<!-- ═══════ PAGE HEADER + STEPPER ═══════ -->
+<div data-screen-label="Checkout Header" style="position:relative;overflow:hidden;background:#0A1520;padding:170px 0 54px">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 900px 600px at 30% 130%, rgba(232,121,44,.35), transparent 65%)"></div>
+  {{ embers }}
+  <div style="position:relative;max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+      <img src="assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
+      <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Registration</span>
+    </div>
+    <h1 style="margin:0;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(42px,6vw,68px);line-height:.92;color:#fff">Claim Your <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Seat</span></h1>
+    <!-- Stepper -->
+    <div role="list" aria-label="Checkout progress" style="display:flex;align-items:center;gap:0;margin-top:34px;max-width:760px">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+        <div role="listitem" aria-current="{{ st.current }}" style="display:flex;align-items:center;flex:{{ st.flex }}">
+          <button onClick="{{ st.go }}" disabled="{{ st.disabled }}" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;cursor:{{ st.cursor }};font-family:'Gotham Rounded','Nunito',sans-serif">
+            <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:{{ st.dotBg }};border:{{ st.dotBorder }};color:{{ st.dotFg }};font-size:13px;font-weight:800">{{ st.dotLabel }}</span>
+            <span style="font-size:13px;font-weight:800;color:{{ st.labelColor }};white-space:nowrap">{{ st.label }}</span>
+          </button>
+          <sc-if value="{{ st.hasLine }}" hint-placeholder-val="{{ true }}">
+            <span style="flex:1;height:2px;margin:0 14px;background:{{ st.lineBg }}"></span>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ STEP 1: TICKETS ═══════ -->
+<sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Step 1 Tickets" style="background:#FAFAF8;padding:56px 0 100px">
+  <div class="co-grid" style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:36px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-if value="{{ soldOutNotice }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:14px;background:rgba(79,195,232,.1);border:1px solid rgba(79,195,232,.4);font-size:13.5px;font-weight:600;color:#0F1F35">{{ soldOutNotice }}</div>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:4px;margin-bottom:4px">
+        <span style="font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:rgba(15,31,53,.55)">I'm registering as</span>
+        <div role="radiogroup" aria-label="Attendee type" style="display:inline-flex;padding:4px;border-radius:999px;background:rgba(15,31,53,.06);border:1px solid rgba(15,31,53,.1)">
+          <button role="radio" aria-checked="{{ isMember }}" onClick="{{ setMember }}" style="padding:9px 20px;border:none;border-radius:999px;background:{{ memberBtnBg }};color:{{ memberBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:{{ memberBtnShadow }}">AMA Member</button>
+          <button role="radio" aria-checked="{{ isGuest }}" onClick="{{ setGuest }}" style="padding:9px 20px;border:none;border-radius:999px;background:{{ guestBtnBg }};color:{{ guestBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:{{ guestBtnShadow }}">Non-Member</button>
+        </div>
+        <a href="https://www.amacincinnati.org/get-involved/join-or-renew-your-membership/" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;color:#E8792C;text-decoration:underline;text-underline-offset:3px" style-hover="color:#0F1F35">Not a member? Join &amp; save →</a>
+      </div>
+      <sc-for list="{{ tiers }}" as="tier" hint-placeholder-count="3">
+        <div aria-disabled="{{ tier.soldOut }}" style="display:flex;align-items:center;gap:22px;padding:26px 28px;border-radius:20px;background:{{ tier.bg }};border:{{ tier.cardBorder }};box-shadow:{{ tier.shadow }};opacity:{{ tier.opacity }}">
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+              <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:26px;letter-spacing:-.02em;color:{{ tier.fg }}">{{ tier.name }}</span>
+              <sc-if value="{{ tier.badge }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:999px;background:{{ tier.badgeBg }};color:{{ tier.badgeFg }}">{{ tier.badge }}</span>
+              </sc-if>
+            </div>
+            <div style="margin-top:4px;font-size:13px;line-height:1.55;color:{{ tier.subColor }}">{{ tier.desc }}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;flex:none;width:120px">
+            <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:36px;line-height:1;color:{{ tier.priceColor }}">{{ tier.price }}</span>
+            <sc-if value="{{ tier.priceSuffix }}" hint-placeholder-val="{{ false }}">
+              <span style="margin-top:2px;font-size:12px;font-weight:600;color:{{ tier.subColor }}">{{ tier.priceSuffix }}</span>
+            </sc-if>
+            <sc-if value="{{ tier.showSavings }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:baseline;gap:6px;margin-top:3px">
+                <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:17px;line-height:1;color:{{ tier.subColor }};text-decoration:line-through;text-decoration-color:#E8792C;text-decoration-thickness:2px">{{ tier.regularPrice }}</span>
+                <span style="font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:rgba(79,195,232,.16);color:#1580A5">{{ tier.savings }}</span>
+              </div>
+            </sc-if>
+          </div>
+          <sc-if value="{{ tier.available }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;align-items:center;gap:0;flex:none;border:2px solid rgba(15,31,53,.15);border-radius:999px;overflow:hidden">
+              <button aria-label="Remove one {{ tier.name }} ticket" onClick="{{ tier.dec }}" disabled="{{ tier.decDisabled }}" style="width:46px;height:46px;border:none;background:transparent;font-size:20px;font-weight:700;color:{{ tier.decColor }};cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif">−</button>
+              <span aria-live="polite" style="min-width:38px;text-align:center;font-size:17px;font-weight:800;color:{{ tier.qtyColor }}">{{ tier.qty }}</span>
+              <button aria-label="Add one {{ tier.name }} ticket" onClick="{{ tier.inc }}" style="width:46px;height:46px;border:none;background:transparent;font-size:20px;font-weight:700;color:#E8792C;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif">+</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ tier.soldOut }}" hint-placeholder-val="{{ false }}">
+            <span style="flex:none;padding:10px 20px;border-radius:999px;background:rgba(15,31,53,.08);color:rgba(15,31,53,.45);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase">Sold Out</span>
+          </sc-if>
+        </div>
+      </sc-for>
+      <p style="margin:8px 0 0;font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.45)">All prices USD. Member rates require an active AMA Cincinnati membership, verified at check-in. Ticket inventory is managed live by Eventbrite — availability shown here reflects the event's ticket classes.</p>
+    </div>
+    <!-- Sticky order summary -->
+    <div class="co-side" style="position:sticky;top:130px;background:#0F1F35;border-radius:20px;padding:28px;box-shadow:0 16px 50px rgba(15,31,53,.25)">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+        <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4FC3E8">Order Summary</span>
+      </div>
+      <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:18px 0 6px;font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.5)">Select at least one ticket to continue.</div>
+      </sc-if>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="1">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-size:13.5px;font-weight:600;color:rgba(255,255,255,.85)">{{ ln.label }}</span>
+            <span style="font-size:13.5px;font-weight:800;color:#fff">{{ ln.amount }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ true }}">
+        <div style="height:1px;background:rgba(255,255,255,.12);margin:16px 0"></div>
+        <label for="coupon-code" style="display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:{{ couponLabelColor }};margin-bottom:8px">{{ couponLabel }}</label>
+        <sc-if value="{{ memberGatePrompt }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:10px 12px;border-radius:10px;background:rgba(232,121,44,.12);border:1px solid rgba(232,121,44,.35)"><span style="font-size:13px;line-height:1.3">🔒</span><span style="font-size:11.5px;line-height:1.5;font-weight:600;color:rgba(255,255,255,.85)">AMA member pricing is locked. Enter your member access code below to unlock it.</span></div>
+        </sc-if>
+        <div style="display:flex;gap:8px">
+          <input id="coupon-code" type="text" value="{{ couponCode }}" onChange="{{ setCoupon }}" placeholder="Enter code" autocapitalize="characters" style="flex:1;min-width:0;box-sizing:border-box;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:#fff;outline:none" style-focus="border-color:#E8792C">
+          <button onClick="{{ applyCoupon }}" style="flex:none;padding:0 16px;border:none;border-radius:10px;background:{{ couponBtnBg }};color:{{ couponBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;cursor:pointer">{{ couponBtnLabel }}</button>
+        </div>
+        <sc-if value="{{ couponError }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="margin-top:9px;font-size:11.5px;line-height:1.5;color:#F0A868">{{ couponError }}</div>
+        </sc-if>
+        <sc-if value="{{ memberGatePrompt }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:10px"><dc-import name="MemberCodeForm" link-label="Need your member code? Click here" link-color="#4FC3E8" link-size="11.5px" link-weight="800" link-decoration="underline" hint-size="220px,18px"></dc-import></div>
+        </sc-if>
+        <sc-if value="{{ hasAppliedCodes }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:11px">
+            <sc-for list="{{ appliedChips }}" as="chip" hint-placeholder-count="1">
+              <span style="display:inline-flex;align-items:center;gap:7px;padding:6px 8px 6px 11px;border-radius:999px;background:{{ chip.bg }};border:{{ chip.border }};animation:memberUnlock .35s ease-out"><span style="font-size:11.5px;font-weight:800;letter-spacing:.03em;color:{{ chip.fg }}">{{ chip.code }} · {{ chip.label }}</span><button onClick="{{ chip.remove }}" aria-label="Remove" style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border:none;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:10px;font-weight:800;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif" style-hover="background:#E8792C">✕</button></span>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div style="height:1px;background:rgba(255,255,255,.12);margin:16px 0"></div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Subtotal</span><span>{{ subtotal }}</span></div>
+          <sc-for list="{{ discountLines }}" as="dl" hint-placeholder-count="0">
+            <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#4FC3E8"><span>Discount · {{ dl.code }} ({{ dl.label }})</span><span>{{ dl.amount }}</span></div>
+          </sc-for>
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Service fee</span><span>{{ serviceFee }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Processing fee</span><span>{{ processingFee }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Sales tax</span><span>{{ tax }}</span></div>
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,.12);margin:16px 0"></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:14px;font-weight:800;color:#fff">Total</span>
+          <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:36px;color:#E8792C">{{ total }}</span>
+        </div>
+        <sc-if value="{{ hasDiscount }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:9px;font-size:11.5px;line-height:1.5;color:#4FC3E8">Discounts applied — Eventbrite re-validates each code at checkout.</div>
+        </sc-if>
+        <p style="margin:10px 0 0;font-size:11.5px;line-height:1.55;color:rgba(255,255,255,.4)">All fees shown upfront — no surprises at payment.</p>
+      </sc-if>
+      <button onClick="{{ toDetails }}" disabled="{{ cartEmpty }}" style="width:100%;margin-top:20px;padding:16px 0;border:none;border-radius:999px;background:{{ ctaBg }};color:{{ ctaFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14.5px;font-weight:800;cursor:{{ ctaCursor }};box-shadow:{{ ctaShadow }}">Continue to Details →</button>
+      <sc-if value="{{ memberGateError }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="margin-top:11px;display:flex;align-items:flex-start;gap:7px;font-size:11.5px;line-height:1.5;font-weight:600;color:#F0A868"><span style="font-size:13px;line-height:1.3">🔒</span><span>Enter your AMA member access code above to continue with member pricing — or switch to <strong style="color:#fff">Non-Member</strong>.</span></div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ═══════ STEP 2: DETAILS ═══════ -->
+<sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Step 2 Details" style="background:#FAFAF8;padding:56px 0 100px">
+  <div class="co-grid" style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:36px;align-items:start">
+    <div style="max-width:560px">
+      <div style="display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:14px;background:rgba(79,195,232,.1);border:1px solid rgba(79,195,232,.4);font-size:13.5px;font-weight:600;color:#0F1F35;margin-bottom:28px">
+        ⚡ Guest checkout — no account needed. We only ask for what's required to issue your tickets.
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <sc-for list="{{ fields }}" as="fld" hint-placeholder-count="3">
+          <div>
+            <label for="{{ fld.id }}" style="display:block;font-size:13px;font-weight:800;color:#0F1F35;margin-bottom:8px">{{ fld.label }} <sc-if value="{{ fld.optional }}" hint-placeholder-val="{{ false }}"><span style="font-weight:600;color:rgba(15,31,53,.4)">(optional)</span></sc-if></label>
+            <div style="position:relative">
+              <input id="{{ fld.id }}" type="{{ fld.type }}" value="{{ fld.value }}" onChange="{{ fld.set }}" onBlur="{{ fld.blur }}" aria-invalid="{{ fld.invalid }}" placeholder="{{ fld.placeholder }}" style="width:100%;box-sizing:border-box;padding:15px 46px 15px 18px;border-radius:14px;border:2px solid {{ fld.borderColor }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14.5px;color:#0F1F35;outline:none" style-focus="border-color:#E8792C">
+              <sc-if value="{{ fld.valid }}" hint-placeholder-val="{{ false }}">
+                <span aria-hidden="true" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#1F8A5B;color:#fff;font-size:12px;font-weight:800">✓</span>
+              </sc-if>
+            </div>
+            <sc-if value="{{ fld.error }}" hint-placeholder-val="{{ false }}">
+              <div role="alert" style="margin-top:7px;font-size:12.5px;font-weight:600;color:#C0392B">{{ fld.error }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <label style="display:flex;align-items:flex-start;gap:12px;padding:16px 18px;border-radius:14px;background:#fff;border:1px solid rgba(15,31,53,.1);cursor:pointer">
+          <input type="checkbox" checked="{{ assignLater }}" onChange="{{ toggleAssignLater }}" style="margin-top:2px;width:18px;height:18px;accent-color:#E8792C">
+          <span style="font-size:13.5px;line-height:1.55;color:rgba(15,31,53,.7)"><strong style="color:#0F1F35">I'll assign tickets to attendees later.</strong> Each ticket holder gets an email to claim their ticket — you don't need everyone's details now.</span>
+        </label>
+        <p style="margin:0;font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.45)">Dietary needs, accessibility requests, and session preferences are collected in a short post-purchase survey — your confirmation email will have the link. VIP lunch selections are gathered there too.</p>
+        <div style="display:flex;align-items:center;gap:14px">
+          <button onClick="{{ backToTickets }}" style="padding:15px 26px;border-radius:999px;border:2px solid rgba(15,31,53,.2);background:transparent;color:#0F1F35;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer">← Back</button>
+          <button onClick="{{ toPayment }}" style="flex:1;padding:16px 0;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14.5px;font-weight:800;cursor:pointer;box-shadow:0 6px 24px rgba(232,121,44,.4)">Continue to Payment →</button>
+        </div>
+      </div>
+    </div>
+    <div class="co-side" style="position:sticky;top:130px;background:#0F1F35;border-radius:20px;padding:28px;box-shadow:0 16px 50px rgba(15,31,53,.25)">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+        <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4FC3E8">Order Summary</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="1">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-size:13.5px;font-weight:600;color:rgba(255,255,255,.85)">{{ ln.label }}</span>
+            <span style="font-size:13.5px;font-weight:800;color:#fff">{{ ln.amount }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,.12);margin:16px 0"></div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Subtotal</span><span>{{ subtotal }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Service fee</span><span>{{ serviceFee }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Processing fee</span><span>{{ processingFee }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Sales tax</span><span>{{ tax }}</span></div>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,.12);margin:16px 0"></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <span style="font-size:14px;font-weight:800;color:#fff">Total</span>
+        <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:36px;color:#E8792C">{{ total }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ═══════ STEP 3: PAYMENT ═══════ -->
+<sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Step 3 Payment" style="background:#FAFAF8;padding:56px 0 100px">
+  <div class="co-grid" style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:36px;align-items:start">
+    <div style="max-width:560px">
+      <div style="background:#fff;border:1px solid rgba(15,31,53,.1);border-radius:20px;padding:36px;box-shadow:0 4px 24px rgba(15,31,53,.06)">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(31,138,91,.12);font-size:19px">🔒</span>
+          <div>
+            <div style="font-size:16px;font-weight:800;color:#0F1F35">Secure payment via Eventbrite</div>
+            <div style="font-size:12.5px;color:rgba(15,31,53,.55)">Card details are handled entirely by Eventbrite — PCI DSS compliant.</div>
+          </div>
+        </div>
+        <p style="margin:0 0 26px;font-size:14px;line-height:1.7;color:rgba(15,31,53,.65)">Clicking the button below opens Eventbrite's secure checkout to complete your payment. Your ticket selection and details carry over. On mobile, checkout opens as a full-screen secure window.</p>
+        <button id="eventbrite-checkout-trigger" onClick="{{ launchCheckout }}" style="width:100%;padding:18px 0;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:15.5px;font-weight:800;cursor:pointer;box-shadow:0 6px 30px rgba(232,121,44,.45)">🔒 Pay {{ total }} Securely with Eventbrite</button>
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;flex-wrap:wrap">
+          <span style="font-size:11px;font-weight:700;color:rgba(15,31,53,.4)">We accept</span>
+          <span style="display:inline-flex;gap:6px">
+            <span style="padding:3px 8px;border-radius:5px;background:rgba(15,31,53,.06);font-size:10.5px;font-weight:800;letter-spacing:.04em;color:rgba(15,31,53,.6)">VISA</span>
+            <span style="padding:3px 8px;border-radius:5px;background:rgba(15,31,53,.06);font-size:10.5px;font-weight:800;letter-spacing:.04em;color:rgba(15,31,53,.6)">MASTERCARD</span>
+            <span style="padding:3px 8px;border-radius:5px;background:rgba(15,31,53,.06);font-size:10.5px;font-weight:800;letter-spacing:.04em;color:rgba(15,31,53,.6)">AMEX</span>
+            <span style="padding:3px 8px;border-radius:5px;background:rgba(15,31,53,.06);font-size:10.5px;font-weight:800;letter-spacing:.04em;color:rgba(15,31,53,.6)">DISCOVER</span>
+          </span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:18px;margin-top:14px;font-size:11.5px;font-weight:700;color:rgba(15,31,53,.45)">
+          <span>🔒 SSL Encrypted</span>
+          <span>Payments securely processed by Eventbrite</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(31,138,91,.08);border:1px solid rgba(31,138,91,.25)">
+          <span style="flex:none;font-size:15px;line-height:1.3">↩️</span>
+          <span style="font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.7)"><strong style="color:#0F1F35">Flexible &amp; risk-free.</strong> Full refunds available up to 7 days before the event — no questions asked. Tickets are transferable to a colleague any time.</span>
+        </div>
+        <sc-if value="{{ widgetUnavailable }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="margin-top:18px;padding:14px 18px;border-radius:12px;background:rgba(232,121,44,.08);border:1px solid rgba(232,121,44,.3);font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.7)">
+            The Eventbrite checkout can't open in this preview (placeholder event ID). In production, this launches the embedded checkout modal. <button onClick="{{ simulateOrder }}" style="border:none;background:none;padding:0;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;color:#E8792C;cursor:pointer;text-decoration:underline">Simulate a completed order →</button>
+          </div>
+        </sc-if>
+      </div>
+      <button onClick="{{ backToDetails }}" style="margin-top:18px;padding:14px 26px;border-radius:999px;border:2px solid rgba(15,31,53,.2);background:transparent;color:#0F1F35;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer">← Back to Details</button>
+    </div>
+    <div class="co-side" style="position:sticky;top:130px;background:#0F1F35;border-radius:20px;padding:28px;box-shadow:0 16px 50px rgba(15,31,53,.25)">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+        <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4FC3E8">Final Order Summary</span>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:12px">{{ buyerLine }}</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="1">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-size:13.5px;font-weight:600;color:rgba(255,255,255,.85)">{{ ln.label }}</span>
+            <span style="font-size:13.5px;font-weight:800;color:#fff">{{ ln.amount }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,.12);margin:16px 0"></div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Subtotal</span><span>{{ subtotal }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Service fee</span><span>{{ serviceFee }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Processing fee</span><span>{{ processingFee }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)"><span>Sales tax</span><span>{{ tax }}</span></div>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,.12);margin:16px 0"></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <span style="font-size:14px;font-weight:800;color:#fff">Total</span>
+        <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:36px;color:#E8792C">{{ total }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ═══════ STEP 4: CONFIRMATION ═══════ -->
+<sc-if value="{{ isStep4 }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Step 4 Confirmation" style="background:#FAFAF8;padding:56px 0 100px">
+  <div style="max-width:720px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="position:relative;overflow:hidden;background:#0F1F35;border-radius:24px;padding:56px 52px;text-align:center;box-shadow:0 20px 60px rgba(15,31,53,.3)">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 50% 130%, rgba(232,121,44,.45), transparent 65%)"></div>
+      <div style="position:relative">
+        <img src="assets/IGNITE_Flame.png" alt="" style="height:52px;width:auto;margin-bottom:18px">
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:58px;line-height:.95;color:#fff">You're <span style="color:#E8792C">In!</span></div>
+        <p style="margin:16px auto 0;max-width:420px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.7)">Your order is confirmed. A confirmation email with your tickets is on its way to <strong style="color:#fff">{{ confirmEmail }}</strong>.</p>
+        <div style="display:inline-block;margin-top:22px;padding:10px 22px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);font-size:13px;font-weight:800;color:rgba(255,255,255,.85)">Order # {{ orderNumber }}</div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;padding:32px 36px;margin-top:22px;box-shadow:0 4px 24px rgba(15,31,53,.05)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#E8792C;margin-bottom:16px">Your Order</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="1">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-size:14px;font-weight:600;color:#0F1F35">{{ ln.label }}</span>
+            <span style="font-size:14px;font-weight:800;color:#0F1F35">{{ ln.amount }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="height:1px;background:rgba(15,31,53,.08);margin:16px 0"></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <span style="font-size:14px;font-weight:800;color:#0F1F35">Total paid</span>
+        <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:32px;color:#E8792C">{{ total }}</span>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;padding:32px 36px;margin-top:22px;box-shadow:0 4px 24px rgba(15,31,53,.05)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#E8792C;margin-bottom:16px">Event Details</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px">
+        <div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(15,31,53,.4);margin-bottom:5px">Date</div>
+          <div style="font-size:14.5px;font-weight:700;color:#0F1F35">Tuesday, November 10, 2026</div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(15,31,53,.4);margin-bottom:5px">Time</div>
+          <div style="font-size:14.5px;font-weight:700;color:#0F1F35">8:30 AM – 5:30 PM</div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(15,31,53,.4);margin-bottom:5px">Venue</div>
+          <div style="font-size:14.5px;font-weight:700;color:#0F1F35">American Sign Museum</div>
+          <div style="font-size:13px;color:rgba(15,31,53,.55)">1330 Monmouth Ave, Cincinnati, OH 45225</div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(15,31,53,.4);margin-bottom:5px">Parking</div>
+          <div style="font-size:14.5px;font-weight:700;color:#0F1F35">Free valet &amp; on-site lot</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;padding:32px 36px;margin-top:22px;box-shadow:0 4px 24px rgba(15,31,53,.05)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#E8792C;margin-bottom:16px">What Happens Next</div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:14px;line-height:1.65;color:rgba(15,31,53,.7)">
+        <div style="display:flex;gap:12px"><img src="assets/IGNITE_Flame.png" alt="" style="height:15px;width:auto;margin-top:3px;flex:none"><span><strong style="color:#0F1F35">Check your inbox</strong> — tickets and receipt arrive within a few minutes (check spam just in case).</span></div>
+        <div style="display:flex;gap:12px"><img src="assets/IGNITE_Flame.png" alt="" style="height:15px;width:auto;margin-top:3px;flex:none"><span><strong style="color:#0F1F35">Complete the 60-second attendee survey</strong> — dietary needs, accessibility, and session preferences (link in your email).</span></div>
+        <div style="display:flex;gap:12px"><img src="assets/IGNITE_Flame.png" alt="" style="height:15px;width:auto;margin-top:3px;flex:none"><span><strong style="color:#0F1F35">See you November 10</strong> — doors open 8:30 AM at American Sign Museum. Free parking on site.</span></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px">
+        <a href="{{ calendarUrl }}" target="_blank" rel="noopener" style="padding:13px 26px;border-radius:999px;background:#0F1F35;color:#fff;font-size:13px;font-weight:800" style-hover="background:#E8792C;color:#fff">＋ Google Calendar</a>
+        <a href="{{ icsUrl }}" download="IGNITE-2026.ics" style="padding:13px 26px;border-radius:999px;border:2px solid rgba(15,31,53,.2);color:#0F1F35;font-size:13px;font-weight:800" style-hover="border-color:#E8792C;color:#E8792C">＋ Apple / Outlook (.ics)</a>
+        <a href="IGNITE Agenda.dc.html" style="padding:13px 26px;border-radius:999px;border:2px solid rgba(15,31,53,.2);color:#0F1F35;font-size:13px;font-weight:800" style-hover="border-color:#E8792C;color:#E8792C">View the Agenda</a>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:rgba(232,121,44,.08);border:1px solid rgba(232,121,44,.3);border-radius:20px;padding:24px 32px;margin-top:22px">
+      <div>
+        <div style="font-size:16px;font-weight:800;color:#0F1F35">Bringing the team?</div>
+        <div style="font-size:13.5px;line-height:1.6;color:rgba(15,31,53,.65);margin-top:2px">Spread the word and help us fill the room — tell your network you'll be there.</div>
+      </div>
+      <div style="display:flex;gap:10px;flex:none">
+        <a href="{{ shareLinkedIn }}" target="_blank" rel="noopener" style="padding:12px 22px;border-radius:999px;background:#0F1F35;color:#fff;font-size:13px;font-weight:800" style-hover="background:#E8792C;color:#fff">Share on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ═══════ FOOTER ═══════ -->
+<div data-screen-label="Footer" style="position:relative;overflow:hidden;background:#0F1F35;padding:80px 0 36px">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 700px 500px at 0% 120%, rgba(232,121,44,.18), transparent 60%)"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px;margin-bottom:56px">
+      <div>
+        <img src="assets/IGNITE_Logo_primary.png" alt="AMA Cincinnati Presents IGNITE" style="height:64px;width:auto;margin-bottom:18px">
+        <p style="margin:0 0 20px;max-width:300px;font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.5)">IGNITE is the premier marketing conference from AMA Cincinnati — a full day of bold ideas, world-class speakers, and community.</p>
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:28px;width:auto">
+          <div>
+            <div style="font-size:14px;font-weight:800;color:#fff">Tuesday, November 10, 2026 · 8:30a–5:30p</div>
+            <div style="margin-top:2px;font-size:13px;font-weight:700;color:#E8792C">American Sign Museum · Cincinnati</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#4FC3E8;margin-bottom:18px">Event</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <a href="IGNITE Homepage.dc.html#why" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Why Attend</a>
+          <a href="IGNITE Agenda.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Agenda</a>
+          <a href="IGNITE Speakers.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Speakers</a>
+          <a href="IGNITE Register.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Tickets</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#4FC3E8;margin-bottom:18px">Get Involved</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <a href="IGNITE Sponsors.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Become a Sponsor</a>
+          <dc-import name="SpeakerNominate" link-label="Call for Speakers" link-color="rgba(255,255,255,.55)" link-size="13.5px" hint-size="140px,20px"></dc-import>
+          <dc-import name="VolunteerForm" link-label="Volunteer" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="90px,20px"></dc-import>
+          <a href="https://www.amacincinnati.org" target="_blank" rel="noopener" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Join AMA Cincinnati</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#4FC3E8;margin-bottom:18px">Connect</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <a href="https://www.amacincinnati.org" target="_blank" rel="noopener" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">AMA Cincinnati</a>
+          <dc-import name="ContactForm" kind="contact" link-label="Contact Us" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="90px,20px"></dc-import>
+          <dc-import name="ContactForm" kind="press" link-label="Press Inquiries" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="120px,20px"></dc-import>
+          <a href="IGNITE FAQ.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div style="height:1px;background:rgba(255,255,255,.08);margin-bottom:24px"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <span style="font-size:12px;color:rgba(255,255,255,.3)">© 2026 AMA Cincinnati. All rights reserved.</span>
+      <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;color:rgba(255,255,255,.3)">Presented by <img src="assets/AMA_Cincinnati_white.webp" alt="AMA Cincinnati" style="height:36px;width:auto;opacity:.65"></span>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { navRevealed: false };
+  /*
+   * ── EVENTBRITE INTEGRATION NOTES ──────────────────────────────────────────
+   * • EVENTBRITE_EVENT_ID   — from the event's Eventbrite URL / API (GET /v3/events/).
+   * • EVENTBRITE_API_TOKEN  — private OAuth token from eventbrite.com/platform (server-side ONLY;
+   *                           never ship it to the browser — fetch ticket classes through your own
+   *                           thin API proxy).
+   * • TICKET_CLASS_ID_*     — from GET /v3/events/{EVENT_ID}/ticket_classes/ ; the mock `tiers`
+   *                           below mirror that response shape (name, cost, fee, on_sale_status,
+   *                           quantity_total/sold) so wiring real data is a drop-in replacement.
+   * • Payment is handled 100% by the Eventbrite Embedded Checkout Widget (PCI compliant) —
+   *   this page never sees card data.
+   * • Back-end order syncing must be done via Eventbrite Webhooks (e.g. `order.placed`,
+   *   `order.refunded`) hitting your server — NOT from this client's onOrderComplete callback,
+   *   which is UX-only (it can be missed if the user closes the tab).
+   */
+  static EVENTBRITE_EVENT_ID = '1995209228512'; // IGNITE 2026 — live Eventbrite event ID
+
+  /*
+   * ── CODE VALIDATION (Eventbrite-authoritative) ───────────────────────────
+   * Every promo/member code is validated by Eventbrite, NEVER trusted from the client.
+   * The EVENTBRITE_API_TOKEN must stay server-side, so validation goes through YOUR proxy:
+   *
+   *   POST {CODE_VALIDATION_ENDPOINT}  { eventId, code }
+   *     → your server calls, with `Authorization: Bearer EVENTBRITE_API_TOKEN`:
+   *         • member/access code:  GET /v3/events/{eventId}/access_codes/?code={code}
+   *         • promo/discount code: GET /v3/events/{eventId}/discounts/?code={code}
+   *     → normalize and return JSON:
+   *         { valid: true,  kind: 'member' }                              // unlocks member pricing
+   *         { valid: true,  kind: 'discount', percent_off: 25 }           // % discount
+   *         { valid: true,  kind: 'discount', amount_off: 50 }            // flat discount
+   *         { valid: false, message: 'Code not found or expired.' }
+   *
+   * The preview has no backend, so validateCode() falls back to mockValidate() below —
+   * delete that fallback (and the mock table) once the proxy is live.
+   */
+  static CODE_VALIDATION_ENDPOINT = 'https://ignite-codes.ignite-b13.workers.dev'; // Cloudflare Worker proxy
+
+  async validateCode(code) {
+    try {
+      const res = await fetch(Component.CODE_VALIDATION_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ eventId: Component.EVENTBRITE_EVENT_ID, code })
+      });
+      if (res.ok) {
+        const r = await res.json(); // { valid, kind, code?, percent_off?/amount_off?, message? }
+        // Backstop: only trust a "valid" result if the proxy echoes back the exact code we asked for.
+        if (r && r.valid && r.code && String(r.code).toUpperCase() !== code.toUpperCase()) {
+          return { valid: false, message: 'That code isn\'t valid — check for typos and try again.' };
+        }
+        return r;
+      }
+    } catch (e) { /* no backend in preview — fall through to mock */ }
+    return this.mockValidate(code);
+  }
+
+  // DEV/preview only — mirrors the shape the real proxy returns. Remove once the proxy is live.
+  mockValidate(code) {
+    if (code === 'AMAMEMBER2026') return { valid: true, kind: 'member' };
+    const MOCK = {
+      EARLYAMA: { percent_off: 15 }, IGNITE25: { percent_off: 25 },
+      MEMBER50: { amount_off: 50 },  SPEAKER:  { percent_off: 100 }
+    };
+    return MOCK[code]
+      ? { valid: true, kind: 'discount', ...MOCK[code] }
+      : { valid: false, message: 'That code isn\'t valid — check for typos and try again.' };
+  }
+
+  state = {
+    step: 1,
+    audience: 'member', // 'member' | 'guest' — drives Member vs Guest pricing
+    memberVerified: false, // set true once the AMA member access code is applied
+    memberGateError: false, // shows the "enter your code" prompt on the CTA
+    // Cart starts empty; ?ticket=early|general|vip (from homepage tier cards) preselects one.
+    couponCode: '',
+    appliedCodes: [],   // resolved discount codes: [{ code, percent_off } | { code, amount_off }]
+    couponError: '',    // transient error for the last Apply attempt
+    couponValidating: false, // true while awaiting Eventbrite validation
+    qty: (() => {
+      const q = { early: 0, vip: 0, group: 0 };
+      const pick = new URLSearchParams(window.location.search).get('ticket');
+      if (pick && pick in q) q[pick] = pick === 'group' ? 5 : 1;
+      return q;
+    })(),
+    form: { name: '', email: '', company: '', title: '' },
+    touched: {},
+    assignLater: true,
+    widgetUnavailable: false,
+    orderNumber: null
+  };
+
+  componentDidMount() {
+    this._onNavScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const s = y > 120;
+      if (s !== this.state.navRevealed) this.setState({ navRevealed: s });
+    };
+    window.addEventListener('scroll', this._onNavScroll, { passive: true });
+    this._onNavScroll();
+
+    // Build/mount the Eventbrite Embedded Checkout widget. In modal mode EBWidgets binds a click
+    // handler to the trigger button by ID — so the button must already be in the DOM, which only
+    // happens on step 3. We (re)create it when the user reaches that step (see componentDidUpdate).
+    this._initWidget = (attempt) => {
+      attempt = attempt || 0;
+      const trigger = document.getElementById('eventbrite-checkout-trigger');
+      if (!trigger) return; // not on the payment step yet
+      if (!window.EBWidgets) {
+        // eb_widgets.js still loading — retry briefly, then surface the fallback.
+        if (attempt < 20) { this._widgetTimer = setTimeout(() => this._initWidget(attempt + 1), 250); }
+        else { this.setState({ widgetUnavailable: true }); }
+        return;
+      }
+      try {
+        window.EBWidgets.createWidget({
+          widgetType: 'checkout',
+          eventId: this.constructor.EVENTBRITE_EVENT_ID,
+          modal: true,
+          modalTriggerElementId: 'eventbrite-checkout-trigger',
+          // Codes are re-validated/applied authoritatively by Eventbrite at checkout.
+          promoCode: this.state.appliedCodes.length ? this.state.appliedCodes.map(c => c.code).join(',') : undefined,
+          onOrderComplete: () => this.completeOrder()
+        });
+        this._widgetCreated = true;
+      } catch (e) {
+        this.setState({ widgetUnavailable: true });
+      }
+    };
+    // Try once at mount in case we deep-linked onto step 3.
+    this._initWidget();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // When the buyer arrives at the payment step, mount the widget against the now-present button.
+    if (this.state.step === 3 && prevState.step !== 3) {
+      this._widgetCreated = false;
+      if (this._widgetTimer) clearTimeout(this._widgetTimer);
+      setTimeout(() => this._initWidget(), 0);
+    }
+  }
+
+  componentWillUnmount() { if (this._widgetTimer) clearTimeout(this._widgetTimer); }
+
+  completeOrder() {
+    this.setState({ step: 4, orderNumber: 'IG26-' + Math.floor(100000 + Math.random() * 900000) });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  renderVals() {
+    const fmt = (n) => { const v = Number(n); return '$' + (Number.isFinite(v) ? v : 0).toFixed(2).replace(/\.00$/, ''); };
+    const s = this.state;
+
+    const embers = React.createElement('div', { key: 'embers', style: { position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' } },
+      Array.from({ length: 12 }, (_, i) => {
+        const col = i % 5 === 0 ? '#4FC3E8' : '#E8792C';
+        const size = 2 + (i % 3);
+        return React.createElement('span', { key: i, style: { position: 'absolute', left: ((i * 43 + 11) % 100) + '%', bottom: '-10px', width: size + 'px', height: size + 'px', borderRadius: '50%', background: col, opacity: 0, boxShadow: '0 0 ' + size * 3 + 'px ' + col, animation: 'emberRise ' + (6 + (i % 6)) + 's linear ' + (-(i * 2.1) % 9) + 's infinite' } });
+      })
+    );
+
+    // Mock of Eventbrite GET /v3/events/{id}/ticket_classes/ — replace with live fetch via server proxy.
+    // Each tier has an AMA-member price and a guest (non-member) price; in Eventbrite these are
+    // separate ticket classes gated by an access/promo code for members.
+    const isMember = s.audience === 'member';
+    const tierDefs = [
+      { key: 'early',   name: 'General Admission', desc: 'Full-day access at the early-bird rate — locks in before Sept 15, then becomes standard General Admission.', member: 175, guest: 299, regularMember: 215, regularGuest: 349, badge: 'Early Bird — through Sept 15', badgeBg: 'rgba(232,121,44,.14)', badgeFg: '#C25E17', soldOut: false, minQty: 1 },
+      { key: 'vip',     name: 'VIP', desc: 'Everything in General, plus VIP lunch with keynotes, priority seating, swag & reception.', member: 295, guest: 449, badge: 'Limited Availability', badgeBg: '#E8792C', badgeFg: '#fff', soldOut: false, minQty: 1 },
+      { key: 'group',   name: 'Group', desc: 'Special per-person rate for teams — requires 5 or more tickets. Reserved seating block and group invoice available.', member: 195, guest: 315, perPerson: true, badge: '5+ tickets required', badgeBg: 'rgba(79,195,232,.18)', badgeFg: '#1580A5', soldOut: false, minQty: 5 }
+    ];
+    const priceOf = (t) => isMember ? t.member : t.guest;
+
+    const tiers = tierDefs.map(t => {
+      const qty = s.qty[t.key] || 0;
+      const available = !t.soldOut;
+      const regVal = t.regularMember != null ? (isMember ? t.regularMember : t.regularGuest) : null;
+      return {
+        name: t.name, desc: t.desc,
+        price: '$' + priceOf(t) + (t.perPerson ? '' : ''),
+        priceSuffix: t.perPerson ? '/person' : '',
+        altPrice: isMember ? 'Non-Member $' + t.guest : 'Member $' + t.member,
+        showSavings: regVal != null,
+        regularPrice: regVal != null ? '$' + regVal : '',
+        savings: regVal != null ? 'Save $' + (regVal - priceOf(t)) : '',
+        badge: t.soldOut && !t.badge ? '' : t.badge,
+        badgeBg: t.badgeBg || 'rgba(15,31,53,.08)', badgeFg: t.badgeFg || '#0F1F35',
+        available, soldOut: !available,
+        qty,
+        bg: available ? '#fff' : 'rgba(15,31,53,.03)',
+        cardBorder: qty > 0 ? '2px solid #E8792C' : '1px solid rgba(15,31,53,.1)',
+        shadow: qty > 0 ? '0 10px 34px rgba(232,121,44,.16)' : '0 2px 12px rgba(15,31,53,.04)',
+        opacity: available ? '1' : '.6',
+        fg: '#0F1F35', subColor: 'rgba(15,31,53,.55)', priceColor: '#0F1F35',
+        qtyColor: qty > 0 ? '#E8792C' : '#0F1F35',
+        decDisabled: qty === 0,
+        decColor: qty === 0 ? 'rgba(15,31,53,.2)' : '#0F1F35',
+        // Group requires a minimum of 5: first add jumps to the minimum, stepping below it clears the line.
+        inc: () => this.setState(st => { const cur = st.qty[t.key] || 0; const next = cur === 0 ? (t.minQty || 1) : cur + 1; return { qty: { ...st.qty, [t.key]: next } }; }),
+        dec: () => this.setState(st => { const cur = st.qty[t.key] || 0; const min = t.minQty || 1; const next = cur <= min ? 0 : cur - 1; return { qty: { ...st.qty, [t.key]: next } }; })
+      };
+    });
+
+    const audLabel = isMember ? 'Member' : 'Non-Member';
+    const lines = tierDefs.filter(t => (s.qty[t.key] || 0) > 0).map(t => ({
+      label: (s.qty[t.key]) + ' × ' + t.name + ' (' + audLabel + ')',
+      amount: fmt(priceOf(t) * s.qty[t.key])
+    }));
+    const subtotalN = tierDefs.reduce((sum, t) => sum + priceOf(t) * (s.qty[t.key] || 0), 0);
+    const ticketCount = tierDefs.reduce((sum, t) => sum + (s.qty[t.key] || 0), 0);
+    const taxN = 0; // Set from Eventbrite tax settings for the event
+    // ── Promo / member codes ──
+    // All codes are validated authoritatively by Eventbrite via a SERVER proxy (see validateCode()
+    // and mockValidate() on this class). Each entry in s.appliedCodes was already resolved by that
+    // call and carries its discount shape: { code, percent_off } or { code, amount_off }.
+    // We compound them here only to PREVIEW the total; Eventbrite re-validates every code at checkout.
+    let runningN = subtotalN;
+    const discountLines = [];
+    s.appliedCodes.forEach(entry => {
+      const pct = Number(entry.percent_off) || 0;
+      const amtOff = Number(entry.amount_off) || 0;
+      const amt = pct ? runningN * pct / 100 : Math.min(amtOff, runningN);
+      runningN = Math.max(0, runningN - amt);
+      discountLines.push({
+        code: entry.code,
+        label: pct ? pct + '% off' : fmt(amtOff) + ' off',
+        amount: '−' + fmt(amt),
+        remove: () => this.setState(st => ({ appliedCodes: st.appliedCodes.filter(c => c.code !== entry.code) }))
+      });
+    });
+    const discountN = subtotalN - runningN;
+    const netN = Math.max(0, runningN);
+    // Chips shown under the code box: green member-unlock chip first, then blue discount chips.
+    const chips = [];
+    if (s.memberVerified) {
+      chips.push({ code: 'AMA Member', label: 'Member pricing unlocked', verified: true,
+        bg: 'rgba(31,138,91,.16)', border: '1px solid rgba(95,211,154,.5)', fg: '#5FD39A',
+        remove: () => this.setState({ memberVerified: false }) });
+    }
+    discountLines.forEach(dl => chips.push({ code: dl.code, label: dl.label, verified: false,
+      bg: 'rgba(79,195,232,.14)', border: '1px solid rgba(79,195,232,.4)', fg: '#8FDCF5',
+      remove: dl.remove }));
+    // Fee schedule (will sync from Eventbrite API): Service = 2.00% + $0.99/ticket; Processing = 3.00%/order.
+    const serviceFeeN = netN > 0 ? netN * 0.02 + ticketCount * 0.99 : 0;
+    const processingFeeN = netN > 0 ? netN * 0.03 : 0;
+    const feesN = serviceFeeN + processingFeeN;
+    const totalN = netN + feesN + taxN;
+    // CTA is active only with a ticket in cart AND (guest, or member with a verified code).
+    const canContinue = ticketCount > 0 && !(isMember && !s.memberVerified);
+
+    // ── Step 2 fields with inline validation ──
+    const validators = {
+      name: (v) => v.trim().length >= 2 ? '' : 'Please enter your full name — we print it on your badge.',
+      email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'That email doesn\'t look complete — tickets are delivered here, so double-check it.',
+      company: (v) => v.trim().length >= 2 ? '' : 'Please enter your company or organization.',
+      title: (v) => v.trim().length >= 2 ? '' : 'Please enter your job title.'
+    };
+    const fieldDefs = [
+      { key: 'name', id: 'buyer-name', label: 'Full name', type: 'text', placeholder: 'Alex Rivera', optional: false },
+      { key: 'email', id: 'buyer-email', label: 'Email address', type: 'email', placeholder: 'alex@company.com', optional: false },
+      { key: 'company', id: 'buyer-company', label: 'Company', type: 'text', placeholder: 'Company or organization', optional: false },
+      { key: 'title', id: 'buyer-title', label: 'Job title', type: 'text', placeholder: 'Director of Marketing', optional: false }
+    ];
+    const fields = fieldDefs.map(f => {
+      const val = s.form[f.key];
+      const err = validators[f.key](val);
+      const touched = !!s.touched[f.key];
+      const showErr = touched && err && !f.optional;
+      const valid = !f.optional ? (touched || val) && !err && val.trim() !== '' : val.trim() !== '';
+      return {
+        ...f,
+        value: val,
+        set: (e) => this.setState(st => ({ form: { ...st.form, [f.key]: e.target.value } })),
+        blur: () => this.setState(st => ({ touched: { ...st.touched, [f.key]: true } })),
+        error: showErr ? err : '',
+        invalid: showErr,
+        valid: !!valid,
+        borderColor: showErr ? '#C0392B' : (valid ? '#1F8A5B' : 'rgba(15,31,53,.15)')
+      };
+    });
+    const formValid = !validators.name(s.form.name) && !validators.email(s.form.email) && !validators.company(s.form.company) && !validators.title(s.form.title);
+
+    const stepLabels = ['Tickets', 'Details', 'Payment', 'Confirmation'];
+    const steps = stepLabels.map((label, i) => {
+      const n = i + 1;
+      const done = s.step > n;
+      const current = s.step === n;
+      const reachable = n < s.step && s.step !== 4; // no back-nav after purchase
+      return {
+        label,
+        current: current ? 'step' : 'false',
+        dotLabel: done ? '✓' : String(n),
+        dotBg: done ? '#1F8A5B' : (current ? '#E8792C' : 'transparent'),
+        dotBorder: done || current ? 'none' : '2px solid rgba(255,255,255,.3)',
+        dotFg: done || current ? '#fff' : 'rgba(255,255,255,.5)',
+        labelColor: current ? '#fff' : (done ? 'rgba(255,255,255,.75)' : 'rgba(255,255,255,.4)'),
+        hasLine: n < 4,
+        lineBg: done ? '#1F8A5B' : 'rgba(255,255,255,.15)',
+        flex: n < 4 ? '1' : 'none',
+        disabled: !reachable,
+        cursor: reachable ? 'pointer' : 'default',
+        go: () => { if (reachable) this.setState({ step: n }); }
+      };
+    });
+
+    return {
+      embers,
+      wordmarkW: '210px',
+      wordmarkOp: '1',
+      wordmarkGap: '10px',
+      wordmarkX: '0',
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      burgTop1: this.state.menuOpen ? '6px' : '0px',
+      burgTop3: this.state.menuOpen ? '6px' : '12px',
+      burgT1: this.state.menuOpen ? 'rotate(45deg)' : 'none',
+      burgT3: this.state.menuOpen ? 'rotate(-45deg)' : 'none',
+      burgMidOp: this.state.menuOpen ? '0' : '1',
+      steps,
+      isStep1: s.step === 1, isStep2: s.step === 2, isStep3: s.step === 3, isStep4: s.step === 4,
+      tiers,
+      soldOutNotice: '',
+      isMember, isGuest: !isMember,
+      setMember: () => this.setState({ audience: 'member' }),
+      setGuest: () => this.setState({ audience: 'guest', memberGateError: false }),
+      memberBtnBg: isMember ? '#0F1F35' : 'transparent',
+      memberBtnFg: isMember ? '#fff' : 'rgba(15,31,53,.6)',
+      memberBtnShadow: isMember ? '0 3px 10px rgba(15,31,53,.2)' : 'none',
+      guestBtnBg: !isMember ? '#0F1F35' : 'transparent',
+      guestBtnFg: !isMember ? '#fff' : 'rgba(15,31,53,.6)',
+      guestBtnShadow: !isMember ? '0 3px 10px rgba(15,31,53,.2)' : 'none',
+      couponCode: s.couponCode,
+      couponLabel: isMember ? 'AMA member code / promo code' : 'Coupon or promo code',
+      couponLabelColor: (isMember && !s.memberVerified) ? '#F0A868' : 'rgba(255,255,255,.55)',
+      memberGatePrompt: isMember && !s.memberVerified,
+      memberVerifiedMsg: false,
+      couponBtnLabel: s.couponValidating ? 'Checking…' : 'Apply',
+      couponBtnBg: s.couponValidating ? 'rgba(232,121,44,.5)' : '#E8792C',
+      couponBtnFg: '#fff',
+      couponError: s.couponError,
+      appliedChips: chips,
+      hasAppliedCodes: chips.length > 0,
+      hasDiscount: discountN > 0,
+      discountLines,
+      discountAmount: '−' + fmt(discountN),
+      setCoupon: (e) => this.setState({ couponCode: e.target.value.toUpperCase(), couponError: '' }),
+      applyCoupon: async () => {
+        const code = this.state.couponCode.trim().toUpperCase();
+        if (!code || this.state.couponValidating) return;
+        if (code === 'AMAMEMBER2026' && this.state.memberVerified) { this.setState({ couponError: 'Member pricing is already unlocked.', couponCode: '' }); return; }
+        if (this.state.appliedCodes.some(c => c.code === code)) { this.setState({ couponError: 'That code is already applied.', couponCode: '' }); return; }
+        this.setState({ couponValidating: true, couponError: '' });
+        const r = await this.validateCode(code);   // ← Eventbrite (via server proxy)
+        this.setState({ couponValidating: false });
+        if (!r || !r.valid) { this.setState({ couponError: (r && r.message) || 'That code isn\'t valid — check for typos and try again.' }); return; }
+        if (r.kind === 'member') {
+          this.setState({ memberVerified: true, audience: 'member', memberGateError: false, couponCode: '', couponError: '' });
+        } else {
+          const entry = { code, percent_off: r.percent_off, amount_off: r.amount_off };
+          this.setState(st => ({ appliedCodes: [...st.appliedCodes, entry], couponCode: '', couponError: '' }));
+        }
+      },
+      memberGateError: s.memberGateError && isMember && !s.memberVerified,
+      lines,
+      cartEmpty: ticketCount === 0,
+      hasCart: ticketCount > 0,
+      subtotal: fmt(subtotalN),
+      fees: fmt(feesN),
+      serviceFee: fmt(serviceFeeN),
+      processingFee: fmt(processingFeeN),
+      tax: fmt(taxN),
+      total: fmt(totalN),
+      ctaBg: canContinue ? '#E8792C' : 'rgba(255,255,255,.12)',
+      ctaFg: canContinue ? '#fff' : 'rgba(255,255,255,.35)',
+      ctaCursor: ticketCount > 0 ? 'pointer' : 'not-allowed',
+      ctaShadow: canContinue ? '0 6px 24px rgba(232,121,44,.4)' : 'none',
+      toDetails: () => {
+        if (ticketCount === 0) return;
+        if (isMember && !s.memberVerified) { this.setState({ memberGateError: true }); return; }
+        this.setState({ step: 2, memberGateError: false }); window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+      backToTickets: () => this.setState({ step: 1 }),
+      toPayment: () => {
+        this.setState({ touched: { name: true, email: true, company: true, title: true } });
+        if (formValid) { this.setState({ step: 3 }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+      },
+      backToDetails: () => this.setState({ step: 2 }),
+      fields,
+      assignLater: s.assignLater,
+      toggleAssignLater: () => this.setState(st => ({ assignLater: !st.assignLater })),
+      buyerLine: s.form.name + ' · ' + s.form.email,
+      launchCheckout: () => {
+        // In production (a real numeric EVENTBRITE_EVENT_ID) the EBWidgets modal opens
+        // automatically via modalTriggerElementId. While the ID is still the placeholder,
+        // no real checkout can mount — surface the demo path so the flow stays testable.
+        const isPlaceholder = !/^\d+$/.test(String(this.constructor.EVENTBRITE_EVENT_ID));
+        if (isPlaceholder || !this._widgetCreated) this.setState({ widgetUnavailable: true });
+      },
+      widgetUnavailable: s.widgetUnavailable,
+      simulateOrder: () => this.completeOrder(),
+      confirmEmail: s.form.email || 'your email',
+      orderNumber: s.orderNumber || 'IG26-000000',
+      calendarUrl: 'https://www.google.com/calendar/render?action=TEMPLATE&text=IGNITE%2726+%E2%80%94+AMA+Cincinnati&dates=20261110T133000Z/20261110T230000Z&location=American+Sign+Museum%2C+1330+Monmouth+Ave%2C+Cincinnati%2C+OH+45225&details=AMA+Cincinnati%27s+annual+conference+for+modern+marketing+and+CX+leaders.',
+      icsUrl: 'data:text/calendar;charset=utf-8,' + encodeURIComponent(['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//AMA Cincinnati//IGNITE 2026//EN','BEGIN:VEVENT','UID:ignite-2026@amacincinnati.org','DTSTAMP:20260810T000000Z','DTSTART:20261110T133000Z','DTEND:20261110T230000Z','SUMMARY:IGNITE! 2026 — AMA Cincinnati','LOCATION:American Sign Museum\\, 1330 Monmouth Ave\\, Cincinnati\\, OH 45225',"DESCRIPTION:AMA Cincinnati's annual conference for modern marketing and CX leaders.",'END:VEVENT','END:VCALENDAR'].join('\r\n')),
+      shareLinkedIn: 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent('https://ignite.amacincinnati.org')
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow+Semi+Condensed:wght@600;700;800&amp;family=Nunito:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Book.otf') format('opentype');font-weight:400 500;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
+
+body{margin:0;font-family:'Gotham Rounded','Nunito',system-ui,sans-serif}
+a{color:#E8792C;text-decoration:none}
+a:hover{color:#0F1F35}
+</style>
+</helmet>
+<button onClick="{{ open }}" style="border:none;background:none;padding:0;cursor:pointer;text-align:left;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:{{ linkSize }};font-weight:{{ linkWeight }};color:{{ linkColor }};text-decoration:{{ linkDecoration }};text-underline-offset:3px" style-hover="color:#E8792C">{{ linkLabel }}</button>
+
+<sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="Request AMA member code form" style="position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px">
+  <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(10,21,32,.78);backdrop-filter:blur(6px)"></div>
+  <div style="position:relative;width:min(480px,100%);max-height:88vh;overflow-y:auto;background:#FAFAF8;border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.5)">
+    <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;overflow:hidden;background:#0F1F35;padding:32px 36px 26px;border-radius:22px 22px 0 0">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 260px at 85% 130%, rgba(232,121,44,.4), transparent 65%)"></div>
+        <button onClick="{{ close }}" aria-label="Close" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border:none;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:16px;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif" style-hover="background:#E8792C">✕</button>
+        <div style="position:relative">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+            <span style="font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">AMA Members</span>
+          </div>
+          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:38px;line-height:.95;color:#fff">Get Your <span style="color:#E8792C">Member Code</span></div>
+          <p style="margin:10px 0 0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.65)">Enter the name and email associated with your AMA Cincinnati membership and we'll follow up with your member access code.</p>
+        </div>
+      </div>
+      <div style="padding:28px 36px 34px;display:flex;flex-direction:column;gap:18px">
+        <sc-for list="{{ fields }}" as="fld" hint-placeholder-count="2">
+          <div>
+            <label for="{{ fld.id }}" style="display:block;font-size:12.5px;font-weight:800;color:#0F1F35;margin-bottom:7px">{{ fld.label }}</label>
+            <input id="{{ fld.id }}" type="{{ fld.type }}" value="{{ fld.value }}" onChange="{{ fld.set }}" onBlur="{{ fld.blur }}" aria-invalid="{{ fld.invalid }}" placeholder="{{ fld.placeholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ fld.borderColor }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;color:#0F1F35;outline:none" style-focus="border-color:#E8792C">
+            <sc-if value="{{ fld.error }}" hint-placeholder-val="{{ false }}">
+              <div role="alert" style="margin-top:6px;font-size:12px;font-weight:600;color:#C0392B">{{ fld.error }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <button onClick="{{ submit }}" disabled="{{ submitting }}" style="width:100%;margin-top:4px;padding:15px 0;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14.5px;font-weight:800;cursor:pointer;box-shadow:0 6px 24px rgba(232,121,44,.4)" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">{{ submitLabel }}</button>
+        <p style="margin:0;font-size:11px;line-height:1.55;color:rgba(15,31,53,.4);text-align:center">We'll verify your membership and email your access code.</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative;overflow:hidden;background:#0F1F35;padding:56px 40px;text-align:center;border-radius:22px">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 300px at 50% 130%, rgba(232,121,44,.45), transparent 65%)"></div>
+        <div style="position:relative">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:44px;width:auto;margin-bottom:14px">
+          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:44px;line-height:.95;color:#fff">Request <span style="color:#E8792C">Sent!</span></div>
+          <p style="margin:14px auto 0;max-width:340px;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.7)">Thanks for sending your request — you should receive your code within 24 hours.</p>
+          <button onClick="{{ close }}" style="margin-top:24px;padding:13px 30px;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13.5px;font-weight:800;cursor:pointer" style-hover="background:#4FC3E8;color:#0F1F35">Done</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;520px&quot;,&quot;height&quot;:&quot;600px&quot;},&quot;linkLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Need your member code? Click here&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4FC3E8&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkSize&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;12.5px&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkWeight&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;400&quot;,&quot;700&quot;,&quot;800&quot;],&quot;default&quot;:&quot;800&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkDecoration&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;underline&quot;,&quot;none&quot;],&quot;default&quot;:&quot;underline&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  /*
+   * ── GOOGLE FORMS BACKEND ─────────────────────────────────────────────────
+   * Same pattern as SpeakerNominate: create a Google Form (Name, Email), grab the
+   * form ID (between /d/e/ and /viewform) and each field's entry.XXX id, then replace
+   * the placeholders below. Submissions POST directly to Google (no-cors) — no server.
+   */
+  static GOOGLE_FORM_ID = '1FAIpQLScLutGhd9Vb38NyJSUNIcwnmPHjfHHz90TQqFUp1wcGFwsjog';
+  static ENTRY_IDS = { firstName: 'entry.1465177759', lastName: 'entry.1975276000', email: 'entry.1182137268' };
+
+  state = { open: false, submitted: false, submitting: false,
+    form: { firstName: '', lastName: '', email: '' }, touched: {} };
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape' && this.state.open) this.setState({ open: false }); };
+    window.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._esc); }
+
+  validators = {
+    firstName: (v) => v.trim().length >= 1 ? '' : 'Please enter your first name.',
+    lastName: (v) => v.trim().length >= 1 ? '' : 'Please enter your last name.',
+    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.'
+  };
+
+  async submitToGoogle() {
+    const f = this.state.form;
+    const E = Component.ENTRY_IDS;
+    const body = new URLSearchParams({ [E.firstName]: f.firstName, [E.lastName]: f.lastName, [E.email]: f.email });
+    try {
+      await fetch('https://docs.google.com/forms/d/e/' + Component.GOOGLE_FORM_ID + '/formResponse',
+        { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+    } catch (e) { /* opaque/network — Google gives no readable status */ }
+  }
+
+  renderVals() {
+    const s = this.state;
+    const p = this.props;
+    const fieldDefs = [
+      { key: 'firstName', id: 'mc-first', label: 'First name', type: 'text', placeholder: 'Alex' },
+      { key: 'lastName', id: 'mc-last', label: 'Last name', type: 'text', placeholder: 'Rivera' },
+      { key: 'email', id: 'mc-email', label: 'Email address', type: 'email', placeholder: 'alex@company.com' }
+    ];
+    const fields = fieldDefs.map(f => {
+      const val = s.form[f.key];
+      const err = this.validators[f.key](val);
+      const showErr = !!s.touched[f.key] && !!err;
+      const valid = !!s.touched[f.key] && !err;
+      return { ...f, value: val,
+        set: (e) => this.setState(st => ({ form: { ...st.form, [f.key]: e.target.value } })),
+        blur: () => this.setState(st => ({ touched: { ...st.touched, [f.key]: true } })),
+        error: showErr ? err : '', invalid: showErr,
+        borderColor: showErr ? '#C0392B' : (valid ? '#1F8A5B' : 'rgba(15,31,53,.15)') };
+    });
+    const allValid = Object.keys(this.validators).every(k => !this.validators[k](s.form[k]));
+    return {
+      linkLabel: p.linkLabel ?? 'Need your member code? Click here',
+      linkColor: p.linkColor ?? '#4FC3E8',
+      linkSize: p.linkSize ?? '12.5px',
+      linkWeight: p.linkWeight ?? '800',
+      linkDecoration: p.linkDecoration ?? 'underline',
+      isOpen: s.open, notSubmitted: !s.submitted, submitted: s.submitted,
+      open: () => this.setState({ open: true, submitted: false }),
+      close: () => this.setState({ open: false }),
+      fields,
+      submitting: s.submitting,
+      submitLabel: s.submitting ? 'Sending…' : 'Submit →',
+      submit: async () => {
+        this.setState({ touched: { firstName: true, lastName: true, email: true } });
+        if (!allValid || s.submitting) return;
+        this.setState({ submitting: true });
+        await this.submitToGoogle();
+        this.setState({ submitting: false, submitted: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

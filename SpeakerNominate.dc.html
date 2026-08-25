@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow+Semi+Condensed:wght@600;700;800&amp;family=Nunito:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Book.otf') format('opentype');font-weight:400 500;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
+
+body{margin:0;font-family:'Gotham Rounded','Nunito',system-ui,sans-serif}
+a{color:#E8792C;text-decoration:none}
+a:hover{color:#0F1F35}
+</style>
+</helmet>
+<button onClick="{{ open }}" style="border:none;background:{{ linkBg }};padding:{{ linkPad }};border-radius:{{ linkRadius }};cursor:pointer;text-align:left;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:{{ linkSize }};font-weight:{{ linkWeight }};color:{{ linkColor }};box-shadow:{{ linkShadow }}" style-hover="{{ linkHover }}">{{ linkLabel }}</button>
+
+<sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="Speaker nomination form" style="position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px">
+  <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(10,21,32,.78);backdrop-filter:blur(6px)"></div>
+  <div style="position:relative;width:min(560px,100%);max-height:88vh;overflow-y:auto;background:#FAFAF8;border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.5)">
+    <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;overflow:hidden;background:#0F1F35;padding:32px 36px 26px;border-radius:22px 22px 0 0">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 260px at 85% 130%, rgba(232,121,44,.4), transparent 65%)"></div>
+        <button onClick="{{ close }}" aria-label="Close" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border:none;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:16px;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif" style-hover="background:#E8792C">✕</button>
+        <div style="position:relative">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+            <span style="font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Call for Speakers</span>
+          </div>
+          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:38px;line-height:.95;color:#fff">Take the <span style="color:#E8792C">Stage</span></div>
+          <p style="margin:10px 0 0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.65)">Nominate yourself (or a colleague) to speak at IGNITE'26. Real playbooks, hard metrics, no demos.</p>
+        </div>
+      </div>
+      <div style="padding:28px 36px 34px;display:flex;flex-direction:column;gap:18px">
+        <sc-for list="{{ fields }}" as="fld" hint-placeholder-count="3">
+          <div>
+            <label for="{{ fld.id }}" style="display:block;font-size:12.5px;font-weight:800;color:#0F1F35;margin-bottom:7px">{{ fld.label }}</label>
+            <input id="{{ fld.id }}" type="{{ fld.type }}" value="{{ fld.value }}" onChange="{{ fld.set }}" onBlur="{{ fld.blur }}" aria-invalid="{{ fld.invalid }}" placeholder="{{ fld.placeholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ fld.borderColor }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;color:#0F1F35;outline:none" style-focus="border-color:#E8792C">
+            <sc-if value="{{ fld.error }}" hint-placeholder-val="{{ false }}">
+              <div role="alert" style="margin-top:6px;font-size:12px;font-weight:600;color:#C0392B">{{ fld.error }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <div>
+          <label for="nom-topic" style="display:block;font-size:12.5px;font-weight:800;color:#0F1F35;margin-bottom:7px">Which topic are you interested in speaking on?</label>
+          <select id="nom-topic" value="{{ topic }}" onChange="{{ setTopic }}" aria-invalid="{{ topicInvalid }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ topicBorder }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;color:#0F1F35;outline:none;cursor:pointer">
+            <sc-for list="{{ topicOptions }}" as="opt" hint-placeholder-count="4">
+              <option value="{{ opt.value }}" disabled="{{ opt.disabled }}">{{ opt.label }}</option>
+            </sc-for>
+          </select>
+          <sc-if value="{{ topicError }}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="margin-top:6px;font-size:12px;font-weight:600;color:#C0392B">{{ topicError }}</div>
+          </sc-if>
+        </div>
+        <div>
+          <label for="nom-links" style="display:block;font-size:12.5px;font-weight:800;color:#0F1F35;margin-bottom:7px">Links to previous speaking engagements</label>
+          <textarea id="nom-links" value="{{ links }}" onChange="{{ setLinks }}" onBlur="{{ blurLinks }}" aria-invalid="{{ linksInvalid }}" rows="{{ three }}" placeholder="Paste one link per line — session recordings, event pages, slides…" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ linksBorder }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;line-height:1.6;color:#0F1F35;outline:none;resize:vertical" style-focus="border-color:#E8792C"></textarea>
+          <sc-if value="{{ linksError }}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="margin-top:6px;font-size:12px;font-weight:600;color:#C0392B">{{ linksError }}</div>
+          </sc-if>
+        </div>
+        <button onClick="{{ submit }}" disabled="{{ submitting }}" style="width:100%;margin-top:4px;padding:15px 0;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14.5px;font-weight:800;cursor:pointer;box-shadow:0 6px 24px rgba(232,121,44,.4)" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">{{ submitLabel }}</button>
+        <p style="margin:0;font-size:11px;line-height:1.55;color:rgba(15,31,53,.4);text-align:center">Submissions go to the IGNITE programming committee. We'll follow up by email.</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative;overflow:hidden;background:#0F1F35;padding:56px 40px;text-align:center;border-radius:22px">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 300px at 50% 130%, rgba(232,121,44,.45), transparent 65%)"></div>
+        <div style="position:relative">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:44px;width:auto;margin-bottom:14px">
+          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:44px;line-height:.95;color:#fff">Nomination <span style="color:#E8792C">Received!</span></div>
+          <p style="margin:14px auto 0;max-width:340px;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.7)">Thanks — the programming committee reviews every nomination and will reach out by email.</p>
+          <button onClick="{{ close }}" style="margin-top:24px;padding:13px 30px;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13.5px;font-weight:800;cursor:pointer" style-hover="background:#4FC3E8;color:#0F1F35">Done</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;640px&quot;,&quot;height&quot;:&quot;720px&quot;},&quot;linkLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Call for Speakers&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;rgba(255,255,255,.55)&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkSize&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;13.5px&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkWeight&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;400&quot;,&quot;700&quot;,&quot;800&quot;],&quot;default&quot;:&quot;400&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  /*
+   * ── GOOGLE FORMS BACKEND ─────────────────────────────────────────────────
+   * 1. Create a Google Form with these questions (same order): Name (short answer),
+   *    Email (short answer), LinkedIn URL (short answer), Topic (dropdown/multiple choice),
+   *    Previous speaking links (paragraph).
+   * 2. Get the form's public URL → the ID between /d/e/ and /viewform is GOOGLE_FORM_ID.
+   * 3. Get each question's entry ID: open the form, right-click → View Page Source,
+   *    search for "entry." — or use the prefilled-link trick (Send → prefill answers).
+   * 4. Replace the placeholders below. Submissions POST directly to Google (no-cors),
+   *    so no server is needed. Note: Google Forms cannot receive file uploads from
+   *    third-party pages — that's why previous engagements are collected as LINKS.
+   */
+  static GOOGLE_FORM_ID = '1FAIpQLSe3q-cP558agWlGa3OOgFQJ6EcHH3IPRLIcQzIThIPlqtQK1Q';
+  static ENTRY_IDS = {
+    name: 'entry.1257629681',
+    email: 'entry.2125884840',
+    linkedin: 'entry.572353506',
+    topic: 'entry.1572399268',
+    links: 'entry.1983072697'
+  };
+
+  state = { open: false, submitted: false, submitting: false,
+    form: { name: '', email: '', company: '', title: '', linkedin: '', topic: '', links: '' }, touched: {} };
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape' && this.state.open) this.setState({ open: false }); };
+    window.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._esc); }
+
+  validators = {
+    name: (v) => v.trim().length >= 2 ? '' : 'Please enter a full name.',
+    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.',
+    company: (v) => v.trim().length >= 2 ? '' : 'Please enter your company or organization.',
+    title: (v) => v.trim().length >= 2 ? '' : 'Please enter your job title.',
+    linkedin: (v) => /linkedin\.com\//i.test(v.trim()) ? '' : 'Please paste a LinkedIn profile URL (linkedin.com/…).',
+    topic: (v) => v ? '' : 'Please choose a topic.',
+    links: (v) => v.trim().length > 0 ? '' : 'Please add at least one link (one per line).'
+  };
+
+  async submitToGoogle() {
+    const f = this.state.form;
+    const E = Component.ENTRY_IDS;
+    const body = new URLSearchParams({
+      [E.name]: f.name, [E.email]: f.email, [E.linkedin]: f.linkedin,
+      [E.topic]: f.topic, [E.links]: f.links
+    });
+    try {
+      // no-cors: response is opaque; Google accepts the POST if entry IDs are correct.
+      await fetch('https://docs.google.com/forms/d/e/' + Component.GOOGLE_FORM_ID + '/formResponse',
+        { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+    } catch (e) { /* opaque/network — treat as sent; Google gives no readable status */ }
+  }
+
+  renderVals() {
+    const s = this.state;
+    const p = this.props;
+    const fieldDefs = [
+      { key: 'name', id: 'nom-name', label: 'Full name', type: 'text', placeholder: 'Alex Rivera' },
+      { key: 'email', id: 'nom-email', label: 'Email address', type: 'email', placeholder: 'alex@company.com' },
+      { key: 'company', id: 'nom-company', label: 'Company', type: 'text', placeholder: 'Company or organization' },
+      { key: 'title', id: 'nom-title', label: 'Job title', type: 'text', placeholder: 'Director of Marketing' },
+      { key: 'linkedin', id: 'nom-linkedin', label: 'LinkedIn URL', type: 'url', placeholder: 'https://linkedin.com/in/yourname' }
+    ];
+    const fields = fieldDefs.map(f => {
+      const val = s.form[f.key];
+      const err = this.validators[f.key](val);
+      const showErr = !!s.touched[f.key] && !!err;
+      const valid = !!s.touched[f.key] && !err;
+      return { ...f, value: val,
+        set: (e) => this.setState(st => ({ form: { ...st.form, [f.key]: e.target.value } })),
+        blur: () => this.setState(st => ({ touched: { ...st.touched, [f.key]: true } })),
+        error: showErr ? err : '', invalid: showErr,
+        borderColor: showErr ? '#C0392B' : (valid ? '#1F8A5B' : 'rgba(15,31,53,.15)') };
+    });
+    const topicErr = !!s.touched.topic && !!this.validators.topic(s.form.topic);
+    const linksErr = !!s.touched.links && !!this.validators.links(s.form.links);
+    const allValid = Object.keys(this.validators).every(k => !this.validators[k](s.form[k]));
+    return {
+      linkLabel: p.linkLabel ?? 'Call for Speakers',
+      linkColor: p.linkColor ?? 'rgba(255,255,255,.55)',
+      linkBg: p.linkAsButton ? (p.linkBg ?? '#E8792C') : 'none',
+      linkPad: p.linkAsButton ? '15px 30px' : '0',
+      linkRadius: p.linkAsButton ? '999px' : '0',
+      linkShadow: p.linkAsButton ? '0 8px 26px rgba(232,121,44,.4)' : 'none',
+      linkHover: p.linkAsButton ? 'background:#4FC3E8;color:#0F1F35;box-shadow:0 8px 30px rgba(79,195,232,.45)' : 'color:#E8792C',
+      linkSize: p.linkSize ?? '13.5px',
+      linkWeight: p.linkWeight ?? '400',
+      isOpen: s.open, notSubmitted: !s.submitted, submitted: s.submitted,
+      open: () => this.setState({ open: true, submitted: false }),
+      close: () => this.setState({ open: false }),
+      fields,
+      topic: s.form.topic,
+      setTopic: (e) => this.setState(st => ({ form: { ...st.form, topic: e.target.value }, touched: { ...st.touched, topic: true } })),
+      topicOptions: [
+        { value: '', label: 'Select a topic…', disabled: true },
+        { value: 'Anticipate (B2C)', label: 'ANTICIPATE — B2C: turning data & signals into what\u2019s next', disabled: false },
+        { value: 'Anticipate (B2B)', label: 'ANTICIPATE — B2B: turning data & signals into what\u2019s next', disabled: false },
+        { value: 'Personalize & Grow (B2C)', label: 'PERSONALIZE & GROW — B2C: turning relevance into revenue', disabled: false },
+        { value: 'Personalize & Grow (B2B)', label: 'PERSONALIZE & GROW — B2B: turning relevance into revenue', disabled: false },
+        { value: 'Other', label: 'Other / wildcard idea', disabled: false }
+      ],
+      topicBorder: topicErr ? '#C0392B' : (s.form.topic ? '#1F8A5B' : 'rgba(15,31,53,.15)'),
+      topicInvalid: topicErr,
+      topicError: topicErr ? this.validators.topic(s.form.topic) : '',
+      links: s.form.links,
+      setLinks: (e) => this.setState(st => ({ form: { ...st.form, links: e.target.value } })),
+      blurLinks: () => this.setState(st => ({ touched: { ...st.touched, links: true } })),
+      linksBorder: linksErr ? '#C0392B' : (s.form.links.trim() ? '#1F8A5B' : 'rgba(15,31,53,.15)'),
+      linksInvalid: linksErr,
+      linksError: linksErr ? this.validators.links(s.form.links) : '',
+      three: 3,
+      submitting: s.submitting,
+      submitLabel: s.submitting ? 'Sending…' : 'Submit Nomination →',
+      submit: async () => {
+        this.setState({ touched: { name: true, email: true, company: true, title: true, linkedin: true, topic: true, links: true } });
+        if (!allValid || s.submitting) return;
+        this.setState({ submitting: true });
+        await this.submitToGoogle();
+        this.setState({ submitting: false, submitted: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow+Semi+Condensed:wght@600;700;800&amp;family=Nunito:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Book.otf') format('opentype');font-weight:400 500;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
+
+body{margin:0;font-family:'Gotham Rounded','Nunito',system-ui,sans-serif}
+a{color:#E8792C;text-decoration:none}
+a:hover{color:#0F1F35}
+</style>
+</helmet>
+<button onClick="{{ open }}" style="border:none;cursor:pointer;text-align:left;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:{{ linkSize }};font-weight:{{ linkWeight }};color:{{ linkColor }};text-decoration:{{ linkDecoration }};text-underline-offset:3px;background:{{ btnBg }};padding:{{ btnPad }};border-radius:{{ btnRadius }};box-shadow:{{ btnShadow }}" style-hover="{{ hoverStyle }}">{{ linkLabel }}</button>
+
+<sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="{{ ariaLabel }}" style="position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px">
+  <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(10,21,32,.78);backdrop-filter:blur(6px)"></div>
+  <div style="position:relative;width:min(520px,100%);max-height:88vh;overflow-y:auto;background:#FAFAF8;border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.5)">
+    <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;overflow:hidden;background:#0F1F35;padding:32px 36px 26px;border-radius:22px 22px 0 0">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 260px at 85% 130%, rgba(232,121,44,.4), transparent 65%)"></div>
+        <button onClick="{{ close }}" aria-label="Close" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border:none;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:16px;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif" style-hover="background:#E8792C">✕</button>
+        <div style="position:relative">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+            <span style="font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">{{ eyebrow }}</span>
+          </div>
+          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:38px;line-height:.95;color:#fff">{{ titleA }} <span style="color:#E8792C">{{ titleB }}</span></div>
+          <p style="margin:10px 0 0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.65)">{{ intro }}</p>
+        </div>
+      </div>
+      <div style="padding:28px 36px 34px;display:flex;flex-direction:column;gap:18px">
+        <sc-for list="{{ fields }}" as="fld" hint-placeholder-count="3">
+          <div>
+            <label for="{{ fld.id }}" style="display:block;font-size:12.5px;font-weight:800;color:#0F1F35;margin-bottom:7px">{{ fld.label }} <sc-if value="{{ fld.optional }}" hint-placeholder-val="{{ false }}"><span style="font-weight:600;color:rgba(15,31,53,.4)">(optional)</span></sc-if></label>
+            <input id="{{ fld.id }}" type="{{ fld.type }}" value="{{ fld.value }}" onChange="{{ fld.set }}" onBlur="{{ fld.blur }}" aria-invalid="{{ fld.invalid }}" placeholder="{{ fld.placeholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ fld.borderColor }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;color:#0F1F35;outline:none" style-focus="border-color:#E8792C">
+            <sc-if value="{{ fld.error }}" hint-placeholder-val="{{ false }}">
+              <div role="alert" style="margin-top:6px;font-size:12px;font-weight:600;color:#C0392B">{{ fld.error }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <div>
+          <label for="contact-message" style="display:block;font-size:12.5px;font-weight:800;color:#0F1F35;margin-bottom:7px">{{ messageLabel }}</label>
+          <textarea id="contact-message" value="{{ message }}" onChange="{{ setMessage }}" onBlur="{{ blurMessage }}" aria-invalid="{{ messageInvalid }}" rows="{{ four }}" placeholder="{{ messagePlaceholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ messageBorder }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;line-height:1.6;color:#0F1F35;outline:none;resize:vertical" style-focus="border-color:#E8792C"></textarea>
+          <sc-if value="{{ messageError }}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="margin-top:6px;font-size:12px;font-weight:600;color:#C0392B">{{ messageError }}</div>
+          </sc-if>
+        </div>
+        <button onClick="{{ submit }}" disabled="{{ submitting }}" style="width:100%;margin-top:4px;padding:15px 0;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14.5px;font-weight:800;cursor:pointer;box-shadow:0 6px 24px rgba(232,121,44,.4)" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">{{ submitLabel }}</button>
+        <p style="margin:0;font-size:11px;line-height:1.55;color:rgba(15,31,53,.4);text-align:center">{{ footnote }}</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative;overflow:hidden;background:#0F1F35;padding:56px 40px;text-align:center;border-radius:22px">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 300px at 50% 130%, rgba(232,121,44,.45), transparent 65%)"></div>
+        <div style="position:relative">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:44px;width:auto;margin-bottom:14px">
+          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:44px;line-height:.95;color:#fff">Message <span style="color:#E8792C">Sent!</span></div>
+          <p style="margin:14px auto 0;max-width:340px;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.7)">{{ confirmation }}</p>
+          <button onClick="{{ close }}" style="margin-top:24px;padding:13px 30px;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13.5px;font-weight:800;cursor:pointer" style-hover="background:#4FC3E8;color:#0F1F35">Done</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;560px&quot;,&quot;height&quot;:&quot;640px&quot;},&quot;kind&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;contact&quot;,&quot;press&quot;,&quot;sponsor&quot;],&quot;default&quot;:&quot;contact&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;pill&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;linkLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Contact Us&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;rgba(255,255,255,.55)&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkSize&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;13.5px&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkWeight&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;400&quot;,&quot;700&quot;,&quot;800&quot;],&quot;default&quot;:&quot;400&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;linkDecoration&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;underline&quot;,&quot;none&quot;],&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  /*
+   * ── GOOGLE FORMS BACKEND ─────────────────────────────────────────────────
+   * Same pattern as SpeakerNominate/VolunteerForm. Create a Google Form (Name, Email,
+   * Organization, Message + a hidden "Inquiry type" field prefilled from `kind`), grab the
+   * form ID and each field's entry.XXX id, replace the placeholders below. Submissions POST
+   * directly to Google (no-cors) — no server needed.
+   * Use one form for both Contact and Press by passing kind in the "type" entry.
+   */
+  static GOOGLE_FORM_ID = '1FAIpQLSeG6jESwWrYKJNvtOLbkYZTeXg1tDpKVgmy_35FWh7vUos_ng';
+  // Per-kind overrides: each kind can post to its own Google Form / Sheet.
+  // Falls back to GOOGLE_FORM_ID + ENTRY_IDS when a kind has no entry here.
+  static FORMS = {
+    contact: { id: '1FAIpQLSdc0QN79TiIMLASgL0BfynIeDForEGG7dy4MAVYQ4SOK_G7iQ', entries: { name: 'entry.1436717983', email: 'entry.769517067', org: 'entry.1092765958', message: 'entry.1616988270' } },
+    press: { id: '1FAIpQLSds4yPwvqwiBveNtiBrVhYMG0bjWKfQA9ZsO8MKgZAJx9_68w', entries: { name: 'entry.660033971', email: 'entry.1267089994', org: 'entry.1120552902', message: 'entry.1861378371' } }
+  };
+  static ENTRY_IDS = { name: 'entry.855900162', email: 'entry.80047030', org: 'entry.1588699521', message: 'entry.421445975' };
+
+  state = { open: false, submitted: false, submitting: false,
+    form: { name: '', email: '', org: '', message: '' }, touched: {} };
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape' && this.state.open) this.setState({ open: false }); };
+    window.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._esc); }
+
+  validators = {
+    name: (v) => v.trim().length >= 2 ? '' : 'Please enter your full name.',
+    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.',
+    org: () => '',
+    message: (v) => v.trim().length >= 5 ? '' : 'Please add a short message so we can help.'
+  };
+
+  async submitToGoogle() {
+    const f = this.state.form;
+    const cfg = Component.FORMS[this.props.kind] || {};
+    const formId = cfg.id || Component.GOOGLE_FORM_ID;
+    const E = cfg.entries || Component.ENTRY_IDS;
+    const body = new URLSearchParams({
+      [E.name]: f.name, [E.email]: f.email, [E.org]: f.org,
+      [E.message]: f.message
+    });
+    try {
+      await fetch('https://docs.google.com/forms/d/e/' + formId + '/formResponse',
+        { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+    } catch (e) { /* opaque/network — Google gives no readable status */ }
+  }
+
+  renderVals() {
+    const s = this.state;
+    const p = this.props;
+    const isPress = p.kind === 'press';
+    const isSponsor = p.kind === 'sponsor';
+
+    const fieldDefs = [
+      { key: 'name', id: 'contact-name', label: 'Full name', type: 'text', placeholder: 'Alex Rivera', optional: false },
+      { key: 'email', id: 'contact-email', label: 'Email address', type: 'email', placeholder: 'alex@company.com', optional: false },
+      { key: 'org', id: 'contact-org', label: isPress ? 'Outlet / publication' : 'Company', type: 'text', placeholder: isPress ? 'Publication or outlet' : 'Company or organization', optional: true }
+    ];
+    const fields = fieldDefs.map(f => {
+      const val = s.form[f.key];
+      const err = this.validators[f.key](val);
+      const showErr = !!s.touched[f.key] && !!err && !f.optional;
+      const valid = !f.optional && !!s.touched[f.key] && !err;
+      return { ...f, value: val,
+        set: (e) => this.setState(st => ({ form: { ...st.form, [f.key]: e.target.value } })),
+        blur: () => this.setState(st => ({ touched: { ...st.touched, [f.key]: true } })),
+        error: showErr ? err : '', invalid: showErr,
+        borderColor: showErr ? '#C0392B' : (valid ? '#1F8A5B' : 'rgba(15,31,53,.15)') };
+    });
+    const msgRequired = !isSponsor;
+    const msgErr = msgRequired && !!s.touched.message && !!this.validators.message(s.form.message);
+    const reqKeys = msgRequired ? ['name', 'email', 'message'] : ['name', 'email'];
+    const allValid = reqKeys.every(k => !this.validators[k](s.form[k]));
+
+    return {
+      linkLabel: p.linkLabel ?? (isPress ? 'Press Inquiries' : 'Contact Us'),
+      linkColor: p.linkColor ?? 'rgba(255,255,255,.55)',
+      linkSize: p.linkSize ?? '13.5px',
+      linkWeight: p.linkWeight ?? '400',
+      linkDecoration: p.linkDecoration ?? 'none',
+      btnBg: p.pill ? '#E8792C' : 'none',
+      btnPad: p.pill ? '15px 32px' : '0',
+      btnRadius: p.pill ? '999px' : '0',
+      btnShadow: p.pill ? '0 6px 24px rgba(232,121,44,.4)' : 'none',
+      hoverStyle: p.pill ? 'background:#fff;color:#0F1F35' : 'color:#E8792C',
+      ariaLabel: isSponsor ? 'Request sponsorship kit form' : (isPress ? 'Press inquiry form' : 'Contact us form'),
+      eyebrow: isSponsor ? 'Sponsorship' : (isPress ? 'Press & Media' : 'Get in Touch'),
+      titleA: isSponsor ? 'Request the' : (isPress ? 'Press' : "Let's"),
+      titleB: isSponsor ? 'Kit' : (isPress ? 'Inquiries' : 'Talk'),
+      intro: isSponsor
+        ? "Tell us a bit about your brand and we'll send the IGNITE sponsorship kit — tiers, audience, and everything you need to put your brand in the room."
+        : (isPress
+          ? 'Members of the media: send us your request and our team will get you what you need — interviews, assets, or press credentials.'
+          : "Questions about IGNITE — registration, sponsorship, accessibility, anything? Drop us a note and we'll get back to you."),
+      messageLabel: isSponsor ? 'Anything we should know? (optional)' : (isPress ? 'Your request' : 'How can we help?'),
+      messagePlaceholder: isSponsor ? 'Goals, budget range, must-have activations…' : (isPress ? 'Tell us about your outlet, deadline, and what you need…' : 'Tell us what you need…'),
+      footnote: 'Your message goes to the AMA Cincinnati team. We\'ll follow up by email.',
+      confirmation: isSponsor
+        ? "Thanks! The sponsorship kit is on its way to your inbox, and a member of our team will follow up to help you find the right fit."
+        : (isPress
+          ? 'Thanks for reaching out. Our press team will be in touch shortly to help with your request.'
+          : 'Thanks for reaching out. A member of our team will get back to you soon.'),
+      isOpen: s.open, notSubmitted: !s.submitted, submitted: s.submitted,
+      open: () => this.setState({ open: true, submitted: false }),
+      close: () => this.setState({ open: false }),
+      fields,
+      message: s.form.message,
+      setMessage: (e) => this.setState(st => ({ form: { ...st.form, message: e.target.value } })),
+      blurMessage: () => this.setState(st => ({ touched: { ...st.touched, message: true } })),
+      messageBorder: msgErr ? '#C0392B' : (s.form.message.trim().length >= 5 ? '#1F8A5B' : 'rgba(15,31,53,.15)'),
+      messageInvalid: msgErr,
+      messageError: msgErr ? this.validators.message(s.form.message) : '',
+      four: 4,
+      submitting: s.submitting,
+      submitLabel: s.submitting ? 'Sending…' : (isSponsor ? 'Send Me the Kit →' : 'Send Message →'),
+      submit: async () => {
+        this.setState({ touched: { name: true, email: true, message: true } });
+        if (!allValid || s.submitting) return;
+        this.setState({ submitting: true });
+        await this.submitToGoogle();
+        this.setState({ submitting: false, submitted: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow+Semi+Condensed:wght@600;700;800&amp;family=Nunito:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="assets/GothamRounded-Book.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="assets/GothamRounded-Medium.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="assets/GothamRounded-Bold.otf" as="font" type="font/otf" crossorigin>
+<style>
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Book.otf') format('opentype');font-weight:400 500;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
+@keyframes neonBuzz{0%,94%,100%{opacity:1}96%,97%{opacity:.82}}
+@keyframes neonOrange{0%,90%,100%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.6),0 0 26px rgba(232,121,44,.32)}91%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.55),0 0 26px rgba(79,195,232,.3)}92%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.6)}93.5%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 3px #4FC3E8,0 0 9px rgba(79,195,232,.5)}94.5%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.6)}}
+@keyframes neonBlue{0%,90%,100%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.6),0 0 26px rgba(79,195,232,.32)}91%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.55),0 0 26px rgba(232,121,44,.3)}92%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.6)}93.5%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 3px #E8792C,0 0 9px rgba(232,121,44,.5)}94.5%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.6)}}
+html{scroll-behavior:smooth}
+body{margin:0;background:#FAFAF8;font-family:'Gotham Rounded','Nunito',system-ui,sans-serif}
+a{color:#E8792C;text-decoration:none}
+a:hover{color:#0F1F35}
+@keyframes emberRise{0%{transform:translateY(0) scale(1);opacity:0}12%{opacity:.9}100%{transform:translateY(-420px) scale(.3);opacity:0}}
+/*resp*/
+.nav-burger{display:none}
+@media (max-width:760px){
+.nav-links{display:none!important}
+.nav-burger{display:inline-flex!important}
+.nav-eyebrow{font-size:10.5px!important;padding:6px 16px!important;gap:6px!important;flex-wrap:wrap!important;text-align:center!important}
+.nav-bar{padding:12px 20px!important}
+}
+@keyframes menuDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width:920px){
+.co-side{position:static!important}
+.co-grid{grid-template-columns:1fr!important}
+.modal-grid{grid-template-columns:1fr!important}
+.slot-grid{grid-template-columns:1fr!important}
+.slot-items{grid-template-columns:1fr!important}
+.slot-time{text-align:left!important;padding-top:0!important;display:flex;align-items:baseline;gap:10px;padding-left:24px}
+}
+</style>
+</helmet>
+
+<!-- ═══════ NAV ═══════ -->
+<div style="position:fixed;top:0;left:0;right:0;z-index:100" data-screen-label="Global Nav">
+  <div class="nav-eyebrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;padding:7px 40px;background:#0F1F35;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff">
+    <span>Tuesday, November 10, 2026</span>
+    <span style="opacity:.6">·</span>
+    <span>American Sign Museum</span>
+    <span style="opacity:.6">·</span>
+    <a href="IGNITE Register.dc.html" style="color:#fff;text-decoration:underline;text-underline-offset:3px">Register</a>
+  </div>
+  <div class="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(10,21,32,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)">
+    <a href="IGNITE Homepage.dc.html" style="display:flex;align-items:center;gap:0;height:54px;overflow:hidden">
+      <img src="assets/IGNITE_Emblem.png" alt="IGNITE" style="flex:none;height:44px;width:auto">
+      <span style="display:block;overflow:hidden;max-width:{{ wordmarkW }};opacity:{{ wordmarkOp }};transition:max-width .55s cubic-bezier(.22,.9,.24,1),opacity .4s ease,margin-left .55s cubic-bezier(.22,.9,.24,1);margin-left:{{ wordmarkGap }}">
+        <img src="assets/IGNITE_Wordmark.png" alt="AMA Cincinnati Presents IGNITE" style="height:40px;width:auto;display:block;transform:translateX({{ wordmarkX }});transition:transform .55s cubic-bezier(.22,.9,.24,1)">
+      </span>
+    </a>
+    <nav class="nav-links" style="display:flex;flex:1;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-left:48px;font-size:13px;font-weight:700">
+      <a href="IGNITE Agenda.dc.html" aria-current="page" style="color:#E8792C">Agenda</a>
+      <a href="IGNITE Speakers.dc.html" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Speakers</a>
+      <a href="IGNITE Sponsors.dc.html" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Sponsors</a>
+      <a href="IGNITE Venue.dc.html" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Venue</a>
+      <a href="IGNITE FAQ.dc.html" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">FAQ</a>
+      <a href="IGNITE Register.dc.html" style="margin-left:auto;padding:10px 20px;border-radius:999px;background:#E8792C;color:#fff" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Register</a>
+    </nav>
+    <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}" style="align-items:center;justify-content:center;width:46px;height:46px;border:2px solid rgba(255,255,255,.3);border-radius:12px;background:rgba(255,255,255,.06);cursor:pointer;padding:0">
+      <span style="position:relative;display:block;width:20px;height:14px">
+        <span style="position:absolute;left:0;top:{{ burgTop1 }};width:100%;height:2px;background:#fff;border-radius:2px;transition:.3s;transform:{{ burgT1 }}"></span>
+        <span style="position:absolute;left:0;top:6px;width:100%;height:2px;background:#fff;border-radius:2px;transition:.3s;opacity:{{ burgMidOp }}"></span>
+        <span style="position:absolute;left:0;top:{{ burgTop3 }};width:100%;height:2px;background:#fff;border-radius:2px;transition:.3s;transform:{{ burgT3 }}"></span>
+      </span>
+    </button>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="background:rgba(10,21,32,.98);backdrop-filter:blur(12px);box-shadow:0 12px 30px rgba(0,0,0,.4);padding:8px 20px 22px;animation:menuDrop .28s ease">
+      <div style="display:flex;flex-direction:column;gap:2px;font-size:16px;font-weight:700">
+        <a href="IGNITE Agenda.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Agenda</a>
+        <a href="IGNITE Speakers.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Speakers</a>
+        <a href="IGNITE Sponsors.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Sponsors</a>
+        <a href="IGNITE Venue.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Venue</a>
+        <a href="IGNITE FAQ.dc.html" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">FAQ</a>
+        <a href="IGNITE Register.dc.html" onClick="{{ closeMenu }}" style="margin-top:14px;text-align:center;padding:15px 0;border-radius:999px;background:#E8792C;color:#fff;font-weight:800">Register Now</a>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+<!-- ═══════ PAGE HERO ═══════ -->
+<div data-screen-label="Agenda Hero" style="position:relative;overflow:hidden;background:#0A1520;padding:190px 0 80px">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 900px 600px at 15% 110%, rgba(232,121,44,.4), transparent 65%)"></div>
+  {{ embers }}
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+      <img src="assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
+      <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Agenda</span>
+    </div>
+    <h1 style="margin:0;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(48px,8vw,88px);line-height:.9;font-weight:400;color:#fff">The Day's <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Agenda</span></h1>
+    <p style="margin:18px 0 0;max-width:560px;font-size:16px;line-height:1.7;color:rgba(255,255,255,.65)">One day, two tracks, zero filler. Tuesday, November 10, 2026 · 8:30 AM – 5:30 PM · American Sign Museum.</p>
+  </div>
+</div>
+
+<!-- ═══════ FILTERS + TIMELINE ═══════ -->
+<div data-screen-label="Agenda Timeline" style="background:#FAFAF8;padding:56px 0 100px">
+  <div style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div role="tablist" aria-label="Filter sessions" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+        <button role="tab" aria-selected="{{ f.selected }}" onClick="{{ f.go }}" style="padding:10px 22px;border-radius:999px;border:{{ f.border }};background:{{ f.bg }};color:{{ f.fg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <sc-for list="{{ slots }}" as="slot" hint-placeholder-count="7">
+        <div class="slot-grid" style="display:grid;grid-template-columns:110px 1fr;gap:24px">
+          <div class="slot-time" style="padding-top:24px;text-align:right">
+            <div style="font-size:15px;font-weight:800;color:#E8792C">{{ slot.time }}</div>
+            <div style="margin-top:2px;font-size:11.5px;font-weight:600;color:rgba(15,31,53,.4)">{{ slot.duration }}</div>
+          </div>
+          <div class="slot-items" style="display:grid;grid-template-columns:{{ slot.cols }};gap:18px;border-left:2px solid rgba(15,31,53,.08);padding-left:24px">
+            <sc-for list="{{ slot.items }}" as="item" hint-placeholder-count="1">
+              <div style="position:relative;background:{{ item.bg }};border:{{ item.border }};border-radius:18px;padding:24px 26px;box-shadow:{{ item.shadow }};overflow:hidden" style-hover="transform:translateY(-3px);box-shadow:0 14px 40px rgba(15,31,53,.14)">
+                <sc-if value="{{ item.glow }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 380px 260px at 100% 110%, rgba(232,121,44,.3), transparent 65%);pointer-events:none"></div>
+                </sc-if>
+                <div style="position:relative">
+                  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+                    <span style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;background:{{ item.tagBg }};color:{{ item.tagFg }}">{{ item.type }}</span>
+                    <sc-if value="{{ item.track }}" hint-placeholder-val="{{ false }}">
+                      <span style="font-size:11px;font-weight:700;color:{{ item.metaColor }}">{{ item.track }} · {{ item.room }}</span>
+                    </sc-if>
+                  </div>
+                  <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:28px;line-height:1;letter-spacing:.02em;color:{{ item.titleColor }}">{{ item.title }}</div>
+                  <p style="margin:10px 0 0;font-size:13.5px;line-height:1.6;color:{{ item.descColor }}">{{ item.desc }}</p>
+                  <sc-if value="{{ item.hasPeople }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(15,31,53,.08)">
+                      <sc-if value="{{ item.hasPanelists }}" hint-placeholder-val="{{ true }}">
+                      <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,31,53,.4);margin-bottom:10px">Panelists</div>
+                      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+                        <sc-for list="{{ item.panelists }}" as="p" hint-placeholder-count="3">
+                          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
+                            <span style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;overflow:hidden;background:{{ p.color }};color:#fff;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:18px">{{ p.initial }}<sc-if value="{{ p.photo }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="{{ p.name }}" style="position:absolute;inset:0;background-image:{{ p.photoCss }};background-size:cover;background-position:{{ p.pos }}"></span></sc-if></span>
+                            <div>
+                              <div style="font-size:11px;font-weight:800;line-height:1.2;color:#0F1F35">{{ p.name }}</div>
+                              <div style="font-size:9.5px;line-height:1.3;color:rgba(15,31,53,.7)">{{ p.title }}</div>
+                            </div>
+                          </div>
+                        </sc-for>
+                      </div>
+                      </sc-if>
+                      <sc-if value="{{ item.noPanelists }}" hint-placeholder-val="{{ false }}">
+                        <div style="font-size:11.5px;font-weight:700;color:rgba(15,31,53,.45)">Panelists to be announced</div>
+                      </sc-if>
+                      <div style="display:flex;align-items:center;gap:11px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(15,31,53,.06)">
+                        <span style="flex:none;position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;overflow:hidden;background:{{ item.moderator.color }};color:#fff;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:19px;box-shadow:0 0 0 2px #fff,0 0 0 4px #E8792C">{{ item.moderator.initial }}<sc-if value="{{ item.moderator.photo }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="{{ item.moderator.name }}" style="position:absolute;inset:0;background-image:{{ item.moderator.photoCss }};background-size:cover;background-position:{{ item.moderator.pos }}"></span></sc-if></span>
+                        <div>
+                          <div style="font-size:12.5px;font-weight:800;color:#0F1F35">{{ item.moderator.name }}</div>
+                          <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#E8792C">Moderator · {{ item.moderator.title }}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ item.speaker }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+                      <span style="flex:none;position:relative;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;overflow:hidden;background:{{ item.speakerColor }};color:#fff;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:16px">{{ item.speakerInitial }}<sc-if value="{{ item.speakerPhoto }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="{{ item.speaker }}" style="position:absolute;inset:0;background-image:{{ item.speakerPhotoCss }};background-size:cover;background-position:{{ item.speakerPos }}"></span></sc-if></span>
+                      <div>
+                        <div style="font-size:12.5px;font-weight:800;color:{{ item.titleColor }}">{{ item.speaker }}</div>
+                        <div style="font-size:11.5px;color:{{ item.metaColor }}">{{ item.speakerRole }}</div>
+                      </div>
+                    </div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;margin-top:64px">
+      <a href="IGNITE Register.dc.html" style="padding:16px 36px;border-radius:999px;background:#E8792C;color:#fff;font-weight:800;font-size:15px;box-shadow:0 6px 30px rgba(232,121,44,.35)" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Register Now →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<div data-screen-label="Footer" style="position:relative;overflow:hidden;background:#0F1F35;padding:80px 0 36px">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 700px 500px at 0% 120%, rgba(232,121,44,.18), transparent 60%)"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px;margin-bottom:56px">
+      <div>
+        <img src="assets/IGNITE_Logo_primary.png" alt="AMA Cincinnati Presents IGNITE" style="height:64px;width:auto;margin-bottom:18px">
+        <p style="margin:0 0 20px;max-width:300px;font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.5)">IGNITE is the premier marketing conference from AMA Cincinnati — a full day of bold ideas, world-class speakers, and community.</p>
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:28px;width:auto">
+          <div>
+            <div style="font-size:14px;font-weight:800;color:#fff">Tuesday, November 10, 2026 · 8:30a–5:30p</div>
+            <div style="margin-top:2px;font-size:13px;font-weight:700;color:#E8792C">American Sign Museum · Cincinnati</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#4FC3E8;margin-bottom:18px">Event</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <a href="IGNITE Homepage.dc.html#why" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Why Attend</a>
+          <a href="IGNITE Agenda.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Agenda</a>
+          <a href="IGNITE Speakers.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Speakers</a>
+          <a href="IGNITE Register.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Tickets</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#4FC3E8;margin-bottom:18px">Get Involved</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <a href="IGNITE Sponsors.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Become a Sponsor</a>
+          <dc-import name="SpeakerNominate" link-label="Call for Speakers" link-color="rgba(255,255,255,.55)" link-size="13.5px" hint-size="140px,20px"></dc-import>
+          <dc-import name="VolunteerForm" link-label="Volunteer" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="90px,20px"></dc-import>
+          <a href="https://www.amacincinnati.org" target="_blank" rel="noopener" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Join AMA Cincinnati</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#4FC3E8;margin-bottom:18px">Connect</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <a href="https://www.amacincinnati.org" target="_blank" rel="noopener" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">AMA Cincinnati</a>
+          <dc-import name="ContactForm" kind="contact" link-label="Contact Us" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="90px,20px"></dc-import>
+          <dc-import name="ContactForm" kind="press" link-label="Press Inquiries" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="120px,20px"></dc-import>
+          <a href="IGNITE FAQ.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div style="height:1px;background:rgba(255,255,255,.08);margin-bottom:24px"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <span style="font-size:12px;color:rgba(255,255,255,.3)">© 2026 AMA Cincinnati. All rights reserved.</span>
+      <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;color:rgba(255,255,255,.3)">Presented by <img src="assets/AMA_Cincinnati_white.webp" alt="AMA Cincinnati" style="height:36px;width:auto;opacity:.65"></span>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { navRevealed: false, filter: 'all' };
+  componentDidMount() {
+    this._onNavScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const s = y > 120;
+      if (s !== this.state.navRevealed) this.setState({ navRevealed: s });
+    };
+    window.addEventListener('scroll', this._onNavScroll, { passive: true });
+    this._onNavScroll();
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this._onNavScroll); }
+
+  renderVals() {
+    const embers = React.createElement('div', { key: 'embers', style: { position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' } },
+      Array.from({ length: 14 }, (_, i) => {
+        const left = (i * 41 + 9) % 100;
+        const size = 2 + (i % 3);
+        const col = i % 5 === 0 ? '#4FC3E8' : '#E8792C';
+        return React.createElement('span', { key: i, style: { position: 'absolute', left: left + '%', bottom: '-10px', width: size + 'px', height: size + 'px', borderRadius: '50%', background: col, opacity: 0, boxShadow: '0 0 ' + size * 3 + 'px ' + col, animation: 'emberRise ' + (6 + (i % 6)) + 's linear ' + (-(i * 1.9) % 9) + 's infinite' } });
+      })
+    );
+
+    // shared card styles per type
+    const T = {
+      keynote:   { type: 'Keynote', bg: '#0F1F35', border: '2px solid #E8792C', shadow: '0 12px 40px rgba(232,121,44,.2)', glow: true, tagBg: '#E8792C', tagFg: '#fff', titleColor: '#fff', descColor: 'rgba(255,255,255,.65)', metaColor: 'rgba(255,255,255,.5)' },
+      breakout:  { type: 'Breakout', bg: '#fff', border: '1px solid rgba(15,31,53,.1)', shadow: '0 2px 12px rgba(15,31,53,.05)', glow: false, tagBg: 'rgba(79,195,232,.18)', tagFg: '#1580A5', titleColor: '#0F1F35', descColor: 'rgba(15,31,53,.62)', metaColor: 'rgba(15,31,53,.45)' },
+      breakType: { type: 'Break & Networking', bg: 'rgba(15,31,53,.04)', border: '1px dashed rgba(15,31,53,.18)', shadow: 'none', glow: false, tagBg: 'rgba(15,31,53,.1)', tagFg: '#0F1F35', titleColor: '#0F1F35', descColor: 'rgba(15,31,53,.55)', metaColor: 'rgba(15,31,53,.45)' },
+      networking:{ type: 'Networking', bg: '#0F1F35', border: '1px solid rgba(79,195,232,.4)', shadow: '0 8px 30px rgba(15,31,53,.2)', glow: false, tagBg: '#4FC3E8', tagFg: '#0F1F35', titleColor: '#fff', descColor: 'rgba(255,255,255,.65)', metaColor: 'rgba(255,255,255,.5)' }
+    };
+    const mk = (kind, extra) => Object.assign({}, T[kind], { kind: kind === 'breakType' ? 'break' : kind, track: '', room: '', speaker: '', speakerRole: '', speakerColor: '#0F1F35', speakerInitial: '', hasPeople: false, moderator: { initial: '', name: '', title: '', color: '#0F1F35' }, panelists: [] }, extra);
+
+    // Confirmed B2C lineup; B2B panels and remaining slots to be announced.
+    const C = ['#E8792C', '#0F1F35', '#4FC3E8', '#1580A5'];
+    const withCss = (p) => Object.assign({}, p, { photoCss: p && p.photo ? 'url("' + p.photo + '")' : 'none' });
+    const panel = (moderator, panelists) => ({ hasPeople: true, moderator: withCss(moderator), panelists: panelists.map(withCss), hasPanelists: panelists.length > 0, noPanelists: panelists.length === 0 });
+    const anticipateB2C = panel(
+      { initial: 'TW', name: 'Troy Woolery', title: 'Dir. Business Development, Vaco', color: C[1], photo: 'assets/speakers/Troy_Woolery.jpg', pos: 'center top' },
+      [ { initial: 'BK', name: 'Bourke Kelley', title: 'Chief Strategy Officer, Court Avenue', color: C[0], photo: 'assets/speakers/Bourke_Kelley.jpg', pos: 'center top' },
+        { initial: 'HP', name: 'Heather Physioc', title: 'Chief Discoverability Officer, VML', color: C[3], photo: 'assets/speakers/Heather_Physioc.jpg', pos: 'center 22%' } ]);
+    const personalizeB2C = panel(
+      { initial: 'TJ', name: 'Tom Jones', title: 'Dir. Content, Brand & Digital, The WholeJonesGroup', color: C[1], photo: 'assets/speakers/Tom_Jones.jpg', pos: 'center 22%' },
+      [ { initial: 'CH', name: 'Chase Howell', title: 'Group Director Strategy, VML', color: C[2], photo: 'assets/speakers/Chase_Howell.jpg', pos: 'center 22%' } ]);
+
+    const allSlots = [
+      { time: '8:30 AM', duration: '45 min', items: [ mk('breakType', { title: 'Doors Open & Registration', desc: 'Check in, grab coffee and a light breakfast, and find your people.' }) ] },
+      { time: '9:15 AM', duration: '60 min', items: [ mk('keynote', { title: 'The Personalization Trap: Why More Data Isn\'t Making Us Better Marketers', desc: 'AI hands us more data, more tools, and more ways to reach customers than ever — yet most customers feel less understood and the messages blur into noise. Tiffany makes the case for using data and AI to anticipate what customers need without falling into the trap: audience first, then positioning, then message — and testing what actually works instead of a hundred segments you never prove out.', speaker: 'Tiffany Sieve', speakerRole: 'Chief Marketing Officer · Xactly Corp', speakerInitial: 'TS', speakerColor: '#E8792C', speakerPhoto: 'assets/speakers/Tiffany_Sieve.jpg', speakerPos: 'center 18%', track: 'Main Stage', room: 'The Gallery' }) ] },
+      { time: '10:15 AM', duration: '45 min', items: [ mk('breakType', { title: 'Coffee, Connections & Museum Tours', desc: 'Refuel, swap notes, and take a lap through the American Sign Museum before the morning breakouts.' }) ] },
+      { time: '11:00 AM', duration: '60 min', twoUp: true, items: [
+        mk('breakout', { title: 'ANTICIPATE — B2C Panel', desc: 'Turning data and signals into what\'s next: consumer brands on reading demand before it shows up in the funnel.', track: 'B2C', room: 'Barn Room', ...anticipateB2C }),
+        mk('breakout', { title: 'ANTICIPATE — B2B Panel', desc: 'Turning data and signals into what\'s next: B2B leaders on intent data, pipeline signals, and acting before the RFP. Panel to be announced.', track: 'B2B', room: 'The Theatre' })
+      ] },
+      { time: '12:00 PM', duration: '90 min', twoUp: true, items: [
+        mk('networking', { title: 'Lunch & Networking', desc: 'Catered lunch among the neon — sit anywhere, meet everyone.' }),
+        mk('keynote', { title: 'VIP Lunch with the Keynotes', desc: 'Exclusive sit-down lunch and Q&A with the keynote speakers. VIP ticket holders only.', track: 'VIP', room: 'The Library' })
+      ] },
+      { time: '1:30 PM', duration: '60 min', twoUp: true, items: [
+        mk('breakout', { title: 'PERSONALIZE & SCALE — B2C Panel', desc: 'Turning relevance into revenue: consumer brands on personalization that customers welcome — and that pays for itself.', track: 'B2C', room: 'Barn Room', ...personalizeB2C }),
+        mk('breakout', { title: 'PERSONALIZE & SCALE — B2B Panel', desc: 'Turning relevance into revenue: B2B leaders on account-level relevance and proving growth to the CFO. Panel to be announced.', track: 'B2B', room: 'The Theatre' })
+      ] },
+      { time: '2:30 PM', duration: '45 min', items: [ mk('breakType', { title: 'Afternoon Break & Museum Tours', desc: 'Snacks, coffee, a last lap through the sponsor tables, and time to explore the museum.' }) ] },
+      { time: '3:15 PM', duration: '60 min', items: [ mk('keynote', { title: 'Why Human-Led Brands Win in the Age of AI', desc: 'The closing argument of the day: as AI levels the playing field, the human side of the brand becomes the advantage. Keynote speaker to be announced.', track: 'Main Stage', room: 'The Gallery' }) ] },
+      { time: '4:30 PM', duration: '60 min', items: [ mk('networking', { title: 'Happy Hour & Live Entertainment', desc: 'Drinks, live music, and the best networking hour in Cincinnati marketing.' }) ] }
+    ];
+
+    const filter = this.state.filter;
+    const match = (item) => filter === 'all' || (filter === 'keynote' && item.kind === 'keynote') || (filter === 'breakout' && item.kind === 'breakout') || (filter === 'social' && (item.kind === 'break' || item.kind === 'networking'));
+    const slots = allSlots
+      .map(s => ({ time: s.time, duration: s.duration, items: s.items.filter(match).map(it => Object.assign({}, it, { speakerPhotoCss: it.speakerPhoto ? 'url("' + it.speakerPhoto + '")' : 'none' })), cols: (s.twoUp && s.items.filter(match).length > 1) ? '1fr 1fr' : '1fr' }))
+      .filter(s => s.items.length > 0);
+
+    const filterDefs = [
+      { key: 'all', label: 'All Sessions' },
+      { key: 'keynote', label: 'Keynotes' },
+      { key: 'breakout', label: 'Breakouts' },
+      { key: 'social', label: 'Breaks & Networking' }
+    ];
+
+    return {
+      wordmarkW: '210px',
+      wordmarkOp: '1',
+      wordmarkGap: '10px',
+      wordmarkX: '0',
+      embers,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      burgTop1: this.state.menuOpen ? '6px' : '0px',
+      burgTop3: this.state.menuOpen ? '6px' : '12px',
+      burgT1: this.state.menuOpen ? 'rotate(45deg)' : 'none',
+      burgT3: this.state.menuOpen ? 'rotate(-45deg)' : 'none',
+      burgMidOp: this.state.menuOpen ? '0' : '1',
+      slots,
+      filters: filterDefs.map(f => ({
+        label: f.label,
+        selected: filter === f.key,
+        bg: filter === f.key ? '#0F1F35' : 'transparent',
+        fg: filter === f.key ? '#fff' : '#0F1F35',
+        border: filter === f.key ? '2px solid #0F1F35' : '2px solid rgba(15,31,53,.2)',
+        go: () => this.setState({ filter: f.key })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
