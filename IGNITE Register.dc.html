@@ -44,6 +44,13 @@ a:hover{color:#0F1F35}
 .modal-grid{grid-template-columns:1fr!important}
 .slot-grid{grid-template-columns:1fr!important}
 }
+@media (max-width:640px){
+.stepper-row{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.stepper-row::-webkit-scrollbar{display:none}
+.tier-row{flex-direction:column!important;align-items:flex-start!important;gap:16px!important;padding:22px 20px!important}
+.tier-price{width:auto!important;align-items:flex-start!important}
+.confirm-hero{padding:40px 24px!important}
+}
 </style>
 </helmet>
 
@@ -104,7 +111,7 @@ a:hover{color:#0F1F35}
     </div>
     <h1 style="margin:0;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(42px,6vw,68px);line-height:.92;color:#fff">Claim Your <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Seat</span></h1>
     <!-- Stepper -->
-    <div role="list" aria-label="Checkout progress" style="display:flex;align-items:center;gap:0;margin-top:34px;max-width:760px">
+    <div role="list" aria-label="Checkout progress" class="stepper-row" style="display:flex;align-items:center;gap:0;margin-top:34px;max-width:760px">
       <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
         <div role="listitem" aria-current="{{ st.current }}" style="display:flex;align-items:center;flex:{{ st.flex }}">
           <button onClick="{{ st.go }}" disabled="{{ st.disabled }}" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;cursor:{{ st.cursor }};font-family:'Gotham Rounded','Nunito',sans-serif">
@@ -137,8 +144,8 @@ a:hover{color:#0F1F35}
         <a href="https://www.amacincinnati.org/get-involved/join-or-renew-your-membership/" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;color:#E8792C;text-decoration:underline;text-underline-offset:3px" style-hover="color:#0F1F35">Not a member? Join &amp; save →</a>
       </div>
       <sc-for list="{{ tiers }}" as="tier" hint-placeholder-count="3">
-        <div aria-disabled="{{ tier.soldOut }}" style="display:flex;align-items:center;gap:22px;padding:26px 28px;border-radius:20px;background:{{ tier.bg }};border:{{ tier.cardBorder }};box-shadow:{{ tier.shadow }};opacity:{{ tier.opacity }}">
-          <div style="flex:1">
+        <div aria-disabled="{{ tier.soldOut }}" class="tier-row" style="display:flex;align-items:center;gap:22px;padding:26px 28px;border-radius:20px;background:{{ tier.bg }};border:{{ tier.cardBorder }};box-shadow:{{ tier.shadow }};opacity:{{ tier.opacity }}">
+          <div style="flex:1;min-width:0">
             <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
               <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:26px;letter-spacing:-.02em;color:{{ tier.fg }}">{{ tier.name }}</span>
               <sc-if value="{{ tier.badge }}" hint-placeholder-val="{{ false }}">
@@ -147,7 +154,7 @@ a:hover{color:#0F1F35}
             </div>
             <div style="margin-top:4px;font-size:13px;line-height:1.55;color:{{ tier.subColor }}">{{ tier.desc }}</div>
           </div>
-          <div style="display:flex;flex-direction:column;align-items:flex-end;flex:none;width:120px">
+          <div class="tier-price" style="display:flex;flex-direction:column;align-items:flex-end;flex:none;width:120px">
             <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:36px;line-height:1;color:{{ tier.priceColor }}">{{ tier.price }}</span>
             <sc-if value="{{ tier.priceSuffix }}" hint-placeholder-val="{{ false }}">
               <span style="margin-top:2px;font-size:12px;font-weight:600;color:{{ tier.subColor }}">{{ tier.priceSuffix }}</span>
@@ -381,11 +388,11 @@ a:hover{color:#0F1F35}
 <sc-if value="{{ isStep4 }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Step 4 Confirmation" style="background:#FAFAF8;padding:56px 0 100px">
   <div style="max-width:720px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
-    <div style="position:relative;overflow:hidden;background:#0F1F35;border-radius:24px;padding:56px 52px;text-align:center;box-shadow:0 20px 60px rgba(15,31,53,.3)">
+    <div class="confirm-hero" style="position:relative;overflow:hidden;background:#0F1F35;border-radius:24px;padding:56px 52px;text-align:center;box-shadow:0 20px 60px rgba(15,31,53,.3)">
       <div style="position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 50% 130%, rgba(232,121,44,.45), transparent 65%)"></div>
       <div style="position:relative">
         <img src="assets/IGNITE_Flame.png" alt="" style="height:52px;width:auto;margin-bottom:18px">
-        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:58px;line-height:.95;color:#fff">You're <span style="color:#E8792C">In!</span></div>
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(38px,10vw,58px);line-height:.95;color:#fff">You're <span style="color:#E8792C">In!</span></div>
         <p style="margin:16px auto 0;max-width:420px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.7)">Your order is confirmed. A confirmation email with your tickets is on its way to <strong style="color:#fff">{{ confirmEmail }}</strong>.</p>
         <div style="display:inline-block;margin-top:22px;padding:10px 22px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);font-size:13px;font-weight:800;color:rgba(255,255,255,.85)">Order # {{ orderNumber }}</div>
       </div>

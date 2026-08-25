@@ -45,6 +45,10 @@ a:hover{color:#0F1F35}
 .hero-ctas a{text-align:center!important}
 .brand-cta{flex-direction:column!important;align-items:flex-start!important;text-align:left!important;padding:26px 24px!important}
 .brand-cta-btn{align-self:stretch!important;white-space:normal!important;padding:15px 20px!important}
+.glance-row{gap:10px!important;padding:12px 10px!important}
+.glance-time{min-width:44px!important;font-size:11.5px!important}
+.glance-dot{display:none!important}
+.glance-label-row{flex-wrap:wrap!important;row-gap:5px!important}
 }
 @keyframes menuDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 </style>
@@ -261,11 +265,11 @@ a:hover{color:#0F1F35}
       </div>
       <div style="display:flex;flex-direction:column;justify-content:center">
         <sc-for list="{{ agenda }}" as="item" hint-placeholder-count="7">
-          <div style="display:flex;align-items:center;gap:18px;padding:15px 18px;border-radius:14px;border-left:3px solid {{ item.accent }}" style-hover="background:rgba(15,31,53,.04)">
-            <span style="flex:none;min-width:64px;text-align:right;font-size:13px;font-weight:800;color:#E8792C">{{ item.time }}</span>
-            <span style="flex:none;width:8px;height:8px;border-radius:50%;background:{{ item.dot }}"></span>
-            <div style="flex:1">
-              <div style="display:flex;align-items:center;gap:10px">
+          <div class="glance-row" style="display:flex;align-items:center;gap:18px;padding:15px 18px;border-radius:14px;border-left:3px solid {{ item.accent }}" style-hover="background:rgba(15,31,53,.04)">
+            <span class="glance-time" style="flex:none;min-width:64px;text-align:right;font-size:13px;font-weight:800;color:#E8792C">{{ item.time }}</span>
+            <span class="glance-dot" style="flex:none;width:8px;height:8px;border-radius:50%;background:{{ item.dot }}"></span>
+            <div style="flex:1;min-width:0">
+              <div class="glance-label-row" style="display:flex;align-items:center;gap:10px">
                 <span style="font-size:15px;font-weight:800;color:#0F1F35">{{ item.label }}</span>
                 <sc-if value="{{ item.tag }}" hint-placeholder-val="{{ false }}">
                   <span style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:{{ item.tagBg }};color:#fff">{{ item.tag }}</span>

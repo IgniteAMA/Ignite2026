@@ -23,8 +23,8 @@ a:hover{color:#0F1F35}
 
 <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
 <div role="dialog" aria-modal="true" aria-label="Volunteer sign-up form" style="position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px">
-  <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(10,21,32,.78);backdrop-filter:blur(6px)"></div>
-  <div style="position:relative;width:min(480px,100%);max-height:88vh;overflow-y:auto;background:#FAFAF8;border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.5)">
+  <div onClick="{{ close }}" style="position:absolute;inset:0;background:rgba(10,21,32,.78);backdrop-filter:blur(6px);touch-action:none"></div>
+  <div style="position:relative;width:min(480px,100%);max-height:88vh;overflow-y:auto;overscroll-behavior:contain;background:#FAFAF8;border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.5)">
     <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
       <div style="position:relative;overflow:hidden;background:#0F1F35;padding:32px 36px 26px;border-radius:22px 22px 0 0">
         <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 260px at 85% 130%, rgba(232,121,44,.4), transparent 65%)"></div>
@@ -86,7 +86,27 @@ class Component extends DCLogic {
     this._esc = (e) => { if (e.key === 'Escape' && this.state.open) this.setState({ open: false }); };
     window.addEventListener('keydown', this._esc);
   }
-  componentWillUnmount() { window.removeEventListener('keydown', this._esc); }
+  componentWillUnmount() { window.removeEventListener('keydown', this._esc); this._unlockScroll(); }
+
+  _lockScroll() {
+    if (this._scrollLocked) return;
+    this._scrollLocked = true;
+    this._lockScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + this._lockScrollY + 'px';
+    document.body.style.width = '100%';
+  }
+  _unlockScroll() {
+    if (!this._scrollLocked) return;
+    this._scrollLocked = false;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, this._lockScrollY || 0);
+  }
+  componentDidUpdate() {
+    if (this.state.open) this._lockScroll(); else this._unlockScroll();
+  }
 
   validators = {
     name: (v) => v.trim().length >= 2 ? '' : 'Please enter your full name.',

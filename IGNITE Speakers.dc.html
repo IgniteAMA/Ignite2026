@@ -174,8 +174,8 @@ a:hover{color:#0F1F35}
 
 <!-- ═══════ SPEAKER MODAL ═══════ -->
 <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:200;background:rgba(10,21,32,.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:40px">
-    <div role="dialog" aria-modal="true" aria-label="{{ selName }}" onClick="{{ stopClick }}" style="position:relative;width:760px;max-width:100%;max-height:85vh;overflow-y:auto;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.5)">
+  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:200;background:rgba(10,21,32,.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:40px;touch-action:none">
+    <div role="dialog" aria-modal="true" aria-label="{{ selName }}" onClick="{{ stopClick }}" style="position:relative;width:760px;max-width:100%;max-height:85vh;overflow-y:auto;overscroll-behavior:contain;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.5)">
       <button onClick="{{ closeModal }}" aria-label="Close" style="position:absolute;top:18px;right:18px;z-index:2;width:38px;height:38px;border-radius:50%;border:none;background:rgba(15,31,53,.08);color:#0F1F35;font-size:17px;font-weight:700;cursor:pointer" style-hover="background:#E8792C;color:#fff">✕</button>
       <div class="modal-grid" style="display:grid;grid-template-columns:280px 1fr">
         <div class="modal-photo" style="position:relative;min-height:100%;overflow:hidden">
@@ -282,7 +282,27 @@ class Component extends DCLogic {
     this._onKey = (e) => { if (e.key === 'Escape' && this.state.sel) this.setState({ sel: null }); };
     window.addEventListener('keydown', this._onKey);
   }
-  componentWillUnmount() { window.removeEventListener('keydown', this._onKey); }
+  componentWillUnmount() { window.removeEventListener('keydown', this._onKey); this._unlockScroll(); }
+
+  _lockScroll() {
+    if (this._scrollLocked) return;
+    this._scrollLocked = true;
+    this._lockScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + this._lockScrollY + 'px';
+    document.body.style.width = '100%';
+  }
+  _unlockScroll() {
+    if (!this._scrollLocked) return;
+    this._scrollLocked = false;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, this._lockScrollY || 0);
+  }
+  componentDidUpdate() {
+    if (this.state.sel) this._lockScroll(); else this._unlockScroll();
+  }
 
   renderVals() {
     const embers = React.createElement('div', { key: 'embers', style: { position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' } },
