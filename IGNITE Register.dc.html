@@ -43,10 +43,17 @@ a:hover{color:#0F1F35}
 .co-grid{grid-template-columns:1fr!important}
 .modal-grid{grid-template-columns:1fr!important}
 .slot-grid{grid-template-columns:1fr!important}
+.mobile-checkout-bar{display:flex!important}
+.mobile-checkout-bar.bar-hidden{display:none!important}
 }
 @media (max-width:640px){
 .stepper-row{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
 .stepper-row::-webkit-scrollbar{display:none}
+.stepper-wrap::before,.stepper-wrap::after{content:'';position:absolute;top:0;bottom:4px;width:32px;pointer-events:none;opacity:0;transition:opacity .2s;z-index:1}
+.stepper-wrap::before{left:0;background:linear-gradient(to right,#0A1520,transparent)}
+.stepper-wrap::after{right:0;background:linear-gradient(to left,#0A1520,transparent)}
+.stepper-wrap.show-left-fade::before{opacity:1}
+.stepper-wrap.show-right-fade::after{opacity:1}
 .tier-row{flex-direction:column!important;align-items:flex-start!important;gap:16px!important;padding:22px 20px!important}
 .tier-price{width:auto!important;align-items:flex-start!important}
 .confirm-hero{padding:40px 24px!important}
@@ -111,21 +118,34 @@ a:hover{color:#0F1F35}
     </div>
     <h1 style="margin:0;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(42px,6vw,68px);line-height:.92;color:#fff">Claim Your <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Seat</span></h1>
     <!-- Stepper -->
-    <div role="list" aria-label="Checkout progress" class="stepper-row" style="display:flex;align-items:center;gap:0;margin-top:34px;max-width:760px">
-      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
-        <div role="listitem" aria-current="{{ st.current }}" style="display:flex;align-items:center;flex:{{ st.flex }}">
-          <button onClick="{{ st.go }}" disabled="{{ st.disabled }}" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;cursor:{{ st.cursor }};font-family:'Gotham Rounded','Nunito',sans-serif">
-            <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:{{ st.dotBg }};border:{{ st.dotBorder }};color:{{ st.dotFg }};font-size:13px;font-weight:800">{{ st.dotLabel }}</span>
-            <span style="font-size:13px;font-weight:800;color:{{ st.labelColor }};white-space:nowrap">{{ st.label }}</span>
-          </button>
-          <sc-if value="{{ st.hasLine }}" hint-placeholder-val="{{ true }}">
-            <span style="flex:1;height:2px;margin:0 14px;background:{{ st.lineBg }}"></span>
-          </sc-if>
-        </div>
-      </sc-for>
+    <div class="stepper-wrap" style="position:relative;margin-top:34px;max-width:760px">
+      <div role="list" aria-label="Checkout progress" class="stepper-row" style="display:flex;align-items:center;gap:0">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+          <div role="listitem" aria-current="{{ st.current }}" style="display:flex;align-items:center;flex:{{ st.flex }}">
+            <button onClick="{{ st.go }}" disabled="{{ st.disabled }}" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;cursor:{{ st.cursor }};font-family:'Gotham Rounded','Nunito',sans-serif">
+              <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:{{ st.dotBg }};border:{{ st.dotBorder }};color:{{ st.dotFg }};font-size:13px;font-weight:800">{{ st.dotLabel }}</span>
+              <span style="font-size:13px;font-weight:800;color:{{ st.labelColor }};white-space:nowrap">{{ st.label }}</span>
+            </button>
+            <sc-if value="{{ st.hasLine }}" hint-placeholder-val="{{ true }}">
+              <span style="flex:1;height:2px;margin:0 14px;background:{{ st.lineBg }}"></span>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- ═══════ MOBILE STICKY CHECKOUT BAR ═══════ -->
+<sc-if value="{{ showMobileBar }}" hint-placeholder-val="{{ true }}">
+  <div class="mobile-checkout-bar" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:150;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px calc(14px + env(safe-area-inset-bottom));background:#0F1F35;box-shadow:0 -8px 24px rgba(0,0,0,.3)">
+    <div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)">Total</div>
+      <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;font-size:22px;line-height:1;color:#fff">{{ total }}</div>
+    </div>
+    <button onClick="{{ mobileBarAction }}" disabled="{{ mobileBarDisabled }}" style="flex:none;padding:14px 26px;border:none;border-radius:999px;background:{{ mobileBarBg }};color:{{ mobileBarFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;font-weight:800;cursor:{{ mobileBarCursor }}">{{ mobileBarLabel }}</button>
+  </div>
+</sc-if>
 
 <!-- ═══════ STEP 1: TICKETS ═══════ -->
 <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
@@ -647,18 +667,58 @@ class Component extends DCLogic {
     };
     // Try once at mount in case we deep-linked onto step 3.
     this._initWidget();
+
+    // Stepper edge fades — hint that there are more steps to scroll to on mobile.
+    this._stepperEl = document.querySelector('.stepper-row');
+    if (this._stepperEl) {
+      this._onStepperScroll = () => {
+        const el = this._stepperEl;
+        const wrap = el.parentElement;
+        if (!wrap) return;
+        const atStart = el.scrollLeft <= 4;
+        const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+        wrap.classList.toggle('show-left-fade', !atStart);
+        wrap.classList.toggle('show-right-fade', !atEnd);
+      };
+      this._stepperEl.addEventListener('scroll', this._onStepperScroll, { passive: true });
+      this._onStepperScroll();
+    }
+
+    this._prevStep = this.state.step;
+    this._syncMobileBar();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  // Hides the mobile sticky checkout bar once the real order summary scrolls into view.
+  _syncMobileBar() {
+    const el = document.querySelector('.co-side');
+    if (el === this._observedCoSide) return;
+    if (this._coSideObserver) this._coSideObserver.disconnect();
+    this._observedCoSide = el;
+    if (!el) return;
+    this._coSideObserver = new IntersectionObserver((entries) => {
+      const bar = document.querySelector('.mobile-checkout-bar');
+      if (bar) bar.classList.toggle('bar-hidden', entries[0].isIntersecting);
+    }, { threshold: 0, rootMargin: '0px 0px -90px 0px' }); // -90px ≈ the sticky bar's own height, so it hides once the summary clears it, not just touches it
+    this._coSideObserver.observe(el);
+  }
+
+  componentDidUpdate() {
+    const prevStep = this._prevStep;
+    this._prevStep = this.state.step;
     // When the buyer arrives at the payment step, mount the widget against the now-present button.
-    if (this.state.step === 3 && prevState.step !== 3) {
+    if (this.state.step === 3 && prevStep !== 3) {
       this._widgetCreated = false;
       if (this._widgetTimer) clearTimeout(this._widgetTimer);
       setTimeout(() => this._initWidget(), 0);
     }
+    this._syncMobileBar();
   }
 
-  componentWillUnmount() { if (this._widgetTimer) clearTimeout(this._widgetTimer); }
+  componentWillUnmount() {
+    if (this._widgetTimer) clearTimeout(this._widgetTimer);
+    if (this._stepperEl) this._stepperEl.removeEventListener('scroll', this._onStepperScroll);
+    if (this._coSideObserver) this._coSideObserver.disconnect();
+  }
 
   completeOrder() {
     this.setState({ step: 4, orderNumber: 'IG26-' + Math.floor(100000 + Math.random() * 900000) });
@@ -797,6 +857,24 @@ class Component extends DCLogic {
     });
     const formValid = !validators.name(s.form.name) && !validators.email(s.form.email) && !validators.company(s.form.company) && !validators.title(s.form.title);
 
+    // Shared with the mobile sticky checkout bar, which mirrors whichever action is primary for the current step.
+    const toDetailsAction = () => {
+      if (ticketCount === 0) return;
+      if (isMember && !s.memberVerified) { this.setState({ memberGateError: true }); return; }
+      this.setState({ step: 2, memberGateError: false }); window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    const toPaymentAction = () => {
+      this.setState({ touched: { name: true, email: true, company: true, title: true } });
+      if (formValid) { this.setState({ step: 3 }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    };
+    const launchCheckoutAction = () => {
+      // In production (a real numeric EVENTBRITE_EVENT_ID) the EBWidgets modal opens
+      // automatically via modalTriggerElementId. While the ID is still the placeholder,
+      // no real checkout can mount — surface the demo path so the flow stays testable.
+      const isPlaceholder = !/^\d+$/.test(String(this.constructor.EVENTBRITE_EVENT_ID));
+      if (isPlaceholder || !this._widgetCreated) this.setState({ widgetUnavailable: true });
+    };
+
     const stepLabels = ['Tickets', 'Details', 'Payment', 'Confirmation'];
     const steps = stepLabels.map((label, i) => {
       const n = i + 1;
@@ -892,29 +970,24 @@ class Component extends DCLogic {
       ctaFg: canContinue ? '#fff' : 'rgba(255,255,255,.35)',
       ctaCursor: ticketCount > 0 ? 'pointer' : 'not-allowed',
       ctaShadow: canContinue ? '0 6px 24px rgba(232,121,44,.4)' : 'none',
-      toDetails: () => {
-        if (ticketCount === 0) return;
-        if (isMember && !s.memberVerified) { this.setState({ memberGateError: true }); return; }
-        this.setState({ step: 2, memberGateError: false }); window.scrollTo({ top: 0, behavior: 'smooth' });
-      },
+      toDetails: toDetailsAction,
       backToTickets: () => this.setState({ step: 1 }),
-      toPayment: () => {
-        this.setState({ touched: { name: true, email: true, company: true, title: true } });
-        if (formValid) { this.setState({ step: 3 }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-      },
+      toPayment: toPaymentAction,
       backToDetails: () => this.setState({ step: 2 }),
       fields,
       assignLater: s.assignLater,
       toggleAssignLater: () => this.setState(st => ({ assignLater: !st.assignLater })),
       buyerLine: s.form.name + ' · ' + s.form.email,
-      launchCheckout: () => {
-        // In production (a real numeric EVENTBRITE_EVENT_ID) the EBWidgets modal opens
-        // automatically via modalTriggerElementId. While the ID is still the placeholder,
-        // no real checkout can mount — surface the demo path so the flow stays testable.
-        const isPlaceholder = !/^\d+$/.test(String(this.constructor.EVENTBRITE_EVENT_ID));
-        if (isPlaceholder || !this._widgetCreated) this.setState({ widgetUnavailable: true });
-      },
+      launchCheckout: launchCheckoutAction,
       widgetUnavailable: s.widgetUnavailable,
+      // Mobile sticky checkout bar — mirrors whichever primary action applies to the current step.
+      showMobileBar: s.step !== 4,
+      mobileBarLabel: s.step === 1 ? 'Continue to Details →' : (s.step === 2 ? 'Continue to Payment →' : 'Pay Securely →'),
+      mobileBarAction: s.step === 1 ? toDetailsAction : (s.step === 2 ? toPaymentAction : launchCheckoutAction),
+      mobileBarDisabled: s.step === 1 && ticketCount === 0,
+      mobileBarBg: (s.step !== 1 || canContinue) ? '#E8792C' : 'rgba(255,255,255,.12)',
+      mobileBarFg: (s.step !== 1 || canContinue) ? '#fff' : 'rgba(255,255,255,.35)',
+      mobileBarCursor: (s.step !== 1 || ticketCount > 0) ? 'pointer' : 'not-allowed',
       simulateOrder: () => this.completeOrder(),
       confirmEmail: s.form.email || 'your email',
       orderNumber: s.orderNumber || 'IG26-000000',
