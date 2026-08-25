@@ -763,7 +763,7 @@ class Component extends DCLogic {
     // separate ticket classes gated by an access/promo code for members.
     const isMember = s.audience === 'member';
     const tierDefs = [
-      { key: 'early',   name: 'General Admission', desc: 'Full-day access at the early-bird rate — locks in before Sept 15, then becomes standard General Admission.', member: 175, guest: 299, regularMember: 215, regularGuest: 349, badge: 'Early Bird — through Sept 15', badgeBg: 'rgba(232,121,44,.14)', badgeFg: '#C25E17', soldOut: false, minQty: 1 },
+      { key: 'early',   name: 'General Admission', desc: 'Full-day access at the early-bird rate — locks in before Sept 30, then becomes standard General Admission.', member: 175, guest: 299, regularMember: 215, regularGuest: 349, badge: 'Early Bird — through Sept 30', badgeBg: 'rgba(232,121,44,.14)', badgeFg: '#C25E17', soldOut: false, minQty: 1 },
       { key: 'vip',     name: 'VIP', desc: 'Everything in General, plus VIP lunch with keynotes, priority seating, swag & reception.', member: 295, guest: 449, badge: 'Limited Availability', badgeBg: '#E8792C', badgeFg: '#fff', soldOut: false, minQty: 1 },
       { key: 'group',   name: 'Group', desc: 'Special per-person rate for teams — requires 5 or more tickets. Reserved seating block and group invoice available.', member: 195, guest: 315, perPerson: true, badge: '5+ tickets required', badgeBg: 'rgba(79,195,232,.18)', badgeFg: '#1580A5', soldOut: false, minQty: 5 }
     ];
