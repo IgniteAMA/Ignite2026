@@ -59,8 +59,9 @@ a:hover{color:#0F1F35}
 .modal-grid{grid-template-columns:1fr!important}
 .slot-grid{grid-template-columns:1fr!important}
 .mobile-checkout-bar{display:flex!important}
-.mobile-checkout-bar.bar-hidden{display:none!important}
 }
+.mobile-checkout-bar{transition:transform .32s cubic-bezier(.22,.9,.24,1),opacity .28s ease}
+.mobile-checkout-bar.bar-hidden{transform:translateY(100%);opacity:0;pointer-events:none}
 @media (max-width:640px){
 .stepper-row{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
 .stepper-row::-webkit-scrollbar{display:none}
