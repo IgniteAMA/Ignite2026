@@ -141,6 +141,7 @@ a:hover{color:#0F1F35}
       <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Registration</span>
     </div>
     <h1 style="margin:0;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(42px,6vw,68px);line-height:.92;color:#fff">Claim Your <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Seat</span></h1>
+    <p style="margin:14px 0 0;max-width:520px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.65)">Build your order below, then complete secure payment through Eventbrite's checkout.</p>
     <!-- Stepper -->
     <div class="stepper-wrap" style="position:relative;margin-top:34px;max-width:760px">
       <div role="list" aria-label="Checkout progress" class="stepper-row" style="display:flex;align-items:center;gap:0">
@@ -233,7 +234,7 @@ a:hover{color:#0F1F35}
     <div class="co-side" style="position:sticky;top:130px;background:#0F1F35;border-radius:20px;padding:28px;box-shadow:0 16px 50px rgba(15,31,53,.25)">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
         <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
-        <span style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4FC3E8">Order Summary</span>
+        <span style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4FC3E8">Order Preview</span>
       </div>
       <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
         <div style="padding:18px 0 6px;font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.5)">Select at least one ticket to continue.</div>
@@ -335,7 +336,7 @@ a:hover{color:#0F1F35}
     <div class="co-side" style="position:sticky;top:130px;background:#0F1F35;border-radius:20px;padding:28px;box-shadow:0 16px 50px rgba(15,31,53,.25)">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
         <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
-        <span style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4FC3E8">Order Summary</span>
+        <span style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4FC3E8">Order Preview</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
         <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="1">
@@ -375,7 +376,7 @@ a:hover{color:#0F1F35}
             <div style="font-size:12.5px;color:rgba(15,31,53,.55)">Card details are handled entirely by Eventbrite — PCI DSS compliant.</div>
           </div>
         </div>
-        <p style="margin:0 0 26px;font-size:14px;line-height:1.7;color:rgba(15,31,53,.65)">Clicking the button below opens Eventbrite's secure checkout to complete your payment. Your ticket selection and details carry over. On mobile, checkout opens as a full-screen secure window.</p>
+        <p style="margin:0 0 26px;font-size:14px;line-height:1.7;color:rgba(15,31,53,.65)">The order below is a preview. Clicking the button opens Eventbrite's secure checkout, where you'll choose these same tickets and enter payment to complete your purchase. On mobile, checkout opens as a full-screen secure window.</p>
         <button id="eventbrite-checkout-trigger" onClick="{{ launchCheckout }}" style="width:100%;padding:18px 0;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:15.5px;font-weight:800;cursor:pointer;box-shadow:0 6px 30px rgba(232,121,44,.45)">🔒 Pay {{ total }} Securely with Eventbrite</button>
         <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;flex-wrap:wrap">
           <span style="font-size:11px;font-weight:700;color:rgba(15,31,53,.4)">We accept</span>
@@ -405,7 +406,7 @@ a:hover{color:#0F1F35}
     <div class="co-side" style="position:sticky;top:130px;background:#0F1F35;border-radius:20px;padding:28px;box-shadow:0 16px 50px rgba(15,31,53,.25)">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
         <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
-        <span style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4FC3E8">Final Order Summary</span>
+        <span style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4FC3E8">Order Preview</span>
       </div>
       <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:12px">{{ buyerLine }}</div>
       <div style="display:flex;flex-direction:column;gap:10px">
