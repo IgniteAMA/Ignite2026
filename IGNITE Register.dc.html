@@ -54,10 +54,6 @@ a:hover{color:#0F1F35}
 }
 @keyframes menuDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes navBackdropFade{from{opacity:0}to{opacity:1}}
-@media (max-width:920px){
-.reg-grid{grid-template-columns:1fr!important}
-.tier-jump{display:flex!important}
-}
 @media (max-width:640px){
 .confirm-hero{padding:40px 24px!important}
 }
@@ -127,98 +123,80 @@ a:hover{color:#0F1F35}
   </div>
 </div>
 
-<!-- ═══════ REGISTER: TICKETS + EVENTBRITE EMBED ═══════ -->
+<!-- ═══════ REGISTER: LEAD-IN + EVENTBRITE EMBED ═══════ -->
 <sc-if value="{{ showEmbed }}" hint-placeholder-val="{{ true }}">
 <div data-screen-label="Eventbrite Checkout" style="background:#FAFAF8;padding:56px 0 100px">
-  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px">
-      <span style="font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:rgba(15,31,53,.55)">See pricing for</span>
-      <div role="radiogroup" aria-label="Attendee type" style="display:inline-flex;padding:4px;border-radius:999px;background:rgba(15,31,53,.06);border:1px solid rgba(15,31,53,.1)">
-        <button role="radio" aria-checked="{{ isMember }}" onClick="{{ setMember }}" style="padding:9px 20px;border:none;border-radius:999px;background:{{ memberBtnBg }};color:{{ memberBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:{{ memberBtnShadow }}">AMA Member</button>
-        <button role="radio" aria-checked="{{ isGuest }}" onClick="{{ setGuest }}" style="padding:9px 20px;border:none;border-radius:999px;background:{{ guestBtnBg }};color:{{ guestBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:{{ guestBtnShadow }}">Non-Member</button>
-      </div>
-    </div>
-    <div class="reg-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start">
+  <div style="max-width:720px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
 
-    <!-- LEFT: Ticket options -->
-    <div>
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <sc-for list="{{ ticketTiers }}" as="tier" hint-placeholder-count="3">
-          <div style="position:relative;display:flex;flex-direction:column;border-radius:18px;padding:20px 22px;background:{{ tier.bg }};border:{{ tier.border }};box-shadow:{{ tier.shadow }};overflow:hidden">
-            <sc-if value="{{ tier.featured }}" hint-placeholder-val="{{ false }}">
-              <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 300px at 100% 100%, rgba(232,121,44,.35), transparent 65%);pointer-events:none"></div>
-              <div style="position:absolute;top:14px;right:14px;display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:#E8792C;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">Limited Availability</div>
-            </sc-if>
-            <div style="position:relative">
-              <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-                <span style="font-size:14px;font-weight:800;color:{{ tier.fg }}">{{ tier.name }}</span>
-                <sc-if value="{{ tier.priceNote }}" hint-placeholder-val="{{ false }}">
-                  <span style="padding:3px 10px;border-radius:999px;background:rgba(232,121,44,.12);color:#C25E17;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase">{{ tier.priceNote }}</span>
-                </sc-if>
-              </div>
-              <div style="display:flex;align-items:baseline;gap:9px;margin-top:8px;flex-wrap:wrap">
-                <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:36px;line-height:1;color:{{ tier.priceColor }}">{{ tier.price }}</span>
-                <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:{{ tier.priceColor }}">{{ tier.priceLabel }}</span>
-                <sc-if value="{{ tier.priceSuffix }}" hint-placeholder-val="{{ false }}">
-                  <span style="font-size:12px;font-weight:600;color:{{ tier.sub }}">{{ tier.priceSuffix }}</span>
-                </sc-if>
-                <sc-if value="{{ tier.showSavings }}" hint-placeholder-val="{{ false }}">
-                  <span style="font-size:13px;font-weight:600;color:{{ tier.sub }};text-decoration:line-through;text-decoration-color:#E8792C;text-decoration-thickness:2px">{{ tier.regularPrice }}</span>
-                  <span style="font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:rgba(79,195,232,.16);color:#1580A5">{{ tier.savings }}</span>
-                </sc-if>
-              </div>
-              <button onClick="{{ jumpToWidget }}" class="tier-jump" style="display:none;align-items:center;gap:6px;margin-top:14px;padding:0;border:none;background:none;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;color:{{ tier.priceColor }}">Select this ticket ↓</button>
-            </div>
-          </div>
-        </sc-for>
+    <!-- Lead-in -->
+    <div style="margin-bottom:32px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">One Day, Fully Loaded</span>
       </div>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px;padding:22px 24px;border-radius:18px;background:linear-gradient(150deg,#0F1F35,#1a3350);border:1px solid rgba(232,121,44,.35);box-shadow:0 12px 40px rgba(15,31,53,.18)">
-        <div style="display:flex;align-items:center;gap:10px">
-          <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
-          <span style="font-size:14.5px;font-weight:800;color:#fff">AMA Cincinnati members save on registration</span>
+      <p style="margin:0;font-size:15px;line-height:1.7;color:rgba(15,31,53,.65)">Full-day access to keynotes, breakout sessions, and networking. Choose your ticket and complete secure checkout with Eventbrite below.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:20px">
+        <div style="display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid rgba(15,31,53,.08)">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
+          <span style="font-size:12.5px;line-height:1.45;color:rgba(15,31,53,.75)">Full-day conference access</span>
         </div>
-        <p style="margin:0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.65)">Enter your member access code inside the Eventbrite checkout to unlock the discounted rate.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:2px">
-          <dc-import name="MemberCodeForm" link-label="Need your member code? Click here" link-color="#4FC3E8" link-size="13px" link-weight="800" link-decoration="underline" hint-size="220px,18px"></dc-import>
-          <a href="https://www.amacincinnati.org/get-involved/join-or-renew-your-membership/" target="_blank" rel="noopener" style="font-size:13px;font-weight:800;color:#E8792C;text-decoration:underline;text-underline-offset:3px" style-hover="color:#4FC3E8">Not a member yet? Join &amp; save →</a>
+        <div style="display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid rgba(15,31,53,.08)">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
+          <span style="font-size:12.5px;line-height:1.45;color:rgba(15,31,53,.75)">Keynotes &amp; breakout sessions</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid rgba(15,31,53,.08)">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
+          <span style="font-size:12.5px;line-height:1.45;color:rgba(15,31,53,.75)">Networking &amp; Happy Hour</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid rgba(15,31,53,.08)">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
+          <span style="font-size:12.5px;line-height:1.45;color:rgba(15,31,53,.75)">AMA member discount available</span>
         </div>
       </div>
     </div>
 
-    <!-- RIGHT: Eventbrite embed -->
-    <div>
-      <div style="background:#fff;border:1px solid rgba(15,31,53,.1);border-radius:24px;padding:6px;box-shadow:0 8px 40px rgba(15,31,53,.08);overflow:hidden">
-        <div id="eventbrite-widget-container" style="min-height:300px"></div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;padding:22px 24px;border-radius:18px;background:linear-gradient(150deg,#0F1F35,#1a3350);border:1px solid rgba(232,121,44,.35);box-shadow:0 12px 40px rgba(15,31,53,.18)">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+        <span style="font-size:14.5px;font-weight:800;color:#fff">AMA Cincinnati members save on registration</span>
       </div>
-      <sc-if value="{{ widgetUnavailable }}" hint-placeholder-val="{{ false }}">
-        <div role="alert" style="margin-top:18px;padding:14px 18px;border-radius:12px;background:rgba(232,121,44,.08);border:1px solid rgba(232,121,44,.3);font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.7)">
-          The Eventbrite checkout couldn't load here. <a href="https://www.eventbrite.com/e/{{ eventbriteEventId }}" target="_blank" rel="noopener" style="color:#E8792C;font-weight:800;text-decoration:underline">Open it in a new tab instead →</a> Or, for this preview: <button onClick="{{ simulateOrder }}" style="border:none;background:none;padding:0;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;color:#E8792C;cursor:pointer;text-decoration:underline">simulate a completed order →</button>
-        </div>
-      </sc-if>
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;flex-wrap:wrap">
-        <span style="font-size:11px;font-weight:700;color:rgba(15,31,53,.4)">We accept</span>
-        <span style="display:inline-flex;align-items:center;gap:6px">
-          <img src="assets/payment/visa.png" alt="Visa" width="31" height="22" style="display:block;border-radius:4px">
-          <svg width="34" height="22" viewBox="0 0 34 22" role="img" aria-label="Mastercard"><rect width="34" height="22" rx="4" fill="#fff" stroke="#E5E5E5"/><circle cx="14" cy="11" r="6.5" fill="#EB001B"/><circle cx="20" cy="11" r="6.5" fill="#F79E1B"/><path d="M17 5.8a6.5 6.5 0 0 1 0 10.4 6.5 6.5 0 0 1 0-10.4z" fill="#FF5F00"/></svg>
-          <img src="assets/payment/amex.png" alt="American Express" width="35" height="22" style="display:block;border-radius:4px">
-          <svg width="34" height="22" viewBox="0 0 34 22" role="img" aria-label="Discover"><defs><clipPath id="discover-clip"><rect width="34" height="22" rx="4"/></clipPath></defs><rect width="34" height="22" rx="4" fill="#fff" stroke="#E5E5E5"/><g clip-path="url(#discover-clip)"><circle cx="29" cy="19" r="8" fill="#F68121"/></g><text x="15.5" y="13.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="4.8" letter-spacing="-0.1" fill="#1A1A1A">DISCOVER</text></svg>
-        </span>
-      </div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:18px;margin-top:14px;font-size:11.5px;font-weight:700;color:rgba(15,31,53,.45)">
-        <span>🔒 SSL Encrypted</span>
-        <span>Payments securely processed by Eventbrite</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;margin-top:18px;padding:16px 20px;border-radius:14px;background:rgba(31,138,91,.08);border:1px solid rgba(31,138,91,.25)">
-        <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(31,138,91,.15);font-size:16px">🔒</span>
-        <span style="font-size:13px;line-height:1.55;color:rgba(15,31,53,.7)"><strong style="color:#0F1F35">Secure checkout via Eventbrite.</strong> Card details are handled entirely by Eventbrite — this page never sees your payment information.</span>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:10px;margin-top:14px;padding:14px 16px;border-radius:12px;background:rgba(31,138,91,.08);border:1px solid rgba(31,138,91,.25)">
-        <span style="flex:none;font-size:15px;line-height:1.3">↩️</span>
-        <span style="font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.7)"><strong style="color:#0F1F35">Flexible &amp; risk-free.</strong> Full refunds available up to 7 days before the event — no questions asked. Tickets are transferable to a colleague any time.</span>
+      <p style="margin:0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.65)">Enter your member access code inside the Eventbrite checkout below to unlock the discounted rate.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:2px">
+        <dc-import name="MemberCodeForm" link-label="Need your member code? Click here" link-color="#4FC3E8" link-size="13px" link-weight="800" link-decoration="underline" hint-size="220px,18px"></dc-import>
+        <a href="https://www.amacincinnati.org/get-involved/join-or-renew-your-membership/" target="_blank" rel="noopener" style="font-size:13px;font-weight:800;color:#E8792C;text-decoration:underline;text-underline-offset:3px" style-hover="color:#4FC3E8">Not a member yet? Join &amp; save →</a>
       </div>
     </div>
 
+    <div style="background:#fff;border:1px solid rgba(15,31,53,.1);border-radius:24px;padding:6px;box-shadow:0 8px 40px rgba(15,31,53,.08);overflow:hidden">
+      <div id="eventbrite-widget-container" style="min-height:300px"></div>
     </div>
+    <sc-if value="{{ widgetUnavailable }}" hint-placeholder-val="{{ false }}">
+      <div role="alert" style="margin-top:18px;padding:14px 18px;border-radius:12px;background:rgba(232,121,44,.08);border:1px solid rgba(232,121,44,.3);font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.7)">
+        The Eventbrite checkout couldn't load here. <a href="https://www.eventbrite.com/e/{{ eventbriteEventId }}" target="_blank" rel="noopener" style="color:#E8792C;font-weight:800;text-decoration:underline">Open it in a new tab instead →</a> Or, for this preview: <button onClick="{{ simulateOrder }}" style="border:none;background:none;padding:0;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;color:#E8792C;cursor:pointer;text-decoration:underline">simulate a completed order →</button>
+      </div>
+    </sc-if>
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;flex-wrap:wrap">
+      <span style="font-size:11px;font-weight:700;color:rgba(15,31,53,.4)">We accept</span>
+      <span style="display:inline-flex;align-items:center;gap:6px">
+        <img src="assets/payment/visa.png" alt="Visa" width="31" height="22" style="display:block;border-radius:4px">
+        <svg width="34" height="22" viewBox="0 0 34 22" role="img" aria-label="Mastercard"><rect width="34" height="22" rx="4" fill="#fff" stroke="#E5E5E5"/><circle cx="14" cy="11" r="6.5" fill="#EB001B"/><circle cx="20" cy="11" r="6.5" fill="#F79E1B"/><path d="M17 5.8a6.5 6.5 0 0 1 0 10.4 6.5 6.5 0 0 1 0-10.4z" fill="#FF5F00"/></svg>
+        <img src="assets/payment/amex.png" alt="American Express" width="35" height="22" style="display:block;border-radius:4px">
+        <svg width="34" height="22" viewBox="0 0 34 22" role="img" aria-label="Discover"><defs><clipPath id="discover-clip"><rect width="34" height="22" rx="4"/></clipPath></defs><rect width="34" height="22" rx="4" fill="#fff" stroke="#E5E5E5"/><g clip-path="url(#discover-clip)"><circle cx="29" cy="19" r="8" fill="#F68121"/></g><text x="15.5" y="13.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="4.8" letter-spacing="-0.1" fill="#1A1A1A">DISCOVER</text></svg>
+      </span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:18px;margin-top:14px;font-size:11.5px;font-weight:700;color:rgba(15,31,53,.45)">
+      <span>🔒 SSL Encrypted</span>
+      <span>Payments securely processed by Eventbrite</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:18px;padding:16px 20px;border-radius:14px;background:rgba(31,138,91,.08);border:1px solid rgba(31,138,91,.25)">
+      <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(31,138,91,.15);font-size:16px">🔒</span>
+      <span style="font-size:13px;line-height:1.55;color:rgba(15,31,53,.7)"><strong style="color:#0F1F35">Secure checkout via Eventbrite.</strong> Card details are handled entirely by Eventbrite — this page never sees your payment information.</span>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:10px;margin-top:14px;padding:14px 16px;border-radius:12px;background:rgba(31,138,91,.08);border:1px solid rgba(31,138,91,.25)">
+      <span style="flex:none;font-size:15px;line-height:1.3">↩️</span>
+      <span style="font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.7)"><strong style="color:#0F1F35">Flexible &amp; risk-free.</strong> Full refunds available up to 7 days before the event — no questions asked. Tickets are transferable to a colleague any time.</span>
+    </div>
+
   </div>
 </div>
 </sc-if>
@@ -338,7 +316,7 @@ a:hover{color:#0F1F35}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { navRevealed: false, menuOpen: false, orderComplete: false, widgetUnavailable: false, audience: 'member' };
+  state = { navRevealed: false, menuOpen: false, orderComplete: false, widgetUnavailable: false };
 
   /*
    * ── EVENTBRITE INTEGRATION NOTES ──────────────────────────────────────────
@@ -429,54 +407,10 @@ class Component extends DCLogic {
       burgT1: this.state.menuOpen ? 'rotate(45deg)' : 'none',
       burgT3: this.state.menuOpen ? 'rotate(-45deg)' : 'none',
       burgMidOp: this.state.menuOpen ? '0' : '1',
-      isMember: this.state.audience === 'member',
-      isGuest: this.state.audience !== 'member',
-      setMember: () => this.setState({ audience: 'member' }),
-      setGuest: () => this.setState({ audience: 'guest' }),
-      memberBtnBg: this.state.audience === 'member' ? '#0F1F35' : 'transparent',
-      memberBtnFg: this.state.audience === 'member' ? '#fff' : 'rgba(15,31,53,.6)',
-      memberBtnShadow: this.state.audience === 'member' ? '0 3px 10px rgba(15,31,53,.2)' : 'none',
-      guestBtnBg: this.state.audience !== 'member' ? '#0F1F35' : 'transparent',
-      guestBtnFg: this.state.audience !== 'member' ? '#fff' : 'rgba(15,31,53,.6)',
-      guestBtnShadow: this.state.audience !== 'member' ? '0 3px 10px rgba(15,31,53,.2)' : 'none',
-      ticketTiers: (() => {
-        const isMember = this.state.audience === 'member';
-        const raw = [
-        { name: 'General Admission', member: 175, guest: 299, regularMember: 215, regularGuest: 349, priceNote: 'Early Bird — through Sept 30', featured: false, desc: 'Full-day access at the early-bird rate — lock in the savings before Sept 30.',
-          features: ['Full-day conference access', 'All morning & afternoon breakouts', 'Opening & closing keynotes', 'Networking breaks & Happy Hour', 'Event programming & materials', 'General attendee lunch'],
-          bg: '#fff', fg: '#0F1F35', priceColor: '#0F1F35', sub: 'rgba(15,31,53,.6)', featColor: 'rgba(15,31,53,.75)', border: '1px solid rgba(15,31,53,.1)', shadow: '0 2px 12px rgba(15,31,53,.05)' },
-        { name: 'VIP', member: 295, guest: 449, priceNote: '', featured: true, desc: 'The full IGNITE experience — plus exclusive access to our most premium moments.',
-          features: ['Everything in General Admission', 'Exclusive VIP Lunch with keynote speakers', 'Priority seating at all sessions', 'IGNITE swag bag', 'VIP-only networking reception', 'Dedicated support & early entry'],
-          bg: '#0F1F35', fg: '#fff', priceColor: '#E8792C', sub: 'rgba(255,255,255,.6)', featColor: 'rgba(255,255,255,.75)', border: '2px solid #E8792C', shadow: '0 16px 50px rgba(232,121,44,.25)' },
-        { name: 'Group', member: 195, guest: 315, priceSuffix: '/person', priceNote: '5+ attendees', featured: false, desc: 'Bring your whole team and ignite your organization together — special per-person rate for groups of 5 or more.',
-          features: ['Everything in General Admission', 'Reserved group seating block', 'Group invoice option available', 'Team discount on additional tickets'],
-          bg: '#fff', fg: '#0F1F35', priceColor: '#0F1F35', sub: 'rgba(15,31,53,.6)', featColor: 'rgba(15,31,53,.75)', border: '1px solid rgba(15,31,53,.1)', shadow: '0 2px 12px rgba(15,31,53,.05)' }
-        ];
-        return raw.map(t => {
-          const hasRegular = t.regularMember != null;
-          const regVal = isMember ? t.regularMember : t.regularGuest;
-          return {
-            ...t,
-            price: '$' + (isMember ? t.member : t.guest),
-            priceLabel: isMember ? 'AMA Member' : 'Non-Member',
-            priceSuffix: t.priceSuffix || '',
-            showSavings: hasRegular,
-            regularPrice: '$' + regVal,
-            savings: 'Save $' + (regVal - (isMember ? t.member : t.guest))
-          };
-        });
-      })(),
       showEmbed: !this.state.orderComplete,
       showConfirmation: this.state.orderComplete,
       widgetUnavailable: this.state.widgetUnavailable,
       eventbriteEventId: Component.EVENTBRITE_EVENT_ID,
-      jumpToWidget: () => {
-        const el = document.getElementById('eventbrite-widget-container');
-        if (!el) return;
-        const navHeight = 90; // clears the fixed mobile nav bar so the widget's top isn't hidden under it
-        const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      },
       simulateOrder: () => { this.setState({ orderComplete: true }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
       calendarUrl: 'https://www.google.com/calendar/render?action=TEMPLATE&text=IGNITE%2726+%E2%80%94+AMA+Cincinnati&dates=20261110T133000Z/20261110T230000Z&location=American+Sign+Museum%2C+1330+Monmouth+Ave%2C+Cincinnati%2C+OH+45225&details=AMA+Cincinnati%27s+annual+conference+for+modern+marketing+and+CX+leaders.',
       icsUrl: 'data:text/calendar;charset=utf-8,' + encodeURIComponent(['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//AMA Cincinnati//IGNITE 2026//EN','BEGIN:VEVENT','UID:ignite-2026@amacincinnati.org','DTSTAMP:20260810T000000Z','DTSTART:20261110T133000Z','DTEND:20261110T230000Z','SUMMARY:IGNITE! 2026 — AMA Cincinnati','LOCATION:American Sign Museum\\, 1330 Monmouth Ave\\, Cincinnati\\, OH 45225',"DESCRIPTION:AMA Cincinnati's annual conference for modern marketing and CX leaders.",'END:VEVENT','END:VCALENDAR'].join('\r\n')),
