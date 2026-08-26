@@ -56,6 +56,7 @@ a:hover{color:#0F1F35}
 @keyframes navBackdropFade{from{opacity:0}to{opacity:1}}
 @media (max-width:920px){
 .reg-grid{grid-template-columns:1fr!important}
+.tier-jump{display:flex!important}
 }
 @media (max-width:640px){
 .confirm-hero{padding:40px 24px!important}
@@ -175,6 +176,7 @@ a:hover{color:#0F1F35}
                   </div>
                 </sc-for>
               </div>
+              <button onClick="{{ jumpToWidget }}" class="tier-jump" style="display:none;align-items:center;gap:6px;margin-top:18px;padding:0;border:none;background:none;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;color:{{ tier.priceColor }}">Select this ticket ↓</button>
             </div>
           </div>
         </sc-for>
@@ -477,6 +479,13 @@ class Component extends DCLogic {
       showConfirmation: this.state.orderComplete,
       widgetUnavailable: this.state.widgetUnavailable,
       eventbriteEventId: Component.EVENTBRITE_EVENT_ID,
+      jumpToWidget: () => {
+        const el = document.getElementById('eventbrite-widget-container');
+        if (!el) return;
+        const navHeight = 90; // clears the fixed mobile nav bar so the widget's top isn't hidden under it
+        const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      },
       simulateOrder: () => { this.setState({ orderComplete: true }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
       calendarUrl: 'https://www.google.com/calendar/render?action=TEMPLATE&text=IGNITE%2726+%E2%80%94+AMA+Cincinnati&dates=20261110T133000Z/20261110T230000Z&location=American+Sign+Museum%2C+1330+Monmouth+Ave%2C+Cincinnati%2C+OH+45225&details=AMA+Cincinnati%27s+annual+conference+for+modern+marketing+and+CX+leaders.',
       icsUrl: 'data:text/calendar;charset=utf-8,' + encodeURIComponent(['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//AMA Cincinnati//IGNITE 2026//EN','BEGIN:VEVENT','UID:ignite-2026@amacincinnati.org','DTSTAMP:20260810T000000Z','DTSTART:20261110T133000Z','DTEND:20261110T230000Z','SUMMARY:IGNITE! 2026 — AMA Cincinnati','LOCATION:American Sign Museum\\, 1330 Monmouth Ave\\, Cincinnati\\, OH 45225',"DESCRIPTION:AMA Cincinnati's annual conference for modern marketing and CX leaders.",'END:VEVENT','END:VCALENDAR'].join('\r\n')),
