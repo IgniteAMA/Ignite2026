@@ -384,13 +384,12 @@ class Component extends DCLogic {
           eventId: Component.EVENTBRITE_EVENT_ID,
           iframeContainerId: 'eventbrite-widget-container',
           // Eventbrite's embed has no true content-fit auto-height (the checkout lives on a
-          // different origin, so we can't measure it) — but the SDK has an undocumented
-          // iframeAutoAdapt option: when iframeContainerHeight exceeds the viewport height, it
-          // scales the widget to this % of viewport height instead of using the flat pixel value.
-          // That keeps it from towering over short viewports while still using the full 1100px
-          // ceiling on tall ones.
-          iframeContainerHeight: 1100,
-          iframeAutoAdapt: 88,
+          // different origin, so we can't measure it) — there is no way to guarantee zero
+          // internal scrolling. iframeAutoAdapt (undocumented, valid range 75-100) scales the
+          // widget to this % of viewport height whenever iframeContainerHeight would exceed it,
+          // so pushed both values as high as reasonable to minimize how often it scrolls.
+          iframeContainerHeight: 1400,
+          iframeAutoAdapt: 96,
           onOrderComplete: () => {
             this.setState({ orderComplete: true });
             window.scrollTo({ top: 0, behavior: 'smooth' });
