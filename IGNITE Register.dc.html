@@ -194,7 +194,7 @@ a:hover{color:#0F1F35}
         </div>
       </div>
       <div style="background:#fff;border:1px solid rgba(15,31,53,.1);border-radius:24px;padding:6px;box-shadow:0 8px 40px rgba(15,31,53,.08);overflow:hidden">
-        <div id="eventbrite-widget-container" style="min-height:1100px"></div>
+        <div id="eventbrite-widget-container" style="min-height:300px"></div>
       </div>
       <sc-if value="{{ widgetUnavailable }}" hint-placeholder-val="{{ false }}">
         <div role="alert" style="margin-top:18px;padding:14px 18px;border-radius:12px;background:rgba(232,121,44,.08);border:1px solid rgba(232,121,44,.3);font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.7)">
@@ -383,11 +383,14 @@ class Component extends DCLogic {
           widgetType: 'checkout',
           eventId: Component.EVENTBRITE_EVENT_ID,
           iframeContainerId: 'eventbrite-widget-container',
-          // Eventbrite's embed has no auto-height/content-fit option — iframeContainerHeight is a
-          // fixed pixel value, and the widget's content lives on eventbrite.com (a different origin),
-          // so the browser can't measure it to auto-size the iframe. Set generously to avoid internal
-          // scrolling for the common case; increase further if a specific step still scrolls.
+          // Eventbrite's embed has no true content-fit auto-height (the checkout lives on a
+          // different origin, so we can't measure it) — but the SDK has an undocumented
+          // iframeAutoAdapt option: when iframeContainerHeight exceeds the viewport height, it
+          // scales the widget to this % of viewport height instead of using the flat pixel value.
+          // That keeps it from towering over short viewports while still using the full 1100px
+          // ceiling on tall ones.
           iframeContainerHeight: 1100,
+          iframeAutoAdapt: 88,
           onOrderComplete: () => {
             this.setState({ orderComplete: true });
             window.scrollTo({ top: 0, behavior: 'smooth' });
