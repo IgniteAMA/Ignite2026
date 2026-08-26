@@ -142,41 +142,32 @@ a:hover{color:#0F1F35}
 
     <!-- LEFT: Ticket options -->
     <div>
-      <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;flex-direction:column;gap:14px">
         <sc-for list="{{ ticketTiers }}" as="tier" hint-placeholder-count="3">
-          <div style="position:relative;display:flex;flex-direction:column;border-radius:20px;padding:26px;background:{{ tier.bg }};border:{{ tier.border }};box-shadow:{{ tier.shadow }};overflow:hidden">
+          <div style="position:relative;display:flex;flex-direction:column;border-radius:18px;padding:20px 22px;background:{{ tier.bg }};border:{{ tier.border }};box-shadow:{{ tier.shadow }};overflow:hidden">
             <sc-if value="{{ tier.featured }}" hint-placeholder-val="{{ false }}">
               <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 300px at 100% 100%, rgba(232,121,44,.35), transparent 65%);pointer-events:none"></div>
-              <div style="position:absolute;top:16px;right:16px;display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:#E8792C;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">Limited Availability</div>
+              <div style="position:absolute;top:14px;right:14px;display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:#E8792C;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">Limited Availability</div>
             </sc-if>
             <div style="position:relative">
-              <div style="font-size:14px;font-weight:800;color:{{ tier.fg }}">{{ tier.name }}</div>
-              <div style="display:flex;align-items:baseline;gap:9px;margin-top:12px">
-                <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:44px;line-height:1;color:{{ tier.priceColor }}">{{ tier.price }}</span>
-                <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:{{ tier.priceColor }}">{{ tier.priceLabel }}</span>
-                <sc-if value="{{ tier.priceSuffix }}" hint-placeholder-val="{{ false }}">
-                  <span style="font-size:12.5px;font-weight:600;color:{{ tier.sub }}">{{ tier.priceSuffix }}</span>
+              <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+                <span style="font-size:14px;font-weight:800;color:{{ tier.fg }}">{{ tier.name }}</span>
+                <sc-if value="{{ tier.priceNote }}" hint-placeholder-val="{{ false }}">
+                  <span style="padding:3px 10px;border-radius:999px;background:rgba(232,121,44,.12);color:#C25E17;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase">{{ tier.priceNote }}</span>
                 </sc-if>
               </div>
-              <sc-if value="{{ tier.showSavings }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;align-items:baseline;gap:8px;margin-top:8px">
-                  <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:18px;line-height:1;color:{{ tier.sub }};text-decoration:line-through;text-decoration-color:#E8792C;text-decoration-thickness:2px">{{ tier.regularPrice }}</span>
-                  <span style="font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:rgba(79,195,232,.16);color:#1580A5">{{ tier.savings }}</span>
-                </div>
-              </sc-if>
-              <sc-if value="{{ tier.priceNote }}" hint-placeholder-val="{{ false }}">
-                <div style="display:inline-block;margin-top:10px;padding:4px 12px;border-radius:999px;background:rgba(232,121,44,.12);color:#C25E17;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase">{{ tier.priceNote }}</div>
-              </sc-if>
-              <p style="margin:12px 0 16px;font-size:13px;line-height:1.6;color:{{ tier.sub }}">{{ tier.desc }}</p>
-              <div style="display:flex;flex-direction:column;gap:9px">
-                <sc-for list="{{ tier.features }}" as="feat" hint-placeholder-count="4">
-                  <div style="display:flex;align-items:flex-start;gap:9px">
-                    <img src="assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
-                    <span style="font-size:12.5px;line-height:1.5;color:{{ tier.featColor }}">{{ feat }}</span>
-                  </div>
-                </sc-for>
+              <div style="display:flex;align-items:baseline;gap:9px;margin-top:8px;flex-wrap:wrap">
+                <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:36px;line-height:1;color:{{ tier.priceColor }}">{{ tier.price }}</span>
+                <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:{{ tier.priceColor }}">{{ tier.priceLabel }}</span>
+                <sc-if value="{{ tier.priceSuffix }}" hint-placeholder-val="{{ false }}">
+                  <span style="font-size:12px;font-weight:600;color:{{ tier.sub }}">{{ tier.priceSuffix }}</span>
+                </sc-if>
+                <sc-if value="{{ tier.showSavings }}" hint-placeholder-val="{{ false }}">
+                  <span style="font-size:13px;font-weight:600;color:{{ tier.sub }};text-decoration:line-through;text-decoration-color:#E8792C;text-decoration-thickness:2px">{{ tier.regularPrice }}</span>
+                  <span style="font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:rgba(79,195,232,.16);color:#1580A5">{{ tier.savings }}</span>
+                </sc-if>
               </div>
-              <button onClick="{{ jumpToWidget }}" class="tier-jump" style="display:none;align-items:center;gap:6px;margin-top:18px;padding:0;border:none;background:none;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;color:{{ tier.priceColor }}">Select this ticket ↓</button>
+              <button onClick="{{ jumpToWidget }}" class="tier-jump" style="display:none;align-items:center;gap:6px;margin-top:14px;padding:0;border:none;background:none;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;color:{{ tier.priceColor }}">Select this ticket ↓</button>
             </div>
           </div>
         </sc-for>
