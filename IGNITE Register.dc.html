@@ -193,10 +193,6 @@ a:hover{color:#0F1F35}
           <a href="https://www.amacincinnati.org/get-involved/join-or-renew-your-membership/" target="_blank" rel="noopener" style="font-size:13px;font-weight:800;color:#E8792C;text-decoration:underline;text-underline-offset:3px" style-hover="color:#4FC3E8">Not a member yet? Join &amp; save →</a>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;padding:16px 20px;border-radius:14px;background:rgba(31,138,91,.08);border:1px solid rgba(31,138,91,.25)">
-        <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(31,138,91,.15);font-size:16px">🔒</span>
-        <span style="font-size:13px;line-height:1.55;color:rgba(15,31,53,.7)"><strong style="color:#0F1F35">Secure checkout via Eventbrite.</strong> Card details are handled entirely by Eventbrite — this page never sees your payment information.</span>
-      </div>
       <div style="background:#fff;border:1px solid rgba(15,31,53,.1);border-radius:24px;padding:6px;box-shadow:0 8px 40px rgba(15,31,53,.08);overflow:hidden">
         <div id="eventbrite-widget-container" style="min-height:1100px"></div>
       </div>
@@ -205,6 +201,10 @@ a:hover{color:#0F1F35}
           The Eventbrite checkout couldn't load here. <a href="https://www.eventbrite.com/e/{{ eventbriteEventId }}" target="_blank" rel="noopener" style="color:#E8792C;font-weight:800;text-decoration:underline">Open it in a new tab instead →</a> Or, for this preview: <button onClick="{{ simulateOrder }}" style="border:none;background:none;padding:0;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;color:#E8792C;cursor:pointer;text-decoration:underline">simulate a completed order →</button>
         </div>
       </sc-if>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:18px;padding:16px 20px;border-radius:14px;background:rgba(31,138,91,.08);border:1px solid rgba(31,138,91,.25)">
+        <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(31,138,91,.15);font-size:16px">🔒</span>
+        <span style="font-size:13px;line-height:1.55;color:rgba(15,31,53,.7)"><strong style="color:#0F1F35">Secure checkout via Eventbrite.</strong> Card details are handled entirely by Eventbrite — this page never sees your payment information.</span>
+      </div>
       <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;flex-wrap:wrap">
         <span style="font-size:11px;font-weight:700;color:rgba(15,31,53,.4)">We accept</span>
         <span style="display:inline-flex;align-items:center;gap:6px">
