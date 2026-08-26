@@ -381,19 +381,22 @@ class Component extends DCLogic {
         return;
       }
       try {
+        // Eventbrite's embed has no true content-fit auto-height (the checkout lives on a
+        // different origin, so we can't measure it) — iframeAutoAdapt (undocumented, valid
+        // range 75-100) scales the widget to this % of the VIEWPORT height whenever
+        // iframeContainerHeight would exceed it. Mobile viewports are naturally shorter, so the
+        // same flat value that looked fine on desktop was scaling down even further on mobile,
+        // making it too short. Branch by screen width so mobile can claim most of the viewport
+        // (it's the only thing on screen when scrolled into view) while desktop stays more
+        // conservative to avoid empty space below shorter content. Adjust these two numbers if
+        // more ticket options later make either breakpoint too short/tall again.
+        const isMobile = window.innerWidth < 760;
         window.EBWidgets.createWidget({
           widgetType: 'checkout',
           eventId: Component.EVENTBRITE_EVENT_ID,
           iframeContainerId: 'eventbrite-widget-container',
-          // Eventbrite's embed has no true content-fit auto-height (the checkout lives on a
-          // different origin, so we can't measure it), so this is a tradeoff, not a fix: taller
-          // reduces internal scrolling on longer steps (payment) but leaves visible empty space
-          // on shorter ones (initial ticket selection) since Eventbrite's own layout doesn't
-          // fill unused height. Pulled back down after 1400/96 left too much empty space in the
-          // common case. iframeAutoAdapt (undocumented, valid range 75-100) scales the widget to
-          // this % of viewport height whenever iframeContainerHeight would exceed it.
-          iframeContainerHeight: 850,
-          iframeAutoAdapt: 80,
+          iframeContainerHeight: isMobile ? 2000 : 850,
+          iframeAutoAdapt: isMobile ? 98 : 80,
           onOrderComplete: () => {
             this.setState({ orderComplete: true });
             window.scrollTo({ top: 0, behavior: 'smooth' });
