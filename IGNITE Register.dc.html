@@ -388,8 +388,8 @@ class Component extends DCLogic {
           widgetType: 'checkout',
           eventId: Component.EVENTBRITE_EVENT_ID,
           iframeContainerId: 'eventbrite-widget-container',
-          iframeContainerHeight: isMobile ? 2000 : 1600,
-          iframeAutoAdapt: 100,
+          iframeContainerHeight: isMobile ? 2000 : 1050,
+          iframeAutoAdapt: isMobile ? 100 : 90,
           onOrderComplete: () => {
             this.setState({ orderComplete: true });
             window.scrollTo({ top: 0, behavior: 'smooth' });
