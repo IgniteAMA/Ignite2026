@@ -129,17 +129,18 @@ a:hover{color:#0F1F35}
 <!-- ═══════ REGISTER: TICKETS + EVENTBRITE EMBED ═══════ -->
 <sc-if value="{{ showEmbed }}" hint-placeholder-val="{{ true }}">
 <div data-screen-label="Eventbrite Checkout" style="background:#FAFAF8;padding:56px 0 100px">
-  <div class="reg-grid" style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px">
+      <span style="font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:rgba(15,31,53,.55)">See pricing for</span>
+      <div role="radiogroup" aria-label="Attendee type" style="display:inline-flex;padding:4px;border-radius:999px;background:rgba(15,31,53,.06);border:1px solid rgba(15,31,53,.1)">
+        <button role="radio" aria-checked="{{ isMember }}" onClick="{{ setMember }}" style="padding:9px 20px;border:none;border-radius:999px;background:{{ memberBtnBg }};color:{{ memberBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:{{ memberBtnShadow }}">AMA Member</button>
+        <button role="radio" aria-checked="{{ isGuest }}" onClick="{{ setGuest }}" style="padding:9px 20px;border:none;border-radius:999px;background:{{ guestBtnBg }};color:{{ guestBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:{{ guestBtnShadow }}">Non-Member</button>
+      </div>
+    </div>
+    <div class="reg-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start">
 
     <!-- LEFT: Ticket options -->
     <div>
-      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px">
-        <span style="font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:rgba(15,31,53,.55)">See pricing for</span>
-        <div role="radiogroup" aria-label="Attendee type" style="display:inline-flex;padding:4px;border-radius:999px;background:rgba(15,31,53,.06);border:1px solid rgba(15,31,53,.1)">
-          <button role="radio" aria-checked="{{ isMember }}" onClick="{{ setMember }}" style="padding:9px 20px;border:none;border-radius:999px;background:{{ memberBtnBg }};color:{{ memberBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:{{ memberBtnShadow }}">AMA Member</button>
-          <button role="radio" aria-checked="{{ isGuest }}" onClick="{{ setGuest }}" style="padding:9px 20px;border:none;border-radius:999px;background:{{ guestBtnBg }};color:{{ guestBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:{{ guestBtnShadow }}">Non-Member</button>
-        </div>
-      </div>
       <div style="display:flex;flex-direction:column;gap:20px">
         <sc-for list="{{ ticketTiers }}" as="tier" hint-placeholder-count="3">
           <div style="position:relative;display:flex;flex-direction:column;border-radius:20px;padding:26px;background:{{ tier.bg }};border:{{ tier.border }};box-shadow:{{ tier.shadow }};overflow:hidden">
@@ -224,6 +225,7 @@ a:hover{color:#0F1F35}
       </div>
     </div>
 
+    </div>
   </div>
 </div>
 </sc-if>
@@ -384,12 +386,14 @@ class Component extends DCLogic {
           eventId: Component.EVENTBRITE_EVENT_ID,
           iframeContainerId: 'eventbrite-widget-container',
           // Eventbrite's embed has no true content-fit auto-height (the checkout lives on a
-          // different origin, so we can't measure it) — there is no way to guarantee zero
-          // internal scrolling. iframeAutoAdapt (undocumented, valid range 75-100) scales the
-          // widget to this % of viewport height whenever iframeContainerHeight would exceed it,
-          // so pushed both values as high as reasonable to minimize how often it scrolls.
-          iframeContainerHeight: 1400,
-          iframeAutoAdapt: 96,
+          // different origin, so we can't measure it), so this is a tradeoff, not a fix: taller
+          // reduces internal scrolling on longer steps (payment) but leaves visible empty space
+          // on shorter ones (initial ticket selection) since Eventbrite's own layout doesn't
+          // fill unused height. Pulled back down after 1400/96 left too much empty space in the
+          // common case. iframeAutoAdapt (undocumented, valid range 75-100) scales the widget to
+          // this % of viewport height whenever iframeContainerHeight would exceed it.
+          iframeContainerHeight: 850,
+          iframeAutoAdapt: 80,
           onOrderComplete: () => {
             this.setState({ orderComplete: true });
             window.scrollTo({ top: 0, behavior: 'smooth' });
