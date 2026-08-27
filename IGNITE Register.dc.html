@@ -126,7 +126,8 @@ a:hover{color:#0F1F35}
 <!-- ═══════ REGISTER: LEAD-IN + EVENTBRITE EMBED ═══════ -->
 <sc-if value="{{ showEmbed }}" hint-placeholder-val="{{ true }}">
 <div data-screen-label="Eventbrite Checkout" style="background:#FAFAF8;padding:56px 0 100px">
-  <div style="max-width:720px;padding:0 clamp(20px,4vw,40px)">
+  <div style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+  <div style="max-width:720px">
 
     <!-- Lead-in -->
     <div style="margin-bottom:32px">
@@ -198,13 +199,15 @@ a:hover{color:#0F1F35}
     </div>
 
   </div>
+  </div>
 </div>
 </sc-if>
 
 <!-- ═══════ CONFIRMATION ═══════ -->
 <sc-if value="{{ showConfirmation }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Confirmation" style="background:#FAFAF8;padding:56px 0 100px">
-  <div style="max-width:720px;padding:0 clamp(20px,4vw,40px)">
+  <div style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+  <div style="max-width:720px">
     <div class="confirm-hero" style="position:relative;overflow:hidden;background:#0F1F35;border-radius:24px;padding:56px 52px;box-shadow:0 20px 60px rgba(15,31,53,.3)">
       <div style="position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 50% 130%, rgba(232,121,44,.45), transparent 65%)"></div>
       <div style="position:relative">
@@ -257,6 +260,7 @@ a:hover{color:#0F1F35}
         <a href="{{ shareLinkedIn }}" target="_blank" rel="noopener" style="padding:12px 22px;border-radius:999px;background:#0F1F35;color:#fff;font-size:13px;font-weight:800" style-hover="background:#E8792C;color:#fff">Share on LinkedIn</a>
       </div>
     </div>
+  </div>
   </div>
 </div>
 </sc-if>
