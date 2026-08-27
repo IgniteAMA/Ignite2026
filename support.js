@@ -1619,7 +1619,21 @@
   }
 
   // src/runtime.ts
-  var COMPONENT_DIR = "";
+  // Derived from support.js's own resolved <script src>, not hardcoded — this way it's correct
+  // no matter how deep the current page is nested (root vs. /register/, /speakers/, etc.) and no
+  // matter what the site's base URL is (GitHub Pages project subpath today, a custom domain root
+  // later). `.src` on a script element is always the browser's fully-resolved absolute URL,
+  // regardless of whether the HTML wrote it as relative, "../"-relative, or absolute.
+  var COMPONENT_DIR = (function() {
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      var src = scripts[i].src;
+      if (src && /(^|\/)support\.js(\?.*)?$/.test(src)) {
+        return src.replace(/support\.js(\?.*)?$/, "");
+      }
+    }
+    return "";
+  })();
   function createRuntime(doc = document) {
     const registry = createRegistry();
     const pseudoClass = createPseudoSheet(doc);
@@ -1643,7 +1657,7 @@
       const r = registry.get(name);
       if (r.fetched) return;
       r.fetched = true;
-      const url = COMPONENT_DIR + "/" + encodeURIComponent(name) + ".dc.html";
+      const url = COMPONENT_DIR + encodeURIComponent(name) + ".dc.html";
       const res = window.__resources;
       const pre = res ? res[url] : void 0;
       const target = typeof pre === "string" && pre ? pre : url;

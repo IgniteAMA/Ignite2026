@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="/assets/Emblem_Orange.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+<link rel="icon" type="image/svg+xml" href="../assets/Emblem_Orange.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/favicon-180.png">
 <title>Register | IGNITE 2026</title>
 <meta name="description" content="Get your ticket to IGNITE 2026 — November 10, 2026 at the American Sign Museum.">
 <meta property="og:type" content="website">
@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Register | IGNITE 2026">
 <meta name="twitter:description" content="Get your ticket to IGNITE 2026 — November 10, 2026 at the American Sign Museum.">
 <meta name="twitter:image" content="https://igniteama.github.io/Ignite2026/assets/social-share.jpg">
-<script src="/support.js"></script>
+<script src="../support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -30,13 +30,13 @@
 <!-- Eventbrite Embedded Checkout Widget library. All payment/card processing happens inside
      Eventbrite's PCI-compliant iframe — no card data ever touches this page. -->
 <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
-<link rel="preload" href="/assets/GothamRounded-Book.otf" as="font" type="font/otf" crossorigin>
-<link rel="preload" href="/assets/GothamRounded-Medium.otf" as="font" type="font/otf" crossorigin>
-<link rel="preload" href="/assets/GothamRounded-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../assets/GothamRounded-Book.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../assets/GothamRounded-Medium.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../assets/GothamRounded-Bold.otf" as="font" type="font/otf" crossorigin>
 <style>
-@font-face{font-family:'Gotham Rounded';src:url('/assets/GothamRounded-Book.otf') format('opentype');font-weight:400 500;font-style:normal;font-display:block}
-@font-face{font-family:'Gotham Rounded';src:url('/assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
-@font-face{font-family:'Gotham Rounded';src:url('/assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('../assets/GothamRounded-Book.otf') format('opentype');font-weight:400 500;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('../assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('../assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
 @keyframes neonBuzz{0%,94%,100%{opacity:1}96%,97%{opacity:.82}}
 html{scroll-behavior:smooth}
 body{margin:0;background:#FAFAF8;font-family:'Gotham Rounded','Nunito',system-ui,sans-serif}
@@ -71,22 +71,22 @@ a:hover{color:#0F1F35}
     <span style="opacity:.6">·</span>
     <span>American Sign Museum</span>
     <span style="opacity:.6">·</span>
-    <a href="/register" style="color:#fff;text-decoration:underline;text-underline-offset:3px">Register</a>
+    <a href="../register/" style="color:#fff;text-decoration:underline;text-underline-offset:3px">Register</a>
   </div>
   <div class="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(10,21,32,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)">
-    <a href="/" style="display:flex;align-items:center;gap:0;height:54px;overflow:hidden">
-      <img src="/assets/IGNITE_Emblem.png" alt="IGNITE" style="flex:none;height:44px;width:auto">
+    <a href="../" style="display:flex;align-items:center;gap:0;height:54px;overflow:hidden">
+      <img src="../assets/IGNITE_Emblem.png" alt="IGNITE" style="flex:none;height:44px;width:auto">
       <span style="display:block;overflow:hidden;max-width:{{ wordmarkW }};opacity:{{ wordmarkOp }};transition:max-width .55s cubic-bezier(.22,.9,.24,1),opacity .4s ease,margin-left .55s cubic-bezier(.22,.9,.24,1);margin-left:{{ wordmarkGap }}">
-        <img src="/assets/IGNITE_Wordmark.png" alt="AMA Cincinnati Presents IGNITE" style="height:40px;width:auto;display:block;transform:translateX({{ wordmarkX }});transition:transform .55s cubic-bezier(.22,.9,.24,1)">
+        <img src="../assets/IGNITE_Wordmark.png" alt="AMA Cincinnati Presents IGNITE" style="height:40px;width:auto;display:block;transform:translateX({{ wordmarkX }});transition:transform .55s cubic-bezier(.22,.9,.24,1)">
       </span>
     </a>
     <nav class="nav-links" style="display:flex;flex:1;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-left:48px;font-size:13px;font-weight:700">
-      <a href="/agenda" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Agenda</a>
-      <a href="/speakers" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Speakers</a>
-      <a href="/sponsors" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Sponsors</a>
-      <a href="/venue" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Venue</a>
-      <a href="/faq" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">FAQ</a>
-      <a href="/register" style="margin-left:auto;padding:10px 20px;border-radius:999px;background:#E8792C;color:#fff" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Register</a>
+      <a href="../agenda/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Agenda</a>
+      <a href="../speakers/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Speakers</a>
+      <a href="../sponsors/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Sponsors</a>
+      <a href="../venue/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Venue</a>
+      <a href="../faq/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">FAQ</a>
+      <a href="../register/" style="margin-left:auto;padding:10px 20px;border-radius:999px;background:#E8792C;color:#fff" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Register</a>
     </nav>
     <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}" style="align-items:center;justify-content:center;width:46px;height:46px;border:2px solid rgba(255,255,255,.3);border-radius:12px;background:rgba(255,255,255,.06);cursor:pointer;padding:0">
       <span style="position:relative;display:block;width:20px;height:14px">
@@ -99,12 +99,12 @@ a:hover{color:#0F1F35}
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
     <div style="background:rgba(10,21,32,.98);backdrop-filter:blur(12px);box-shadow:0 12px 30px rgba(0,0,0,.4);padding:8px 20px 22px;animation:menuDrop .28s ease">
       <div style="display:flex;flex-direction:column;gap:2px;font-size:16px;font-weight:700">
-        <a href="/agenda" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Agenda</a>
-        <a href="/speakers" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Speakers</a>
-        <a href="/sponsors" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Sponsors</a>
-        <a href="/venue" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Venue</a>
-        <a href="/faq" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">FAQ</a>
-        <a href="/register" onClick="{{ closeMenu }}" style="margin-top:14px;text-align:center;padding:15px 0;border-radius:999px;background:#E8792C;color:#fff;font-weight:800">Register Now</a>
+        <a href="../agenda/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Agenda</a>
+        <a href="../speakers/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Speakers</a>
+        <a href="../sponsors/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Sponsors</a>
+        <a href="../venue/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Venue</a>
+        <a href="../faq/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">FAQ</a>
+        <a href="../register/" onClick="{{ closeMenu }}" style="margin-top:14px;text-align:center;padding:15px 0;border-radius:999px;background:#E8792C;color:#fff;font-weight:800">Register Now</a>
       </div>
     </div>
   </sc-if>
@@ -116,7 +116,7 @@ a:hover{color:#0F1F35}
   {{ embers }}
   <div style="position:relative;max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
-      <img src="/assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
+      <img src="../assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
       <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Registration</span>
     </div>
     <h1 style="margin:0;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(42px,6vw,68px);line-height:.92;font-weight:400;color:#fff">Claim Your <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Seat</span></h1>
@@ -133,25 +133,25 @@ a:hover{color:#0F1F35}
     <!-- Lead-in -->
     <div style="margin-bottom:32px">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-        <img src="/assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+        <img src="../assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
         <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">One Day, Fully Loaded</span>
       </div>
       <p style="margin:0;font-size:15px;line-height:1.7;color:rgba(15,31,53,.65)">Full-day access to keynotes, breakout sessions, and networking. Choose your ticket and complete secure checkout with Eventbrite below.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:20px">
         <div style="display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid rgba(15,31,53,.08)">
-          <img src="/assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
+          <img src="../assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
           <span style="font-size:12.5px;line-height:1.45;color:rgba(15,31,53,.75)">Full-day conference access</span>
         </div>
         <div style="display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid rgba(15,31,53,.08)">
-          <img src="/assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
+          <img src="../assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
           <span style="font-size:12.5px;line-height:1.45;color:rgba(15,31,53,.75)">Keynotes &amp; breakout sessions</span>
         </div>
         <div style="display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid rgba(15,31,53,.08)">
-          <img src="/assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
+          <img src="../assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
           <span style="font-size:12.5px;line-height:1.45;color:rgba(15,31,53,.75)">Networking &amp; Happy Hour</span>
         </div>
         <div style="display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid rgba(15,31,53,.08)">
-          <img src="/assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
+          <img src="../assets/IGNITE_Flame.png" alt="" style="height:12px;width:auto;margin-top:3px;flex:none">
           <span style="font-size:12.5px;line-height:1.45;color:rgba(15,31,53,.75)">AMA member discount available</span>
         </div>
       </div>
@@ -159,7 +159,7 @@ a:hover{color:#0F1F35}
 
     <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;padding:22px 24px;border-radius:18px;background:linear-gradient(150deg,#0F1F35,#1a3350);border:1px solid rgba(232,121,44,.35);box-shadow:0 12px 40px rgba(15,31,53,.18)">
       <div style="display:flex;align-items:center;gap:10px">
-        <img src="/assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+        <img src="../assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
         <span style="font-size:14.5px;font-weight:800;color:#fff">AMA Cincinnati members save on registration</span>
       </div>
       <p style="margin:0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.65)">Enter your member access code inside the Eventbrite checkout below to unlock the discounted rate.</p>
@@ -184,9 +184,9 @@ a:hover{color:#0F1F35}
     <div style="display:flex;align-items:center;gap:10px;margin-top:22px;flex-wrap:wrap">
       <span style="font-size:11px;font-weight:700;color:rgba(15,31,53,.4)">We accept</span>
       <span style="display:inline-flex;align-items:center;gap:6px">
-        <img src="/assets/payment/visa.png" alt="Visa" width="31" height="22" style="display:block;border-radius:4px">
+        <img src="../assets/payment/visa.png" alt="Visa" width="31" height="22" style="display:block;border-radius:4px">
         <svg width="34" height="22" viewBox="0 0 34 22" role="img" aria-label="Mastercard"><rect width="34" height="22" rx="4" fill="#fff" stroke="#E5E5E5"/><circle cx="14" cy="11" r="6.5" fill="#EB001B"/><circle cx="20" cy="11" r="6.5" fill="#F79E1B"/><path d="M17 5.8a6.5 6.5 0 0 1 0 10.4 6.5 6.5 0 0 1 0-10.4z" fill="#FF5F00"/></svg>
-        <img src="/assets/payment/amex.png" alt="American Express" width="35" height="22" style="display:block;border-radius:4px">
+        <img src="../assets/payment/amex.png" alt="American Express" width="35" height="22" style="display:block;border-radius:4px">
         <svg width="34" height="22" viewBox="0 0 34 22" role="img" aria-label="Discover"><defs><clipPath id="discover-clip"><rect width="34" height="22" rx="4"/></clipPath></defs><rect width="34" height="22" rx="4" fill="#fff" stroke="#E5E5E5"/><g clip-path="url(#discover-clip)"><circle cx="29" cy="19" r="8" fill="#F68121"/></g><text x="15.5" y="13.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="4.8" letter-spacing="-0.1" fill="#1A1A1A">DISCOVER</text></svg>
       </span>
     </div>
@@ -216,7 +216,7 @@ a:hover{color:#0F1F35}
     <div class="confirm-hero" style="position:relative;overflow:hidden;background:#0F1F35;border-radius:24px;padding:56px 52px;box-shadow:0 20px 60px rgba(15,31,53,.3)">
       <div style="position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 50% 130%, rgba(232,121,44,.45), transparent 65%)"></div>
       <div style="position:relative">
-        <img src="/assets/IGNITE_Flame.png" alt="" style="height:52px;width:auto;margin-bottom:18px">
+        <img src="../assets/IGNITE_Flame.png" alt="" style="height:52px;width:auto;margin-bottom:18px">
         <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(38px,10vw,58px);line-height:.95;color:#fff">You're <span style="color:#E8792C">In!</span></div>
         <p style="margin:16px 0 0;max-width:420px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.7)">Your order is confirmed. Check your email for your tickets and receipt from Eventbrite.</p>
       </div>
@@ -246,14 +246,14 @@ a:hover{color:#0F1F35}
     <div style="background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;padding:32px 36px;margin-top:22px;box-shadow:0 4px 24px rgba(15,31,53,.05)">
       <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#E8792C;margin-bottom:16px">What Happens Next</div>
       <div style="display:flex;flex-direction:column;gap:14px;font-size:14px;line-height:1.65;color:rgba(15,31,53,.7)">
-        <div style="display:flex;gap:12px"><img src="/assets/IGNITE_Flame.png" alt="" style="height:15px;width:auto;margin-top:3px;flex:none"><span><strong style="color:#0F1F35">Check your inbox</strong> — tickets and receipt arrive within a few minutes (check spam just in case).</span></div>
-        <div style="display:flex;gap:12px"><img src="/assets/IGNITE_Flame.png" alt="" style="height:15px;width:auto;margin-top:3px;flex:none"><span><strong style="color:#0F1F35">Complete the 60-second attendee survey</strong> — dietary needs, accessibility, and session preferences (link in your email).</span></div>
-        <div style="display:flex;gap:12px"><img src="/assets/IGNITE_Flame.png" alt="" style="height:15px;width:auto;margin-top:3px;flex:none"><span><strong style="color:#0F1F35">See you November 10</strong> — doors open 8:30 AM at American Sign Museum. Free parking on site.</span></div>
+        <div style="display:flex;gap:12px"><img src="../assets/IGNITE_Flame.png" alt="" style="height:15px;width:auto;margin-top:3px;flex:none"><span><strong style="color:#0F1F35">Check your inbox</strong> — tickets and receipt arrive within a few minutes (check spam just in case).</span></div>
+        <div style="display:flex;gap:12px"><img src="../assets/IGNITE_Flame.png" alt="" style="height:15px;width:auto;margin-top:3px;flex:none"><span><strong style="color:#0F1F35">Complete the 60-second attendee survey</strong> — dietary needs, accessibility, and session preferences (link in your email).</span></div>
+        <div style="display:flex;gap:12px"><img src="../assets/IGNITE_Flame.png" alt="" style="height:15px;width:auto;margin-top:3px;flex:none"><span><strong style="color:#0F1F35">See you November 10</strong> — doors open 8:30 AM at American Sign Museum. Free parking on site.</span></div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px">
         <a href="{{ calendarUrl }}" target="_blank" rel="noopener" style="padding:13px 26px;border-radius:999px;background:#0F1F35;color:#fff;font-size:13px;font-weight:800" style-hover="background:#E8792C;color:#fff">＋ Google Calendar</a>
         <a href="{{ icsUrl }}" download="IGNITE-2026.ics" style="padding:13px 26px;border-radius:999px;border:2px solid rgba(15,31,53,.2);color:#0F1F35;font-size:13px;font-weight:800" style-hover="border-color:#E8792C;color:#E8792C">＋ Apple / Outlook (.ics)</a>
-        <a href="/agenda" style="padding:13px 26px;border-radius:999px;border:2px solid rgba(15,31,53,.2);color:#0F1F35;font-size:13px;font-weight:800" style-hover="border-color:#E8792C;color:#E8792C">View the Agenda</a>
+        <a href="../agenda/" style="padding:13px 26px;border-radius:999px;border:2px solid rgba(15,31,53,.2);color:#0F1F35;font-size:13px;font-weight:800" style-hover="border-color:#E8792C;color:#E8792C">View the Agenda</a>
       </div>
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:rgba(232,121,44,.08);border:1px solid rgba(232,121,44,.3);border-radius:20px;padding:24px 32px;margin-top:22px">
@@ -276,10 +276,10 @@ a:hover{color:#0F1F35}
   <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px;margin-bottom:56px">
       <div>
-        <img src="/assets/IGNITE_Logo_primary.png" alt="AMA Cincinnati Presents IGNITE" style="height:64px;width:auto;margin-bottom:18px">
+        <img src="../assets/IGNITE_Logo_primary.png" alt="AMA Cincinnati Presents IGNITE" style="height:64px;width:auto;margin-bottom:18px">
         <p style="margin:0 0 20px;max-width:300px;font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.5)">IGNITE is the premier marketing conference from AMA Cincinnati — a full day of bold ideas, world-class speakers, and community.</p>
         <div style="display:flex;align-items:center;gap:12px">
-          <img src="/assets/IGNITE_Flame.png" alt="" style="height:28px;width:auto">
+          <img src="../assets/IGNITE_Flame.png" alt="" style="height:28px;width:auto">
           <div>
             <div style="font-size:14px;font-weight:800;color:#fff">Tuesday, November 10, 2026 · 8:30a–5:30p</div>
             <div style="margin-top:2px;font-size:13px;font-weight:700;color:#E8792C">American Sign Museum · Cincinnati</div>
@@ -289,16 +289,16 @@ a:hover{color:#0F1F35}
       <div>
         <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#4FC3E8;margin-bottom:18px">Event</div>
         <div style="display:flex;flex-direction:column;gap:11px">
-          <a href="/#why" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Why Attend</a>
-          <a href="/agenda" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Agenda</a>
-          <a href="/speakers" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Speakers</a>
-          <a href="/register" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Tickets</a>
+          <a href="../#why" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Why Attend</a>
+          <a href="../agenda/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Agenda</a>
+          <a href="../speakers/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Speakers</a>
+          <a href="../register/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Tickets</a>
         </div>
       </div>
       <div>
         <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#4FC3E8;margin-bottom:18px">Get Involved</div>
         <div style="display:flex;flex-direction:column;gap:11px">
-          <a href="/sponsors" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Become a Sponsor</a>
+          <a href="../sponsors/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Become a Sponsor</a>
           <dc-import name="SpeakerNominate" link-label="Call for Speakers" link-color="rgba(255,255,255,.55)" link-size="13.5px" hint-size="140px,20px"></dc-import>
           <dc-import name="VolunteerForm" link-label="Volunteer" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="90px,20px"></dc-import>
           <a href="https://www.amacincinnati.org" target="_blank" rel="noopener" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Join AMA Cincinnati</a>
@@ -310,14 +310,14 @@ a:hover{color:#0F1F35}
           <a href="https://www.amacincinnati.org" target="_blank" rel="noopener" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">AMA Cincinnati</a>
           <dc-import name="ContactForm" kind="contact" link-label="Contact Us" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="90px,20px"></dc-import>
           <dc-import name="ContactForm" kind="press" link-label="Press Inquiries" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="120px,20px"></dc-import>
-          <a href="/faq" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">FAQ</a>
+          <a href="../faq/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">FAQ</a>
         </div>
       </div>
     </div>
     <div style="height:1px;background:rgba(255,255,255,.08);margin-bottom:24px"></div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
       <span style="font-size:12px;color:rgba(255,255,255,.3)">© 2026 AMA Cincinnati. All rights reserved.</span>
-      <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;color:rgba(255,255,255,.3)">Presented by <img src="/assets/AMA_Cincinnati_white.webp" alt="AMA Cincinnati" style="height:36px;width:auto;opacity:.65"></span>
+      <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;color:rgba(255,255,255,.3)">Presented by <img src="../assets/AMA_Cincinnati_white.webp" alt="AMA Cincinnati" style="height:36px;width:auto;opacity:.65"></span>
     </div>
   </div>
 </div>
