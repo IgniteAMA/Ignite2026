@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="/support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow+Semi+Condensed:wght@600;700;800&amp;family=Nunito:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Book.otf') format('opentype');font-weight:400 500;font-style:normal;font-display:block}
-@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
-@font-face{font-family:'Gotham Rounded';src:url('assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('/assets/GothamRounded-Book.otf') format('opentype');font-weight:400 500;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('/assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
+@font-face{font-family:'Gotham Rounded';src:url('/assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
 
 body{margin:0;font-family:'Gotham Rounded','Nunito',system-ui,sans-serif}
 a{color:#E8792C;text-decoration:none}
@@ -31,7 +31,7 @@ a:hover{color:#0F1F35}
         <button onClick="{{ close }}" aria-label="Close" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border:none;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:16px;cursor:pointer;font-family:'Gotham Rounded','Nunito',sans-serif" style-hover="background:#E8792C">✕</button>
         <div style="position:relative">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-            <img src="assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
+            <img src="/assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
             <span style="font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">AMA Members</span>
           </div>
           <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:38px;line-height:.95;color:#fff">Get Your <span style="color:#E8792C">Member Code</span></div>
@@ -56,7 +56,7 @@ a:hover{color:#0F1F35}
       <div style="position:relative;overflow:hidden;background:#0F1F35;padding:56px 40px;text-align:center;border-radius:22px">
         <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 300px at 50% 130%, rgba(232,121,44,.45), transparent 65%)"></div>
         <div style="position:relative">
-          <img src="assets/IGNITE_Flame.png" alt="" style="height:44px;width:auto;margin-bottom:14px">
+          <img src="/assets/IGNITE_Flame.png" alt="" style="height:44px;width:auto;margin-bottom:14px">
           <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:44px;line-height:.95;color:#fff">Request <span style="color:#E8792C">Sent!</span></div>
           <p style="margin:14px auto 0;max-width:340px;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.7)">Thanks for sending your request — you should receive your code within 24 hours.</p>
           <button onClick="{{ close }}" style="margin-top:24px;padding:13px 30px;border:none;border-radius:999px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:13.5px;font-weight:800;cursor:pointer" style-hover="background:#4FC3E8;color:#0F1F35">Done</button>
