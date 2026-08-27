@@ -57,7 +57,7 @@ a:hover{color:#0F1F35}
 .co-side{position:static!important}
 .co-grid{grid-template-columns:1fr!important}
 .modal-grid{grid-template-columns:1fr!important}
-.modal-photo{height:320px!important}
+.modal-photo{min-height:320px!important;border-top-right-radius:24px!important}
 .feat-card{grid-template-columns:1fr!important}
 .feat-photo{min-height:300px!important}
 .slot-grid{grid-template-columns:1fr!important}
@@ -200,7 +200,7 @@ a:hover{color:#0F1F35}
     <div role="dialog" aria-modal="true" aria-label="{{ selName }}" onClick="{{ stopClick }}" style="position:relative;width:760px;max-width:100%;max-height:85vh;overflow-y:auto;overscroll-behavior:contain;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.5)">
       <button onClick="{{ closeModal }}" aria-label="Close" style="position:absolute;top:18px;right:18px;z-index:2;width:38px;height:38px;border-radius:50%;border:none;background:rgba(15,31,53,.08);color:#0F1F35;font-size:17px;font-weight:700;cursor:pointer" style-hover="background:#E8792C;color:#fff">✕</button>
       <div class="modal-grid" style="display:grid;grid-template-columns:280px 1fr">
-        <div class="modal-photo" style="position:relative;align-self:start;height:420px;overflow:hidden">
+        <div class="modal-photo" style="position:relative;min-height:100%;overflow:hidden;border-top-left-radius:24px">
           <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,#0F1F35,#1a3350)"><span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:800;font-size:72px;color:rgba(255,255,255,.22)">{{ selInitials }}</span></div>
           <sc-if value="{{ selPhoto }}" hint-placeholder-val="{{ false }}">
             <span role="img" aria-label="{{ selName }}" style="position:absolute;inset:0;background-image:{{ selPhotoCss }};background-size:cover;background-position:{{ selPos }}"></span>
