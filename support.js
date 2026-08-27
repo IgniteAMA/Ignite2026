@@ -1676,6 +1676,12 @@
         return res2.text();
       })).then((t) => {
         if (!t) return;
+        // Sibling components (ContactForm, VolunteerForm, etc.) are fetched as raw HTML and
+        // injected into whatever page imports them — any relative asset path they contain
+        // resolves against the HOST page's URL, not this component's own location. That's fine
+        // on the site root but breaks on every nested page (e.g. /register/). Rewrite to the
+        // same resolved base COMPONENT_DIR already uses, so it's correct at any depth.
+        t = t.replace(/((?:src|href)=")assets\//g, "$1" + COMPONENT_DIR + "assets/");
         const parsed = parseDcText(t);
         if (!parsed) {
           console.error(
