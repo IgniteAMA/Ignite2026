@@ -6,19 +6,19 @@
 <link rel="icon" type="image/svg+xml" href="../assets/Emblem_Orange.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/favicon-180.png">
-<title>FAQ | IGNITE 2026</title>
-<meta name="description" content="Answers to common questions about IGNITE 2026, AMA Cincinnati's marketing conference.">
+<title>Past Conferences | IGNITE 2026</title>
+<meta name="description" content="Browse past AMA Cincinnati IGNITE conferences — themes, speakers, agendas, and sponsors from 2018 through 2025.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="IGNITE 2026">
-<meta property="og:title" content="FAQ | IGNITE 2026">
-<meta property="og:description" content="Answers to common questions about IGNITE 2026, AMA Cincinnati's marketing conference.">
-<meta property="og:url" content="https://igniteama.github.io/Ignite2026/faq">
+<meta property="og:title" content="Past Conferences | IGNITE 2026">
+<meta property="og:description" content="Browse past AMA Cincinnati IGNITE conferences — themes, speakers, agendas, and sponsors from 2018 through 2025.">
+<meta property="og:url" content="https://igniteama.github.io/Ignite2026/archive">
 <meta property="og:image" content="https://igniteama.github.io/Ignite2026/assets/social-share.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FAQ | IGNITE 2026">
-<meta name="twitter:description" content="Answers to common questions about IGNITE 2026, AMA Cincinnati's marketing conference.">
+<meta name="twitter:title" content="Past Conferences | IGNITE 2026">
+<meta name="twitter:description" content="Browse past AMA Cincinnati IGNITE conferences — themes, speakers, agendas, and sponsors from 2018 through 2025.">
 <meta name="twitter:image" content="https://igniteama.github.io/Ignite2026/assets/social-share.jpg">
 <script src="../support.js"></script>
 </head>
@@ -35,8 +35,6 @@
 @font-face{font-family:'Gotham Rounded';src:url('../assets/GothamRounded-Medium.otf') format('opentype');font-weight:600 700;font-style:normal;font-display:block}
 @font-face{font-family:'Gotham Rounded';src:url('../assets/GothamRounded-Bold.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:block}
 @keyframes neonBuzz{0%,94%,100%{opacity:1}96%,97%{opacity:.82}}
-@keyframes neonOrange{0%,90%,100%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.6),0 0 26px rgba(232,121,44,.32)}91%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.55),0 0 26px rgba(79,195,232,.3)}92%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.6)}93.5%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 3px #4FC3E8,0 0 9px rgba(79,195,232,.5)}94.5%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.6)}}
-@keyframes neonBlue{0%,90%,100%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.6),0 0 26px rgba(79,195,232,.32)}91%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 4px #E8792C,0 0 12px rgba(232,121,44,.55),0 0 26px rgba(232,121,44,.3)}92%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.6)}93.5%{-webkit-text-stroke-color:#E8792C;text-shadow:0 0 3px #E8792C,0 0 9px rgba(232,121,44,.5)}94.5%{-webkit-text-stroke-color:#4FC3E8;text-shadow:0 0 4px #4FC3E8,0 0 12px rgba(79,195,232,.6)}}
 html{scroll-behavior:smooth}
 body{margin:0;background:#FAFAF8;font-family:'Gotham Rounded','Nunito',system-ui,sans-serif}
 a{color:#E8792C;text-decoration:none}
@@ -53,12 +51,8 @@ a:hover{color:#0F1F35}
 }
 @keyframes menuDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes navBackdropFade{from{opacity:0}to{opacity:1}}
-@media (max-width:920px){
-.co-side{position:static!important}
-.co-grid{grid-template-columns:1fr!important}
-.modal-grid{grid-template-columns:1fr!important}
-.slot-grid{grid-template-columns:1fr!important}
-}
+.year-card{transition:all .3s}
+.year-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(15,31,53,.16)!important;border-color:rgba(232,121,44,.4)!important}
 </style>
 </helmet>
 
@@ -67,14 +61,14 @@ a:hover{color:#0F1F35}
   <div onClick="{{ closeMenu }}" aria-hidden="true" style="position:fixed;inset:0;z-index:90;background:rgba(10,21,32,.55);backdrop-filter:blur(6px);animation:navBackdropFade .3s ease"></div>
 </sc-if>
 <div style="position:fixed;top:0;left:0;right:0;z-index:100" data-screen-label="Global Nav">
-  <div class="nav-eyebrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;padding:7px 40px;background:#0F1F35;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff">
+  <div class="nav-eyebrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;padding:7px clamp(20px,4vw,40px);background:#0F1F35;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff">
     <span>Tuesday, November 10, 2026</span>
     <span style="opacity:.6">·</span>
     <span>American Sign Museum</span>
     <span style="opacity:.6">·</span>
     <a href="../register/" style="color:#fff;text-decoration:underline;text-underline-offset:3px">Register</a>
   </div>
-  <div class="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(10,21,32,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)">
+  <div class="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:14px clamp(20px,4vw,40px);background:rgba(10,21,32,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)">
     <a href="../" style="display:flex;align-items:center;gap:0;height:54px;overflow:hidden">
       <img src="../assets/IGNITE_Emblem.png" alt="IGNITE" style="flex:none;height:44px;width:auto">
       <span style="display:block;overflow:hidden;max-width:{{ wordmarkW }};opacity:{{ wordmarkOp }};transition:max-width .55s cubic-bezier(.22,.9,.24,1),opacity .4s ease,margin-left .55s cubic-bezier(.22,.9,.24,1);margin-left:{{ wordmarkGap }}">
@@ -86,7 +80,7 @@ a:hover{color:#0F1F35}
       <a href="../speakers/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Speakers</a>
       <a href="../sponsors/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Sponsors</a>
       <a href="../venue/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Venue</a>
-      <a href="../faq/" aria-current="page" style="color:#E8792C">FAQ</a>
+      <a href="../faq/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">FAQ</a>
       <a href="../register/" style="margin-left:auto;padding:10px 20px;border-radius:999px;background:#E8792C;color:#fff" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Register</a>
     </nav>
     <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}" style="align-items:center;justify-content:center;width:46px;height:46px;border:2px solid rgba(255,255,255,.3);border-radius:12px;background:rgba(255,255,255,.06);cursor:pointer;padding:0">
@@ -112,65 +106,89 @@ a:hover{color:#0F1F35}
 </div>
 
 <!-- ═══════ PAGE HERO ═══════ -->
-<div data-screen-label="FAQ Hero" class="page-hero" style="position:relative;overflow:hidden;background:#0A1520;padding:190px 0 80px">
+<div data-screen-label="Archive Hero" class="page-hero" style="position:relative;overflow:hidden;background:#0A1520;padding:190px 0 80px">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 900px 600px at 20% 120%, rgba(232,121,44,.4), transparent 65%)"></div>
   {{ embers }}
   <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
       <img src="../assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
-      <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">FAQ</span>
+      <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Archive</span>
     </div>
-    <h1 style="margin:0;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(48px,8vw,88px);line-height:.9;font-weight:400;color:#fff">Burning <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Questions</span></h1>
-    <p style="margin:18px 0 0;max-width:560px;font-size:16px;line-height:1.7;color:rgba(255,255,255,.65)">Everything you need to know before November 10 — registration, venue, parking, and more.</p>
+    <h1 style="margin:0;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(48px,8vw,88px);line-height:.9;font-weight:400;color:#fff">Past IGNITE <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Conferences</span></h1>
+    <p style="margin:18px 0 0;max-width:600px;font-size:16px;line-height:1.7;color:rgba(255,255,255,.65)">Since 2018, AMA Cincinnati's IGNITE conference has brought marketing and customer experience professionals together to learn from the best in the region and beyond. Look back at the themes, speakers, and sponsors that got us here.</p>
   </div>
 </div>
 
-<!-- ═══════ SEARCH + ACCORDION ═══════ -->
-<div data-screen-label="FAQ List" style="background:#FAFAF8;padding:56px 0 80px">
-  <div style="max-width:860px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
-    <input type="search" aria-label="Search questions" placeholder="Search questions…" value="{{ query }}" onChange="{{ setQuery }}" style="width:100%;box-sizing:border-box;padding:15px 22px;border-radius:999px;border:2px solid rgba(15,31,53,.15);background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14.5px;color:#0F1F35;outline:none;margin-bottom:44px" style-focus="border-color:#E8792C">
-    <div style="display:flex;flex-direction:column;gap:44px">
-      <sc-for list="{{ groups }}" as="grp" hint-placeholder-count="4">
-        <div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-            <img src="../assets/IGNITE_Flame.png" alt="" style="height:16px;width:auto">
-            <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:28px;letter-spacing:.03em;color:#0F1F35">{{ grp.name }}</span>
-            <span style="flex:1;height:1px;background:rgba(15,31,53,.1)"></span>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <sc-for list="{{ grp.items }}" as="qa" hint-placeholder-count="3">
-              <div style="background:#fff;border:{{ qa.border }};border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(15,31,53,.04)">
-                <button aria-expanded="{{ qa.open }}" onClick="{{ qa.toggle }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:20px 24px;border:none;background:transparent;cursor:pointer;text-align:left;font-family:'Gotham Rounded','Nunito',sans-serif">
-                  <span style="font-size:15px;font-weight:800;color:#0F1F35">{{ qa.q }}</span>
-                  <span aria-hidden="true" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:{{ qa.chipBg }};color:{{ qa.chipFg }};font-size:16px;font-weight:700;transition:all .2s">{{ qa.chip }}</span>
-                </button>
-                <sc-if value="{{ qa.open }}" hint-placeholder-val="{{ false }}">
-                  <div style="padding:0 24px 22px;font-size:14px;line-height:1.75;color:rgba(15,31,53,.65)">{{ qa.a }}<sc-if value="{{ qa.linkHref }}" hint-placeholder-val="{{ false }}"> <a href="{{ qa.linkHref }}" target="_blank" rel="noopener" style="color:#E8792C;font-weight:700;text-decoration:underline;text-underline-offset:2px" style-hover="color:#4FC3E8">{{ qa.linkLabel }} →</a></sc-if></div>
-                </sc-if>
-              </div>
-            </sc-for>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
-      <div style="text-align:center;padding:60px 0;font-size:15px;color:rgba(15,31,53,.5)">No questions match your search — try different keywords, or ask us directly below.</div>
-    </sc-if>
-  </div>
-</div>
+<!-- ═══════ YEAR GRID ═══════ -->
+<div data-screen-label="Year Grid" style="background:#FAFAF8;padding:70px 0 100px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px">
 
-<!-- ═══════ CONTACT CTA ═══════ -->
-<div data-screen-label="Contact CTA" style="background:#FAFAF8;padding:0 0 100px">
-  <div style="max-width:860px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
-    <div style="position:relative;overflow:hidden;border-radius:24px;background:#0F1F35;padding:52px 54px;text-align:center">
-      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 50% 130%, rgba(232,121,44,.4), transparent 65%)"></div>
-      <div style="position:relative">
-        <img src="../assets/IGNITE_Flame.png" alt="" style="height:40px;width:auto;margin-bottom:16px">
-        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:46px;line-height:1;color:#fff">Still Have <span style="color:#E8792C">Questions?</span></div>
-        <p style="margin:14px auto 0;max-width:440px;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.65)">Our team is happy to help with anything we didn't cover — registration, accessibility, group rates, or press.</p>
-        <div style="display:inline-flex;margin-top:26px"><dc-import name="ContactForm" kind="contact" pill="{{ true }}" link-label="Contact Us →" link-color="#fff" link-size="14px" link-weight="800" link-decoration="none" hint-size="200px,52px"></dc-import></div>
+    <a href="2025/" class="year-card" style="display:block;background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,53,.05)">
+      <div style="position:relative;height:220px;overflow:hidden;background:#0F1F35">
+        <img src="../assets/archive/2025/hero.png" alt="IGNITE 2025 event graphic" style="width:100%;height:100%;object-fit:cover">
       </div>
-    </div>
+      <div style="padding:24px 26px 26px">
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:34px;line-height:1;color:#0F1F35">IGNITE 2025</div>
+        <div style="margin-top:8px;font-size:14.5px;font-weight:700;color:#E8792C">CX Gets Real: Vibe Marketing in the AI Era</div>
+        <div style="margin-top:6px;font-size:13px;color:rgba(15,31,53,.5)">September 26, 2025 · Cintas Center</div>
+      </div>
+    </a>
+
+    <a href="2024/" class="year-card" style="display:block;background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,53,.05)">
+      <div style="position:relative;height:220px;overflow:hidden;background:#0F1F35">
+        <img src="../assets/archive/2024/hero.png" alt="IGNITE 2024 event graphic" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div style="padding:24px 26px 26px">
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:34px;line-height:1;color:#0F1F35">IGNITE 2024</div>
+        <div style="margin-top:8px;font-size:14.5px;font-weight:700;color:#E8792C">Keeping AI Real in CX</div>
+        <div style="margin-top:6px;font-size:13px;color:rgba(15,31,53,.5)">April 19, 2024 · National Underground Railroad Freedom Center</div>
+      </div>
+    </a>
+
+    <a href="2022/" class="year-card" style="display:block;background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,53,.05)">
+      <div style="position:relative;height:220px;overflow:hidden;background:#0F1F35">
+        <img src="../assets/archive/2022/hero.jpg" alt="NKU College of Informatics, Griffin Hall" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div style="padding:24px 26px 26px">
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:34px;line-height:1;color:#0F1F35">IGNITE 2022</div>
+        <div style="margin-top:8px;font-size:14.5px;font-weight:700;color:#E8792C">An Experience Equation</div>
+        <div style="margin-top:6px;font-size:13px;color:rgba(15,31,53,.5)">September 23, 2022 · NKU College of Informatics</div>
+      </div>
+    </a>
+
+    <a href="2021/" class="year-card" style="display:block;background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,53,.05)">
+      <div style="position:relative;height:220px;overflow:hidden;background:#0F1F35">
+        <img src="../assets/archive/2021/hero.png" alt="IGNITE 2021 event graphic" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div style="padding:24px 26px 26px">
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:34px;line-height:1;color:#0F1F35">IGNITE 2021</div>
+        <div style="margin-top:8px;font-size:14.5px;font-weight:700;color:#E8792C">Marketing + Customer Experience Conference</div>
+        <div style="margin-top:6px;font-size:13px;color:rgba(15,31,53,.5)">April 20–21, 2021 · Virtual</div>
+      </div>
+    </a>
+
+    <a href="2019/" class="year-card" style="display:block;background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,53,.05)">
+      <div style="position:relative;height:220px;overflow:hidden;background:#0F1F35">
+        <img src="../assets/archive/2019/hero.jpg" alt="IGNITE 2019 event graphic" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div style="padding:24px 26px 26px">
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:34px;line-height:1;color:#0F1F35">IGNITE 2019</div>
+        <div style="margin-top:8px;font-size:14.5px;font-weight:700;color:#E8792C">The X's and O's of Customer Experience</div>
+        <div style="margin-top:6px;font-size:13px;color:rgba(15,31,53,.5)">September 27, 2019 · Cintas Center</div>
+      </div>
+    </a>
+
+    <a href="2018/" class="year-card" style="display:block;background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,53,.05)">
+      <div style="position:relative;height:220px;overflow:hidden;background:#0F1F35">
+        <img src="../assets/archive/2018/hero.jpg" alt="IGNITE 2018 event graphic" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div style="padding:24px 26px 26px">
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:34px;line-height:1;color:#0F1F35">IGNITE 2018</div>
+        <div style="margin-top:8px;font-size:14.5px;font-weight:700;color:#E8792C">Who Is Responsible for "Customer Experience"?</div>
+        <div style="margin-top:6px;font-size:13px;color:rgba(15,31,53,.5)">September 20–21, 2018 · Cintas Center</div>
+      </div>
+    </a>
+
   </div>
 </div>
 
@@ -215,7 +233,7 @@ a:hover{color:#0F1F35}
           <dc-import name="ContactForm" kind="contact" link-label="Contact Us" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="90px,20px"></dc-import>
           <dc-import name="ContactForm" kind="press" link-label="Press Inquiries" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="120px,20px"></dc-import>
           <a href="../faq/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">FAQ</a>
-          <a href="../archive/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Past Conferences</a>
+          <a href="../archive/" aria-current="page" style="font-size:13.5px;color:#E8792C">Past Conferences</a>
         </div>
       </div>
     </div>
@@ -230,7 +248,7 @@ a:hover{color:#0F1F35}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { navRevealed: false, query: '', open: 'reg-0' };
+  state = { navRevealed: false };
   componentDidMount() {
     this._onNavScroll = () => {
       const y = window.scrollY || document.documentElement.scrollTop || 0;
@@ -251,56 +269,6 @@ class Component extends DCLogic {
       })
     );
 
-    const data = [
-      { name: 'Registration & Tickets', key: 'reg', items: [
-        { q: 'When does early-bird pricing end?', a: 'Early-bird pricing runs through September 30, 2026. After that, General Admission moves to standard pricing. AMA members always get member pricing, any time.' },
-        { q: "What's included in a VIP ticket?", a: 'Everything in General Admission, plus an exclusive VIP lunch with the keynote speakers, priority seating at all sessions, an IGNITE swag bag, a VIP-only networking reception, and early entry.' },
-        { q: 'Can I get a refund or transfer my ticket?', a: 'Tickets are refundable up to 7 days before the event. After that, you can transfer your ticket to a colleague at no charge — just contact us with their details.' },
-        { q: 'Is there a group discount?', a: 'Yes — teams of 5 or more register at $195/person for AMA members and $315/person for non-members, and get a reserved seating block, a group invoice option, and a dedicated account manager.' }
-      ] },
-      { name: 'Venue & Travel', key: 'ven', items: [
-        { q: 'Where is IGNITE\'26 being held?', a: 'IGNITE\'26 takes place at the American Sign Museum, 1330 Monmouth Ave in Cincinnati\'s Camp Washington neighborhood — about 10 minutes from downtown. Sessions are spread across The Gallery, The Theatre, the Barn Room, and The Library.'},
-        { q: 'Is parking available?', a: 'Yes. On-site lot parking and nearby street parking are available, plus complimentary valet at the main entrance. Rideshare drop-off is at the museum\'s front entrance on Monmouth Ave.' },
-        { q: 'Are there hotels nearby?', a: 'Several hotels in downtown Cincinnati, Clifton, and Oakley are within a 10–15 minute drive. We don\'t have a discounted room block this year, but you can browse hotels by neighborhood at visitcincy.com.', link: { label: 'Find a hotel on Visit Cincy', href: 'https://www.visitcincy.com/places-to-stay/by-neighborhoods/' } },
-        { q: 'Is the venue accessible?', a: 'American Sign Museum is fully wheelchair accessible, including all session rooms and restrooms. If you have specific accessibility needs, contact us and we\'ll make it work.' }
-      ] },
-      { name: 'Event Day', key: 'day', items: [
-        { q: 'What time do doors open?', a: 'Doors open at 8:30 AM for registration, coffee, and breakfast. The opening keynote begins at 9:15 AM sharp, and the day wraps with Happy Hour from 4:30–6:00 PM.' },
-        { q: 'What should I wear?', a: 'Business casual is the norm, but come as you are. You\'ll be moving between galleries of vintage neon and signs, so comfortable shoes are recommended.' },
-        { q: 'Will meals be provided?', a: 'Yes — morning coffee and breakfast, catered lunch, afternoon snacks, and a hosted Happy Hour are all included with every ticket. VIP ticket holders enjoy a dedicated lunch in The Library.' },
-        { q: 'Do I need to pick breakout sessions in advance?', a: 'No pre-selection needed. Both tracks run in rooms sized for flexibility — arrive a few minutes early for the sessions you care most about.' }
-      ] },
-      { name: 'General', key: 'gen', items: [
-        { q: 'Who should attend IGNITE?', a: 'Marketing and CX leaders of every stripe: CMOs, directors, brand managers, growth strategists, and full marketing teams — anyone accountable for growth and the customer experience.' },
-        { q: 'Will sessions be recorded?', a: 'Keynotes are recorded and shared with all registered attendees after the event. Breakouts are live-only — one more reason to be in the room.' },
-        { q: 'How do I become a sponsor or speaker?', a: 'Visit the Sponsors page to request the sponsorship kit, or submit through our Call for Speakers. Both are reviewed by the AMA Cincinnati programming committee.' },
-        { q: 'Do AMA members get a discount?', a: 'Yes — AMA Cincinnati members get discounted member pricing on every ticket tier. Proof of active membership is required to receive the discount.' }
-      ] }
-    ];
-
-    const q = this.state.query.trim().toLowerCase();
-    const open = this.state.open;
-    const groups = data
-      .map(g => ({
-        name: g.name,
-        items: g.items
-          .map((item, i) => ({ ...item, id: g.key + '-' + i }))
-          .filter(item => !q || (item.q + ' ' + item.a).toLowerCase().includes(q))
-          .map(item => ({
-            q: item.q,
-            a: item.a,
-            linkHref: item.link ? item.link.href : '',
-            linkLabel: item.link ? item.link.label : '',
-            open: open === item.id,
-            chip: open === item.id ? '−' : '+',
-            chipBg: open === item.id ? '#E8792C' : 'rgba(15,31,53,.08)',
-            chipFg: open === item.id ? '#fff' : '#0F1F35',
-            border: open === item.id ? '1px solid rgba(232,121,44,.45)' : '1px solid rgba(15,31,53,.08)',
-            toggle: () => this.setState({ open: open === item.id ? null : item.id })
-          }))
-      }))
-      .filter(g => g.items.length > 0);
-
     return {
       wordmarkW: '210px',
       wordmarkOp: '1',
@@ -314,11 +282,7 @@ class Component extends DCLogic {
       burgTop3: this.state.menuOpen ? '6px' : '12px',
       burgT1: this.state.menuOpen ? 'rotate(45deg)' : 'none',
       burgT3: this.state.menuOpen ? 'rotate(-45deg)' : 'none',
-      burgMidOp: this.state.menuOpen ? '0' : '1',
-      groups,
-      noResults: groups.length === 0,
-      query: this.state.query,
-      setQuery: (e) => this.setState({ query: e.target.value })
+      burgMidOp: this.state.menuOpen ? '0' : '1'
     };
   }
 }
