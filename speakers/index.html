@@ -139,45 +139,47 @@ a:hover{color:#0F1F35}
         </sc-for>
       </div>
     </div>
+    <sc-if value="{{ showKeynoteTease }}" hint-placeholder-val="{{ true }}">
     <div class="keynote-2up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-bottom:26px">
       <sc-if value="{{ hasFeatured }}" hint-placeholder-val="{{ true }}">
         <div role="button" tabindex="0" aria-label="{{ featured.name }}" onClick="{{ featured.open }}" onKeyDown="{{ featured.key }}" class="feat-card" style="display:flex;flex-direction:column;background:linear-gradient(150deg,#0F1F35,#1a3350);border-radius:24px;overflow:hidden;cursor:pointer;box-shadow:0 18px 50px rgba(15,31,53,.22);border:1px solid rgba(232,121,44,.35);transition:all .3s;outline:none" style-hover="transform:translateY(-4px);box-shadow:0 26px 66px rgba(232,121,44,.28)" style-focus="border-color:#E8792C">
-          <div class="feat-photo" style="position:relative;height:260px;overflow:hidden">
+          <div class="feat-photo" style="position:relative;height:320px;overflow:hidden">
             <span role="img" aria-label="{{ featured.name }}" style="position:absolute;inset:0;background-image:{{ featured.photoCss }};background-size:cover;background-position:{{ featured.pos }}"></span>
             <div style="position:absolute;inset:0;background:#E8792C;mix-blend-mode:multiply;opacity:.45"></div>
             <div style="position:absolute;inset:0;background:#0F1F35;mix-blend-mode:screen;opacity:.25"></div>
           </div>
-          <div style="padding:26px 28px 30px;display:flex;flex-direction:column;flex:1">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-              <img src="../assets/IGNITE_Flame.png" alt="" style="height:14px;width:auto">
-              <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#E8792C">{{ featured.sessionShort }}</span>
+          <div style="padding:18px 24px 20px;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+              <img src="../assets/IGNITE_Flame.png" alt="" style="height:13px;width:auto">
+              <span style="font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#E8792C">{{ featured.sessionShort }}</span>
             </div>
-            <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:clamp(28px,3vw,36px);line-height:.98;color:#fff">{{ featured.name }}</div>
-            <div style="margin-top:8px;font-size:15px;font-weight:700;color:#E8792C">{{ featured.role }} · <span style="color:rgba(255,255,255,.55);font-weight:600">{{ featured.company }}</span></div>
-            <p style="margin:16px 0 0;padding-left:14px;border-left:3px solid #E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:clamp(16px,1.7vw,19px);line-height:1.2;color:#fff;text-wrap:pretty">{{ featured.session }}</p>
-            <div style="margin-top:auto;padding-top:18px;font-size:12.5px;font-weight:800;color:#4FC3E8">Read full bio →</div>
+            <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:clamp(22px,2.4vw,27px);line-height:1;color:#fff">{{ featured.name }}</div>
+            <div style="margin-top:6px;font-size:13.5px;font-weight:700;color:#E8792C">{{ featured.role }} · <span style="color:rgba(255,255,255,.55);font-weight:600">{{ featured.company }}</span></div>
+            <p style="margin:10px 0 0;padding-left:12px;border-left:3px solid #E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:13.5px;line-height:1.3;color:#fff;text-wrap:pretty">{{ featured.session }}</p>
+            <div style="margin-top:12px;font-size:12px;font-weight:800;color:#4FC3E8">Read full bio →</div>
           </div>
         </div>
       </sc-if>
 
-      <!-- Coming-soon keynote tease — shows on every tab, matches the featured keynote card style -->
+      <!-- Coming-soon keynote tease — matches the featured keynote card style -->
       <div aria-hidden="true" class="tease-card" style="display:flex;flex-direction:column;background:linear-gradient(150deg,#0F1F35,#1a3350);border-radius:24px;overflow:hidden;box-shadow:0 18px 50px rgba(15,31,53,.14);border:1px solid rgba(232,121,44,.35)">
-        <div style="position:relative;height:260px;overflow:hidden;display:flex;align-items:center;justify-content:center">
+        <div style="position:relative;height:320px;overflow:hidden;display:flex;align-items:center;justify-content:center">
           <div style="position:absolute;inset:0;background:radial-gradient(ellipse 260px 200px at 50% 50%, rgba(232,121,44,.18), transparent 70%)"></div>
           <img src="../assets/IGNITE_Flame.png" alt="" style="position:relative;height:56px;width:auto;opacity:.35">
         </div>
-        <div style="padding:26px 28px 30px;display:flex;flex-direction:column;flex:1">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-            <img src="../assets/IGNITE_Flame.png" alt="" style="height:14px;width:auto">
-            <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#E8792C">Closing Keynote</span>
+        <div style="padding:18px 24px 20px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <img src="../assets/IGNITE_Flame.png" alt="" style="height:13px;width:auto">
+            <span style="font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#E8792C">Closing Keynote</span>
           </div>
-          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:clamp(26px,3vw,34px);line-height:1;color:#fff">Speaker To Be Announced</div>
-          <div style="margin-top:8px;font-size:15px;font-weight:700;color:#E8792C">Announced Soon</div>
-          <p style="margin:16px 0 0;padding-left:14px;border-left:3px solid #E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:clamp(15px,1.6vw,17px);line-height:1.3;color:rgba(255,255,255,.7);text-wrap:pretty">We're finalizing our closing keynote speaker — check back for the announcement.</p>
-          <div style="margin-top:auto;padding-top:18px;font-size:12.5px;font-weight:800;color:#4FC3E8">Stay tuned →</div>
+          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:clamp(20px,2.4vw,26px);line-height:1;color:#fff">Speaker To Be Announced</div>
+          <div style="margin-top:6px;font-size:13.5px;font-weight:700;color:#E8792C">Announced Soon</div>
+          <p style="margin:10px 0 0;padding-left:12px;border-left:3px solid #E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:13px;line-height:1.35;color:rgba(255,255,255,.7);text-wrap:pretty">We're finalizing our closing keynote speaker — check back for the announcement.</p>
+          <div style="margin-top:12px;font-size:12px;font-weight:800;color:#4FC3E8">Stay tuned →</div>
         </div>
       </div>
     </div>
+    </sc-if>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px">
       <sc-for list="{{ speakers }}" as="sp" hint-placeholder-count="6">
@@ -203,22 +205,24 @@ a:hover{color:#0F1F35}
         </div>
       </sc-for>
 
-      <!-- Coming-soon speakers tease — shows on every tab, matches the regular breakout card style -->
-      <div aria-hidden="true" style="background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,53,.05)">
-        <div style="position:relative;height:250px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,#0F1F35,#1a3350)">
-          <img src="../assets/IGNITE_Flame.png" alt="" style="height:48px;width:auto;opacity:.3">
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:12px 18px;background:linear-gradient(to top, rgba(10,21,32,.9), transparent);display:flex;align-items:center;gap:8px">
-            <img src="../assets/IGNITE_Flame.png" alt="" style="height:14px;width:auto">
-            <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff">Coming Soon</span>
+      <!-- Coming-soon speakers tease — hidden on the Keynote tab -->
+      <sc-if value="{{ showSpeakerTease }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="background:#fff;border:1px solid rgba(15,31,53,.08);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,53,.05)">
+          <div style="position:relative;height:250px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,#0F1F35,#1a3350)">
+            <img src="../assets/IGNITE_Flame.png" alt="" style="height:48px;width:auto;opacity:.3">
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:12px 18px;background:linear-gradient(to top, rgba(10,21,32,.9), transparent);display:flex;align-items:center;gap:8px">
+              <img src="../assets/IGNITE_Flame.png" alt="" style="height:14px;width:auto">
+              <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff">Coming Soon</span>
+            </div>
+          </div>
+          <div style="padding:22px 24px 24px">
+            <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:32px;line-height:1;letter-spacing:.02em;color:#0F1F35">More Speakers Coming</div>
+            <div style="margin-top:6px;font-size:15px;font-weight:700;color:#E8792C">Announced Soon</div>
+            <div style="font-size:14px;color:rgba(15,31,53,.5)">We're still finalizing the lineup</div>
+            <div style="margin-top:14px;font-size:12px;font-weight:800;color:#4FC3E8">Stay tuned →</div>
           </div>
         </div>
-        <div style="padding:22px 24px 24px">
-          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:32px;line-height:1;letter-spacing:.02em;color:#0F1F35">More Speakers Coming</div>
-          <div style="margin-top:6px;font-size:15px;font-weight:700;color:#E8792C">Announced Soon</div>
-          <div style="font-size:14px;color:rgba(15,31,53,.5)">We're still finalizing the lineup</div>
-          <div style="margin-top:14px;font-size:12px;font-weight:800;color:#4FC3E8">Stay tuned →</div>
-        </div>
-      </div>
+      </sc-if>
     </div>
     <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
       <div style="text-align:center;padding:60px 0;font-size:15px;color:rgba(15,31,53,.5)">No speakers match your search. Try a different name or topic.</div>
@@ -435,6 +439,8 @@ class Component extends DCLogic {
         open: () => this.setState({ sel: sp }),
         key: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.setState({ sel: sp }); } }
       })),
+      showKeynoteTease: track === 'all' || track === 'keynote',
+      showSpeakerTease: track !== 'keynote',
       hasFeatured: !!featuredSp,
       featured: featuredSp ? {
         ...featuredSp,
