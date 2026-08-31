@@ -42,7 +42,7 @@ a:hover{color:#0F1F35}
         <sc-for list="{{ fields }}" as="fld" hint-placeholder-count="3">
           <div>
             <label for="{{ fld.id }}" style="display:block;font-size:12.5px;font-weight:800;color:#0F1F35;margin-bottom:7px">{{ fld.label }} <sc-if value="{{ fld.optional }}" hint-placeholder-val="{{ false }}"><span style="font-weight:600;color:rgba(15,31,53,.4)">(optional)</span></sc-if></label>
-            <input id="{{ fld.id }}" type="{{ fld.type }}" value="{{ fld.value }}" onChange="{{ fld.set }}" onBlur="{{ fld.blur }}" aria-invalid="{{ fld.invalid }}" placeholder="{{ fld.placeholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ fld.borderColor }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;color:#0F1F35;outline:none" style-focus="border-color:#E8792C">
+            <input id="{{ fld.id }}" type="{{ fld.type }}" value="{{ fld.value }}" onChange="{{ fld.set }}" onBlur="{{ fld.blur }}" aria-invalid="{{ fld.invalid }}" placeholder="{{ fld.placeholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ fld.borderColor }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:16px;color:#0F1F35;outline:none" style-focus="border-color:#E8792C">
             <sc-if value="{{ fld.error }}" hint-placeholder-val="{{ false }}">
               <div role="alert" style="margin-top:6px;font-size:12px;font-weight:600;color:#C0392B">{{ fld.error }}</div>
             </sc-if>
@@ -50,7 +50,7 @@ a:hover{color:#0F1F35}
         </sc-for>
         <div>
           <label for="contact-message" style="display:block;font-size:12.5px;font-weight:800;color:#0F1F35;margin-bottom:7px">{{ messageLabel }}</label>
-          <textarea id="contact-message" value="{{ message }}" onChange="{{ setMessage }}" onBlur="{{ blurMessage }}" aria-invalid="{{ messageInvalid }}" rows="{{ four }}" placeholder="{{ messagePlaceholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ messageBorder }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;line-height:1.6;color:#0F1F35;outline:none;resize:vertical" style-focus="border-color:#E8792C"></textarea>
+          <textarea id="contact-message" value="{{ message }}" onChange="{{ setMessage }}" onBlur="{{ blurMessage }}" aria-invalid="{{ messageInvalid }}" rows="{{ four }}" placeholder="{{ messagePlaceholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ messageBorder }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:16px;line-height:1.6;color:#0F1F35;outline:none;resize:vertical" style-focus="border-color:#E8792C"></textarea>
           <sc-if value="{{ messageError }}" hint-placeholder-val="{{ false }}">
             <div role="alert" style="margin-top:6px;font-size:12px;font-weight:600;color:#C0392B">{{ messageError }}</div>
           </sc-if>

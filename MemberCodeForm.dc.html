@@ -42,7 +42,7 @@ a:hover{color:#0F1F35}
         <sc-for list="{{ fields }}" as="fld" hint-placeholder-count="2">
           <div>
             <label for="{{ fld.id }}" style="display:block;font-size:12.5px;font-weight:800;color:#0F1F35;margin-bottom:7px">{{ fld.label }}</label>
-            <input id="{{ fld.id }}" type="{{ fld.type }}" value="{{ fld.value }}" onChange="{{ fld.set }}" onBlur="{{ fld.blur }}" aria-invalid="{{ fld.invalid }}" placeholder="{{ fld.placeholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ fld.borderColor }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;color:#0F1F35;outline:none" style-focus="border-color:#E8792C">
+            <input id="{{ fld.id }}" type="{{ fld.type }}" value="{{ fld.value }}" onChange="{{ fld.set }}" onBlur="{{ fld.blur }}" aria-invalid="{{ fld.invalid }}" placeholder="{{ fld.placeholder }}" style="width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid {{ fld.borderColor }};background:#fff;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:16px;color:#0F1F35;outline:none" style-focus="border-color:#E8792C">
             <sc-if value="{{ fld.error }}" hint-placeholder-val="{{ false }}">
               <div role="alert" style="margin-top:6px;font-size:12px;font-weight:600;color:#C0392B">{{ fld.error }}</div>
             </sc-if>
