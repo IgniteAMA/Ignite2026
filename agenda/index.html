@@ -188,6 +188,7 @@ a:hover{color:#0F1F35}
                       <sc-if value="{{ item.noPanelists }}" hint-placeholder-val="{{ false }}">
                         <div style="font-size:11.5px;font-weight:700;color:rgba(15,31,53,.45)">Panelists to be announced</div>
                       </sc-if>
+                      <sc-if value="{{ item.moderator.name }}" hint-placeholder-val="{{ false }}">
                       <div style="display:flex;align-items:center;gap:11px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(15,31,53,.06)">
                         <span style="flex:none;position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;overflow:hidden;background:{{ item.moderator.color }};color:#fff;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:19px;box-shadow:0 0 0 2px #fff,0 0 0 4px #E8792C">{{ item.moderator.initial }}<sc-if value="{{ item.moderator.photo }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="{{ item.moderator.name }}" style="position:absolute;inset:0;background-image:{{ item.moderator.photoCss }};background-size:cover;background-position:{{ item.moderator.pos }}"></span></sc-if></span>
                         <div>
@@ -195,6 +196,7 @@ a:hover{color:#0F1F35}
                           <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#E8792C">Moderator · {{ item.moderator.title }}</div>
                         </div>
                       </div>
+                      </sc-if>
                     </div>
                   </sc-if>
                   <sc-if value="{{ item.speaker }}" hint-placeholder-val="{{ false }}">
@@ -317,6 +319,9 @@ class Component extends DCLogic {
     const personalizeB2C = panel(
       { initial: 'TJ', name: 'Tom Jones', title: 'Dir. Content, Brand & Digital, The WholeJonesGroup', color: C[1], photo: '../assets/speakers/Tom_Jones.jpg', pos: 'center 22%' },
       [ { initial: 'CH', name: 'Chase Howell', title: 'Group Director Strategy, VML', color: C[2], photo: '../assets/speakers/Chase_Howell.jpg', pos: 'center 22%' } ]);
+    const anticipateB2B = panel(
+      { initial: '', name: '', title: '', color: C[1] },
+      [ { initial: 'AS', name: 'Alex Schutte', title: 'SVP Marketing, Hubstaff', color: C[0], photo: '../assets/speakers/Alex_Schutte.jpg', pos: 'center top' } ]);
 
     const allSlots = [
       { time: '8:30 AM', duration: '45 min', items: [ mk('breakType', { title: 'Doors Open & Registration', desc: 'Check in, grab coffee and a light breakfast, and find your people.' }) ] },
@@ -324,7 +329,7 @@ class Component extends DCLogic {
       { time: '10:15 AM', duration: '45 min', items: [ mk('breakType', { title: 'Coffee, Connections & Museum Tours', desc: 'Refuel, swap notes, and take a lap through the American Sign Museum before the morning breakouts.' }) ] },
       { time: '11:00 AM', duration: '60 min', twoUp: true, items: [
         mk('breakout', { title: 'ANTICIPATE — B2C Panel', desc: 'Turning data and signals into what\'s next: consumer brands on reading demand before it shows up in the funnel.', track: 'B2C', room: 'Barn Room', ...anticipateB2C }),
-        mk('breakout', { title: 'ANTICIPATE — B2B Panel', desc: 'Turning data and signals into what\'s next: B2B leaders on intent data, pipeline signals, and acting before the RFP. Panel to be announced.', track: 'B2B', room: 'The Theatre' })
+        mk('breakout', { title: 'ANTICIPATE — B2B Panel', desc: 'Turning data and signals into what\'s next: B2B leaders on intent data, pipeline signals, and acting before the RFP.', track: 'B2B', room: 'The Theatre', ...anticipateB2B })
       ] },
       { time: '12:00 PM', duration: '90 min', twoUp: true, items: [
         mk('networking', { title: 'Lunch & Networking', desc: 'Catered lunch among the neon — sit anywhere, meet everyone.' }),
