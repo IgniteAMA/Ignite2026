@@ -188,13 +188,17 @@ a:hover{color:#0F1F35}
                       <sc-if value="{{ item.noPanelists }}" hint-placeholder-val="{{ false }}">
                         <div style="font-size:11.5px;font-weight:700;color:rgba(15,31,53,.45)">Panelists to be announced</div>
                       </sc-if>
-                      <sc-if value="{{ item.moderator.name }}" hint-placeholder-val="{{ false }}">
-                      <div style="display:flex;align-items:center;gap:11px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(15,31,53,.06)">
-                        <span style="flex:none;position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;overflow:hidden;background:{{ item.moderator.color }};color:#fff;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:19px;box-shadow:0 0 0 2px #fff,0 0 0 4px #E8792C">{{ item.moderator.initial }}<sc-if value="{{ item.moderator.photo }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="{{ item.moderator.name }}" style="position:absolute;inset:0;background-image:{{ item.moderator.photoCss }};background-size:cover;background-position:{{ item.moderator.pos }}"></span></sc-if></span>
-                        <div>
-                          <div style="font-size:12.5px;font-weight:800;color:#0F1F35">{{ item.moderator.name }}</div>
-                          <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#E8792C">Moderator · {{ item.moderator.title }}</div>
-                        </div>
+                      <sc-if value="{{ item.hasModerators }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(15,31,53,.06)">
+                        <sc-for list="{{ item.moderators }}" as="m" hint-placeholder-count="1">
+                          <div style="display:flex;align-items:center;gap:11px">
+                            <span style="flex:none;position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;overflow:hidden;background:{{ m.color }};color:#fff;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:19px;box-shadow:0 0 0 2px #fff,0 0 0 4px #E8792C">{{ m.initial }}<sc-if value="{{ m.photo }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="{{ m.name }}" style="position:absolute;inset:0;background-image:{{ m.photoCss }};background-size:cover;background-position:{{ m.pos }}"></span></sc-if></span>
+                            <div>
+                              <div style="font-size:12.5px;font-weight:800;color:#0F1F35">{{ m.name }}</div>
+                              <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#E8792C">{{ m.roleLabel }} · {{ m.title }}</div>
+                            </div>
+                          </div>
+                        </sc-for>
                       </div>
                       </sc-if>
                     </div>
@@ -306,22 +310,34 @@ class Component extends DCLogic {
       breakType: { type: 'Break & Networking', bg: 'rgba(15,31,53,.04)', border: '1px dashed rgba(15,31,53,.18)', shadow: 'none', glow: false, tagBg: 'rgba(15,31,53,.1)', tagFg: '#0F1F35', titleColor: '#0F1F35', descColor: 'rgba(15,31,53,.55)', metaColor: 'rgba(15,31,53,.45)' },
       networking:{ type: 'Networking', bg: '#0F1F35', border: '1px solid rgba(79,195,232,.4)', shadow: '0 8px 30px rgba(15,31,53,.2)', glow: false, tagBg: '#4FC3E8', tagFg: '#0F1F35', titleColor: '#fff', descColor: 'rgba(255,255,255,.65)', metaColor: 'rgba(255,255,255,.5)' }
     };
-    const mk = (kind, extra) => Object.assign({}, T[kind], { kind: kind === 'breakType' ? 'break' : kind, track: '', room: '', speaker: '', speakerRole: '', speakerColor: '#0F1F35', speakerInitial: '', hasPeople: false, moderator: { initial: '', name: '', title: '', color: '#0F1F35' }, panelists: [] }, extra);
+    const mk = (kind, extra) => Object.assign({}, T[kind], { kind: kind === 'breakType' ? 'break' : kind, track: '', room: '', speaker: '', speakerRole: '', speakerColor: '#0F1F35', speakerInitial: '', hasPeople: false, hasModerators: false, moderators: [], panelists: [] }, extra);
 
-    // Confirmed B2C lineup; B2B panels and remaining slots to be announced.
+    // Confirmed B2C lineup; some B2B panelists confirmed, rest to be announced.
     const C = ['#E8792C', '#0F1F35', '#4FC3E8', '#1580A5'];
     const withCss = (p) => Object.assign({}, p, { photoCss: p && p.photo ? 'url("' + p.photo + '")' : 'none' });
-    const panel = (moderator, panelists) => ({ hasPeople: true, moderator: withCss(moderator), panelists: panelists.map(withCss), hasPanelists: panelists.length > 0, noPanelists: panelists.length === 0 });
+    const panel = (moderators, panelists) => ({
+      hasPeople: true,
+      hasModerators: moderators.length > 0,
+      moderators: moderators.map(m => Object.assign({}, withCss(m), { roleLabel: moderators.length > 1 ? 'Co-Moderator' : 'Moderator' })),
+      panelists: panelists.map(withCss),
+      hasPanelists: panelists.length > 0,
+      noPanelists: panelists.length === 0
+    });
     const anticipateB2C = panel(
-      { initial: 'TW', name: 'Troy Woolery', title: 'Dir. Business Development, Vaco', color: C[1], photo: '../assets/speakers/Troy_Woolery.jpg', pos: 'center top' },
+      [ { initial: 'TW', name: 'Troy Woolery', title: 'Dir. Business Development, Vaco', color: C[1], photo: '../assets/speakers/Troy_Woolery.jpg', pos: 'center top' } ],
       [ { initial: 'BK', name: 'Bourke Kelley', title: 'Chief Strategy Officer, Court Avenue', color: C[0], photo: '../assets/speakers/Bourke_Kelley.jpg', pos: 'center top' },
         { initial: 'HP', name: 'Heather Physioc', title: 'Chief Discoverability Officer, VML', color: C[3], photo: '../assets/speakers/Heather_Physioc.jpg', pos: 'center 22%' } ]);
     const personalizeB2C = panel(
-      { initial: 'TJ', name: 'Tom Jones', title: 'Dir. Content, Brand & Digital, The WholeJonesGroup', color: C[1], photo: '../assets/speakers/Tom_Jones.jpg', pos: 'center 22%' },
+      [ { initial: 'TJ', name: 'Tom Jones', title: 'Dir. Content, Brand & Digital, The WholeJonesGroup', color: C[1], photo: '../assets/speakers/Tom_Jones.jpg', pos: 'center 22%' } ],
       [ { initial: 'CH', name: 'Chase Howell', title: 'Group Director Strategy, VML', color: C[2], photo: '../assets/speakers/Chase_Howell.jpg', pos: 'center 22%' } ]);
+    const b2bModerators = [
+      { initial: 'SM', name: 'Stephen Brent May', title: 'Founder, One Foot Over', color: C[1], photo: '../assets/speakers/Stephen_Brent_May.jpg', pos: 'center top' },
+      { initial: 'HA', name: 'Hami Arrington', title: 'Co-Founder, One Foot Over', color: C[3], photo: '../assets/speakers/Hami_Arrington.jpg', pos: 'center 15%' }
+    ];
     const anticipateB2B = panel(
-      { initial: '', name: '', title: '', color: C[1] },
+      b2bModerators,
       [ { initial: 'AS', name: 'Alex Schutte', title: 'SVP Marketing, Hubstaff', color: C[0], photo: '../assets/speakers/Alex_Schutte.jpg', pos: 'center top' } ]);
+    const personalizeB2B = panel(b2bModerators, []);
 
     const allSlots = [
       { time: '8:30 AM', duration: '45 min', items: [ mk('breakType', { title: 'Doors Open & Registration', desc: 'Check in, grab coffee and a light breakfast, and find your people.' }) ] },
@@ -337,7 +353,7 @@ class Component extends DCLogic {
       ] },
       { time: '1:30 PM', duration: '60 min', twoUp: true, items: [
         mk('breakout', { title: 'PERSONALIZE & SCALE — B2C Panel', desc: 'Turning relevance into revenue: consumer brands on personalization that customers welcome — and that pays for itself.', track: 'B2C', room: 'Barn Room', ...personalizeB2C }),
-        mk('breakout', { title: 'PERSONALIZE & SCALE — B2B Panel', desc: 'Turning relevance into revenue: B2B leaders on account-level relevance and proving growth to the CFO. Panel to be announced.', track: 'B2B', room: 'The Theatre' })
+        mk('breakout', { title: 'PERSONALIZE & SCALE — B2B Panel', desc: 'Turning relevance into revenue: B2B leaders on account-level relevance and proving growth to the CFO.', track: 'B2B', room: 'The Theatre', ...personalizeB2B })
       ] },
       { time: '2:30 PM', duration: '45 min', items: [ mk('breakType', { title: 'Afternoon Break & Museum Tours', desc: 'Snacks, coffee, a last lap through the sponsor tables, and time to explore the museum.' }) ] },
       { time: '3:15 PM', duration: '60 min', items: [ mk('keynote', { title: 'Why Human-Led Brands Win in the Age of AI', desc: 'The closing argument of the day: as AI levels the playing field, the human side of the brand becomes the advantage. Keynote speaker to be announced.', track: 'Main Stage', room: 'The Gallery' }) ] },
