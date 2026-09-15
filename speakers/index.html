@@ -444,7 +444,10 @@ class Component extends DCLogic {
         border: track === f.key ? '2px solid #0F1F35' : '2px solid rgba(15,31,53,.2)',
         go: () => this.setState({ track: f.key })
       })),
-      speakers: filtered.filter(sp => sp.sessionShort !== 'Opening Keynote').map(sp => ({
+      speakers: filtered.filter(sp => sp.sessionShort !== 'Opening Keynote').sort((a, b) => {
+        const lastName = (n) => (n || '').trim().split(/\s+/).pop().toLowerCase();
+        return lastName(a.name).localeCompare(lastName(b.name));
+      }).map(sp => ({
         ...sp,
         hasPhoto: !!sp.photo,
         photoCss: sp.photo ? 'url("' + sp.photo + '")' : 'none',
