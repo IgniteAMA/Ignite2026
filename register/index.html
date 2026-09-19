@@ -224,6 +224,7 @@ a:hover{color:#0F1F35}
     <div style="background:#fff;border:1px solid rgba(15,31,53,.1);border-radius:24px;padding:6px;box-shadow:0 8px 40px rgba(15,31,53,.08);overflow:hidden">
       <div id="eventbrite-widget-container" style="min-height:300px"></div>
     </div>
+    <div style="margin-top:14px;text-align:center;font-size:12px;color:rgba(15,31,53,.5)">Having any issues with checkout? <a href="https://www.eventbrite.com/e/ignite-2026-tickets-1995209228512" target="_blank" rel="noopener" style="color:#E8792C;font-weight:700;text-decoration:underline;text-underline-offset:2px" style-hover="color:#4FC3E8">Click here to view our Eventbrite page</a></div>
     <sc-if value="{{ widgetUnavailable }}" hint-placeholder-val="{{ false }}">
       <div role="alert" style="margin-top:18px;padding:14px 18px;border-radius:12px;background:rgba(232,121,44,.08);border:1px solid rgba(232,121,44,.3);font-size:12.5px;line-height:1.6;color:rgba(15,31,53,.7)">
         The Eventbrite checkout couldn't load here. <a href="https://www.eventbrite.com/e/{{ eventbriteEventId }}" target="_blank" rel="noopener" style="color:#E8792C;font-weight:800;text-decoration:underline">Open it in a new tab instead →</a> Or, for this preview: <button onClick="{{ simulateOrder }}" style="border:none;background:none;padding:0;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:12.5px;font-weight:800;color:#E8792C;cursor:pointer;text-decoration:underline">simulate a completed order →</button>
