@@ -373,7 +373,7 @@ a:hover{color:#0F1F35}
       <span style="font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#0F1F35">See pricing for</span>
       <div role="radiogroup" aria-label="Attendee type" style="display:inline-flex;padding:5px;border-radius:999px;background:#fff;border:1px solid rgba(15,31,53,.12);box-shadow:0 2px 10px rgba(15,31,53,.08)">
         <button role="radio" aria-checked="{{ isMember }}" onClick="{{ setMember }}" style="padding:12px 26px;border:none;border-radius:999px;background:{{ memberBtnBg }};color:{{ memberBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;box-shadow:{{ memberBtnShadow }}">AMA Member</button>
-        <button role="radio" aria-checked="{{ isGuest }}" onClick="{{ setGuest }}" style="padding:12px 26px;border:none;border-radius:999px;background:{{ guestBtnBg }};color:{{ guestBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;box-shadow:{{ guestBtnShadow }}">Non-Member</button>
+        <button role="radio" aria-checked="{{ isGuest }}" onClick="{{ setGuest }}" style="padding:12px 26px;border:none;border-radius:999px;background:{{ guestBtnBg }};color:{{ guestBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;box-shadow:{{ guestBtnShadow }}">Guest</button>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;align-items:stretch">
@@ -706,7 +706,7 @@ class Component extends DCLogic {
           return {
             ...t,
             price: '$' + (isMember ? t.member : t.guest),
-            priceLabel: isMember ? 'AMA Member' : 'Non-Member',
+            priceLabel: isMember ? 'AMA Member' : 'Guest',
             priceSuffix: t.priceSuffix || '',
             // General Admission shows the standard (non-early-bird) price struck through on BOTH tabs.
             showSavings: hasRegular,
