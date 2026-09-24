@@ -153,6 +153,24 @@ a:hover{color:#0F1F35}
     </div>
     <sc-if value="{{ showKeynoteTease }}" hint-placeholder-val="{{ true }}">
     <div class="keynote-2up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-bottom:26px">
+      <!-- Coming-soon keynote tease — matches the featured keynote card style -->
+      <div aria-hidden="true" class="tease-card" style="display:flex;flex-direction:column;background:linear-gradient(150deg,#0F1F35,#1a3350);border-radius:24px;overflow:hidden;box-shadow:0 18px 50px rgba(15,31,53,.14);border:1px solid rgba(232,121,44,.35)">
+        <div style="position:relative;height:320px;overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse 260px 200px at 50% 50%, rgba(232,121,44,.18), transparent 70%)"></div>
+          <img src="../assets/IGNITE_Logo_primary.png" alt="" style="position:relative;height:84px;width:auto;opacity:.4">
+        </div>
+        <div style="padding:18px 24px 20px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <img src="../assets/IGNITE_Flame.png" alt="" style="height:13px;width:auto">
+            <span style="font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#E8792C">Opening Keynote</span>
+          </div>
+          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:clamp(20px,2.4vw,26px);line-height:1;color:#fff">Speaker To Be Announced</div>
+          <div style="margin-top:6px;font-size:13.5px;font-weight:700;color:#E8792C">Announced Soon</div>
+          <p style="margin:10px 0 0;padding-left:12px;border-left:3px solid #E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:13px;line-height:1.35;color:rgba(255,255,255,.7);text-wrap:pretty">We're finalizing our opening keynote speaker — check back for the announcement.</p>
+          <div style="margin-top:12px;font-size:12px;font-weight:800;color:#4FC3E8">Stay tuned →</div>
+        </div>
+      </div>
+
       <sc-if value="{{ hasFeatured }}" hint-placeholder-val="{{ true }}">
         <div role="button" tabindex="0" aria-label="{{ featured.name }}" onClick="{{ featured.open }}" onKeyDown="{{ featured.key }}" class="feat-card" style="display:flex;flex-direction:column;background:linear-gradient(150deg,#0F1F35,#1a3350);border-radius:24px;overflow:hidden;cursor:pointer;box-shadow:0 18px 50px rgba(15,31,53,.22);border:1px solid rgba(232,121,44,.35);transition:all .3s;outline:none" style-hover="transform:translateY(-4px);box-shadow:0 26px 66px rgba(232,121,44,.28)" style-focus="border-color:#E8792C">
           <div class="feat-photo" style="position:relative;height:320px;overflow:hidden">
@@ -172,24 +190,6 @@ a:hover{color:#0F1F35}
           </div>
         </div>
       </sc-if>
-
-      <!-- Coming-soon keynote tease — matches the featured keynote card style -->
-      <div aria-hidden="true" class="tease-card" style="display:flex;flex-direction:column;background:linear-gradient(150deg,#0F1F35,#1a3350);border-radius:24px;overflow:hidden;box-shadow:0 18px 50px rgba(15,31,53,.14);border:1px solid rgba(232,121,44,.35)">
-        <div style="position:relative;height:320px;overflow:hidden;display:flex;align-items:center;justify-content:center">
-          <div style="position:absolute;inset:0;background:radial-gradient(ellipse 260px 200px at 50% 50%, rgba(232,121,44,.18), transparent 70%)"></div>
-          <img src="../assets/IGNITE_Logo_primary.png" alt="" style="position:relative;height:84px;width:auto;opacity:.4">
-        </div>
-        <div style="padding:18px 24px 20px;display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-            <img src="../assets/IGNITE_Flame.png" alt="" style="height:13px;width:auto">
-            <span style="font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#E8792C">Opening Keynote</span>
-          </div>
-          <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:clamp(20px,2.4vw,26px);line-height:1;color:#fff">Speaker To Be Announced</div>
-          <div style="margin-top:6px;font-size:13.5px;font-weight:700;color:#E8792C">Announced Soon</div>
-          <p style="margin:10px 0 0;padding-left:12px;border-left:3px solid #E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.01em;font-size:13px;line-height:1.35;color:rgba(255,255,255,.7);text-wrap:pretty">We're finalizing our opening keynote speaker — check back for the announcement.</p>
-          <div style="margin-top:12px;font-size:12px;font-weight:800;color:#4FC3E8">Stay tuned →</div>
-        </div>
-      </div>
     </div>
     </sc-if>
 
