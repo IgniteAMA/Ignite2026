@@ -71,6 +71,7 @@ a:hover{color:#0F1F35}
 .co-grid{grid-template-columns:1fr!important}
 .modal-grid{grid-template-columns:1fr!important}
 .slot-grid{grid-template-columns:1fr!important}
+.sponsor-grid{grid-template-columns:repeat(2,1fr)!important}
 }
 </style>
 </helmet>
@@ -148,7 +149,7 @@ a:hover{color:#0F1F35}
       </span>
       <span style="flex:1;height:1px;background:rgba(15,31,53,.1)"></span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px">
+    <div class="sponsor-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
       <sc-for list="{{ sponsorLogos }}" as="lg">
         <div style="display:flex;align-items:center;justify-content:center;padding:20px 22px;min-height:132px;border-radius:18px;background:#fff;border:1px solid rgba(15,31,53,.1);box-shadow:0 3px 16px rgba(15,31,53,.06);transition:all .25s" style-hover="border-color:rgba(232,121,44,.55);box-shadow:0 10px 30px rgba(232,121,44,.18);transform:translateY(-3px)">
           <sc-if value="{{ lg.logo }}" hint-placeholder-val="{{ false }}"><img src="{{ lg.logo }}" alt="{{ lg.name }}" style="max-width:100%;max-height:{{ lg.maxH }};width:auto;height:auto;object-fit:contain"></sc-if>
