@@ -437,7 +437,7 @@ a:hover{color:#0F1F35}
     </div>
     <div class="sponsor-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:52px">
       <sc-for list="{{ sponsors }}" as="sp">
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;min-height:104px;border-radius:14px;background:#fff;border:1px solid rgba(255,255,255,.14);box-shadow:0 4px 18px rgba(0,0,0,.18);transition:all .25s" style-hover="border-color:rgba(232,121,44,.6);box-shadow:0 8px 26px rgba(232,121,44,.28)">
+        <div style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:14px 16px;height:160px;border-radius:14px;background:#fff;border:1px solid rgba(255,255,255,.14);box-shadow:0 4px 18px rgba(0,0,0,.18);transition:all .25s" style-hover="border-color:rgba(232,121,44,.6);box-shadow:0 8px 26px rgba(232,121,44,.28)">
           <sc-if value="{{ sp.logo }}" hint-placeholder-val="{{ false }}"><img src="{{ sp.logo }}" alt="{{ sp.name }}" style="max-width:100%;max-height:{{ sp.maxH }};width:auto;height:auto;object-fit:contain"></sc-if>
         </div>
       </sc-for>
