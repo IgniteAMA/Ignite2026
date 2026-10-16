@@ -437,7 +437,7 @@ a:hover{color:#0F1F35}
     </div>
     <div class="sponsor-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:52px">
       <sc-for list="{{ sponsors }}" as="sp">
-        <div style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:14px 16px;height:160px;border-radius:14px;background:#fff;border:1px solid rgba(255,255,255,.14);box-shadow:0 4px 18px rgba(0,0,0,.18);transition:all .25s" style-hover="border-color:rgba(232,121,44,.6);box-shadow:0 8px 26px rgba(232,121,44,.28)">
+        <div style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:14px 16px;height:150px;border-radius:14px;background:#fff;border:1px solid rgba(255,255,255,.14);box-shadow:0 4px 18px rgba(0,0,0,.18);transition:all .25s" style-hover="border-color:rgba(232,121,44,.6);box-shadow:0 8px 26px rgba(232,121,44,.28)">
           <sc-if value="{{ sp.logo }}" hint-placeholder-val="{{ false }}"><img src="{{ sp.logo }}" alt="{{ sp.name }}" style="max-width:100%;max-height:{{ sp.maxH }};width:auto;height:auto;object-fit:contain"></sc-if>
         </div>
       </sc-for>
@@ -717,10 +717,10 @@ class Component extends DCLogic {
       })(),
 
       sponsors: [
-        { name: '5 Whys Marketing Partners', logo: 'assets/sponsors/5Whys.png', maxH: '132px' },
+        { name: '5 Whys Marketing Partners', logo: 'assets/sponsors/5Whys.png', maxH: '120px' },
         { name: 'American Sign Museum', logo: 'assets/sponsors/AmericanSignMuseum.png', maxH: '112px' },
         { name: 'Brandience', logo: 'assets/sponsors/Brandience.png', maxH: '90px' },
-        { name: 'CourtAvenue', logo: 'assets/sponsors/CourtAvenue.png', maxH: '132px' },
+        { name: 'CourtAvenue', logo: 'assets/sponsors/CourtAvenue.png', maxH: '120px' },
         { name: 'Infolinks', logo: 'assets/sponsors/Infolinks.png', maxH: '60px' },
         { name: 'Synergistic', logo: 'assets/sponsors/Synergistic.png', maxH: '60px' },
         { name: 'VML', logo: 'assets/sponsors/VML_black.png', maxH: '52px' },
