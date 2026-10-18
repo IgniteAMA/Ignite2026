@@ -149,7 +149,7 @@ a:hover{color:#0F1F35}
       </span>
       <span style="flex:1;height:1px;background:rgba(15,31,53,.1)"></span>
     </div>
-    <div class="sponsor-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+    <div class="sponsor-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
       <sc-for list="{{ sponsorLogos }}" as="lg">
         <div style="display:flex;align-items:center;justify-content:center;padding:20px 22px;min-height:132px;border-radius:18px;background:#fff;border:1px solid rgba(15,31,53,.1);box-shadow:0 3px 16px rgba(15,31,53,.06);transition:all .25s" style-hover="border-color:rgba(232,121,44,.55);box-shadow:0 10px 30px rgba(232,121,44,.18);transform:translateY(-3px)">
           <sc-if value="{{ lg.logo }}" hint-placeholder-val="{{ false }}"><img src="{{ lg.logo }}" alt="{{ lg.name }}" style="max-width:100%;max-height:{{ lg.maxH }};width:auto;height:auto;object-fit:contain"></sc-if>
@@ -275,6 +275,7 @@ class Component extends DCLogic {
         { name: 'Cincinnati Podcast Studio', logo: '../assets/sponsors/CincinnatiPodcastStudio.png', maxH: '110px' },
         { name: 'CourtAvenue', logo: '../assets/sponsors/CourtAvenue.png', maxH: '132px' },
         { name: 'Infolinks', logo: '../assets/sponsors/Infolinks.png', maxH: '60px' },
+        { name: 'RedHawk Technologies', logo: '../assets/sponsors/RedHawkTechnologies.png', maxH: '90px' },
         { name: 'Synergistic', logo: '../assets/sponsors/Synergistic.png', maxH: '60px' },
         { name: 'VML', logo: '../assets/sponsors/VML_black.png', maxH: '52px' },
         { name: 'The Whole Jones Group', logo: '../assets/sponsors/WholeJonesGroup.png', maxH: '66px' }

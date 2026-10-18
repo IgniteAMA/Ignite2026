@@ -203,6 +203,12 @@ a:hover{color:#0F1F35}
                       </sc-if>
                     </div>
                   </sc-if>
+                  <sc-if value="{{ item.sponsored }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;align-items:center;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(15,31,53,.08)">
+                      <img src="../assets/sponsors/CincinnatiPodcastStudio.png" alt="Cincinnati Podcast Studio" style="height:34px;width:auto">
+                      <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(15,31,53,.5)">Breakout panels sponsored by <span style="color:#E8792C">Cincinnati Podcast Studio</span></div>
+                    </div>
+                  </sc-if>
                   <sc-if value="{{ item.speaker }}" hint-placeholder-val="{{ false }}">
                     <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
                       <span style="flex:none;position:relative;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;overflow:hidden;background:{{ item.speakerColor }};color:#fff;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:16px">{{ item.speakerInitial }}<sc-if value="{{ item.speakerPhoto }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="{{ item.speaker }}" style="position:absolute;inset:0;background-image:{{ item.speakerPhotoCss }};background-size:cover;background-position:{{ item.speakerPos }}"></span></sc-if></span>
@@ -325,7 +331,7 @@ class Component extends DCLogic {
     });
     const colinJeffries = { initial: 'CJ', name: 'Colin Jeffries', title: 'VP Marketing, Balance Health', color: C[3], photo: '../assets/speakers/Colin_Jeffries.jpg', pos: 'center 15%' };
     const anticipateB2C = panel(
-      [ { initial: 'TW', name: 'Troy Woolery', title: 'Dir. Business Development, Vaco', color: C[1], photo: '../assets/speakers/Troy_Woolery.jpg', pos: 'center top' }, colinJeffries ],
+      [ { initial: 'TW', name: 'Troy Woolery', title: 'Director of Business Development, RedHawk Technologies', color: C[1], photo: '../assets/speakers/Troy_Woolery.jpg', pos: 'center top' }, colinJeffries ],
       [ { initial: 'CH', name: 'Chase Howell', title: 'Group Director Strategy, VML', color: C[2], photo: '../assets/speakers/Chase_Howell.jpg', pos: 'center 22%' },
         { initial: 'MM', name: 'Melissa Martin', title: 'Chief Growth Officer, Synergistic', color: C[3], photo: '../assets/speakers/Melissa_Martin.jpg', pos: 'center 15%' },
         { initial: 'BM', name: 'Brian McHale', title: 'CEO, Brandience', color: C[2], photo: '../assets/speakers/Brian_McHale.jpg', pos: 'center 20%' },
@@ -378,7 +384,7 @@ class Component extends DCLogic {
     const filter = this.state.filter;
     const match = (item) => filter === 'all' || (filter === 'keynote' && item.kind === 'keynote') || (filter === 'breakout' && item.kind === 'breakout') || (filter === 'social' && (item.kind === 'break' || item.kind === 'networking'));
     const slots = allSlots
-      .map(s => ({ time: s.time, duration: s.duration, items: s.items.filter(match).map(it => Object.assign({}, it, { speakerPhotoCss: it.speakerPhoto ? 'url("' + it.speakerPhoto + '")' : 'none' })), cols: (s.twoUp && s.items.filter(match).length > 1) ? '1fr 1fr' : '1fr' }))
+      .map(s => ({ time: s.time, duration: s.duration, items: s.items.filter(match).map(it => Object.assign({}, it, { sponsored: it.kind === 'breakout', speakerPhotoCss: it.speakerPhoto ? 'url("' + it.speakerPhoto + '")' : 'none' })), cols: (s.twoUp && s.items.filter(match).length > 1) ? '1fr 1fr' : '1fr' }))
       .filter(s => s.items.length > 0);
 
     const filterDefs = [
