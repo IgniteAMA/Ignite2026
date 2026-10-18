@@ -161,6 +161,12 @@ a:hover{color:#0F1F35}
                   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 380px 260px at 100% 110%, rgba(232,121,44,.3), transparent 65%);pointer-events:none"></div>
                 </sc-if>
                 <div style="position:relative">
+                  <sc-if value="{{ item.sponsored }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(15,31,53,.08)">
+                      <img src="../assets/sponsors/CincinnatiPodcastStudio.png" alt="Cincinnati Podcast Studio" style="height:34px;width:auto">
+                      <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(15,31,53,.5)">Breakout panels sponsored by <span style="color:#E8792C">Cincinnati Podcast Studio</span></div>
+                    </div>
+                  </sc-if>
                   <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
                     <span style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;background:{{ item.tagBg }};color:{{ item.tagFg }}">{{ item.type }}</span>
                     <sc-if value="{{ item.track }}" hint-placeholder-val="{{ false }}">
@@ -201,12 +207,6 @@ a:hover{color:#0F1F35}
                         </sc-for>
                       </div>
                       </sc-if>
-                    </div>
-                  </sc-if>
-                  <sc-if value="{{ item.sponsored }}" hint-placeholder-val="{{ false }}">
-                    <div style="display:flex;align-items:center;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(15,31,53,.08)">
-                      <img src="../assets/sponsors/CincinnatiPodcastStudio.png" alt="Cincinnati Podcast Studio" style="height:34px;width:auto">
-                      <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(15,31,53,.5)">Breakout panels sponsored by <span style="color:#E8792C">Cincinnati Podcast Studio</span></div>
                     </div>
                   </sc-if>
                   <sc-if value="{{ item.speaker }}" hint-placeholder-val="{{ false }}">
