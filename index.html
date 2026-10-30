@@ -396,9 +396,6 @@ a:hover{color:#0F1F35}
               </sc-if>
             </div>
             <div style="position:relative;display:flex;align-items:baseline;gap:9px;margin-top:12px">
-              <sc-if value="{{ tier.soldOut }}" hint-placeholder-val="{{ false }}">
-                <div style="position:absolute;inset:-6px -8px;z-index:1;display:flex;align-items:center;justify-content:center;border-radius:12px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:700;font-size:34px;letter-spacing:.08em;text-transform:uppercase">Sold Out</div>
-              </sc-if>
               <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:58px;line-height:1;color:{{ tier.priceColor }}">{{ tier.price }}</span>
               <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:{{ tier.priceColor }}">{{ tier.priceLabel }}</span>
               <sc-if value="{{ tier.priceSuffix }}" hint-placeholder-val="{{ false }}">
@@ -426,7 +423,10 @@ a:hover{color:#0F1F35}
             </div>
           </div>
           <sc-if value="{{ tier.soldOut }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;background:#0F1F35;color:#E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:700;font-size:44px;letter-spacing:.08em;text-transform:uppercase">Sold Out</div>
+            <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(15,31,53,.62);color:#E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:700;font-size:44px;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 2px 18px rgba(15,31,53,.9)">
+              <img src="assets/IGNITE_Flame.png" alt="" style="height:72px;width:auto;filter:drop-shadow(0 2px 14px rgba(15,31,53,.8))">
+              <span>Sold Out</span>
+            </div>
           </sc-if>
           <a href="{{ tier.href }}" style="position:relative;display:block;margin-top:auto;text-align:center;padding:14px 0;border-radius:999px;background:{{ tier.btnBg }};border:{{ tier.btnBorder }};color:{{ tier.btnFg }};font-size:13.5px;font-weight:800;box-shadow:{{ tier.btnShadow }};cursor:{{ tier.btnCursor }};pointer-events:{{ tier.btnPE }}" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">{{ tier.cta }}</a>
         </div>
