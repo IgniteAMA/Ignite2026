@@ -425,7 +425,7 @@ a:hover{color:#0F1F35}
               </sc-for>
             </div>
           </div>
-          <a href="{{ tier.href }}" style="position:relative;display:block;margin-top:auto;text-align:center;padding:14px 0;border-radius:999px;background:{{ tier.btnBg }};border:{{ tier.btnBorder }};color:{{ tier.btnFg }};font-size:13.5px;font-weight:800;box-shadow:{{ tier.btnShadow }};cursor:pointer" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">{{ tier.cta }}</a>
+          <a href="{{ tier.href }}" style="position:relative;display:block;margin-top:auto;text-align:center;padding:14px 0;border-radius:999px;background:{{ tier.btnBg }};border:{{ tier.btnBorder }};color:{{ tier.btnFg }};font-size:13.5px;font-weight:800;box-shadow:{{ tier.btnShadow }};cursor:{{ tier.btnCursor }};pointer-events:{{ tier.btnPE }}" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">{{ tier.cta }}</a>
         </div>
       </sc-for>
     </div>
@@ -707,7 +707,7 @@ class Component extends DCLogic {
           href: 'register/?ticket=early', cta: 'Register — General', bg: '#fff', fg: '#0F1F35', priceColor: '#0F1F35', sub: 'rgba(15,31,53,.6)', featColor: 'rgba(15,31,53,.75)', border: '1px solid rgba(15,31,53,.1)', shadow: '0 2px 12px rgba(15,31,53,.05)', bullet: 'assets/IGNITE_Flame.png', btnBg: 'transparent', btnBorder: '2px solid #0F1F35', btnFg: '#0F1F35', btnShadow: 'none' },
         { name: 'VIP', member: 295, soldOut: true, guest: 449, priceNote: '', featured: true, desc: 'The full IGNITE experience — plus exclusive access to our most premium moments.',
           features: ['Everything in General Admission', 'Exclusive VIP Lunch with keynote speakers', 'Priority seating at all sessions', 'VIP-only networking reception', 'Dedicated support & early entry'],
-          href: '#', cta: 'Sold Out', bg: '#0F1F35', fg: '#fff', priceColor: '#E8792C', sub: 'rgba(255,255,255,.6)', featColor: 'rgba(255,255,255,.75)', border: '2px solid #E8792C', shadow: '0 16px 50px rgba(232,121,44,.25)', bullet: 'assets/IGNITE_Flame.png', btnBg: '#E8792C', btnBorder: 'none', btnFg: '#fff', btnShadow: '0 6px 24px rgba(232,121,44,.4)' },
+          href: '#', cta: 'Sold Out', btnPE: 'none', btnCursor: 'not-allowed', bg: '#0F1F35', fg: '#fff', priceColor: '#E8792C', sub: 'rgba(255,255,255,.6)', featColor: 'rgba(255,255,255,.75)', border: '2px solid #E8792C', shadow: '0 16px 50px rgba(232,121,44,.25)', bullet: 'assets/IGNITE_Flame.png', btnBg: '#E8792C', btnBorder: 'none', btnFg: '#fff', btnShadow: 'none' },
         { name: 'Group', member: 195, badge: 'Limited Space Remaining', guest: 315, priceSuffix: '/person', priceNote: '5+ attendees', featured: false, desc: 'Bring your whole team and ignite your organization together — special per-person rate for groups of 5 or more.',
           features: ['Everything in General Admission', 'Reserved group seating block', 'Group invoice option available', 'Team discount on additional tickets'],
           href: 'register/?ticket=group', cta: 'Register — Group', bg: '#fff', fg: '#0F1F35', priceColor: '#0F1F35', sub: 'rgba(15,31,53,.6)', featColor: 'rgba(15,31,53,.75)', border: '1px solid rgba(15,31,53,.1)', shadow: '0 2px 12px rgba(15,31,53,.05)', bullet: 'assets/IGNITE_Flame.png', btnBg: 'transparent', btnBorder: '2px solid #0F1F35', btnFg: '#0F1F35', btnShadow: 'none' }
@@ -721,6 +721,8 @@ class Component extends DCLogic {
             price: '$' + (isMember ? t.member : t.guest),
             priceLabel: isMember ? 'AMA Member' : 'Guest',
             priceSuffix: t.priceSuffix || '',
+            btnPE: t.btnPE || 'auto',
+            btnCursor: t.btnCursor || 'pointer',
             // General Admission shows the standard (non-early-bird) price struck through on BOTH tabs.
             showSavings: hasRegular,
             regularPrice: '$' + regVal,
