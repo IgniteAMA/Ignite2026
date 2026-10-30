@@ -387,11 +387,18 @@ a:hover{color:#0F1F35}
         <div style="position:relative;display:flex;flex-direction:column;border-radius:20px;padding:30px 28px;background:{{ tier.bg }};border:{{ tier.border }};box-shadow:{{ tier.shadow }};overflow:hidden">
           <sc-if value="{{ tier.featured }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 300px at 100% 100%, rgba(232,121,44,.35), transparent 65%);pointer-events:none"></div>
-            <div style="position:absolute;top:18px;right:18px;display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:#E8792C;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">Limited Availability</div>
           </sc-if>
           <div style="position:relative">
-            <div style="font-size:14px;font-weight:800;color:{{ tier.fg }}">{{ tier.name }}</div>
-            <div style="display:flex;align-items:baseline;gap:9px;margin-top:12px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px">
+              <div style="font-size:14px;font-weight:800;color:{{ tier.fg }}">{{ tier.name }}</div>
+              <sc-if value="{{ tier.badge }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:5px 12px;border-radius:999px;background:#E8792C;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">{{ tier.badge }}</div>
+              </sc-if>
+            </div>
+            <div style="position:relative;display:flex;align-items:baseline;gap:9px;margin-top:12px">
+              <sc-if value="{{ tier.soldOut }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:-6px -8px;z-index:1;display:flex;align-items:center;justify-content:center;border-radius:12px;background:#E8792C;color:#fff;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:700;font-size:34px;letter-spacing:.08em;text-transform:uppercase">Sold Out</div>
+              </sc-if>
               <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:58px;line-height:1;color:{{ tier.priceColor }}">{{ tier.price }}</span>
               <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:{{ tier.priceColor }}">{{ tier.priceLabel }}</span>
               <sc-if value="{{ tier.priceSuffix }}" hint-placeholder-val="{{ false }}">
@@ -695,13 +702,13 @@ class Component extends DCLogic {
       ticketTiers: (() => {
         const isMember = this.state.audience === 'member';
         const raw = [
-        { name: 'General Admission', member: 215, guest: 349, priceNote: '', featured: false, desc: 'Full-day access to everything IGNITE has to offer.',
+        { name: 'General Admission', member: 215, badge: 'Limited Space Remaining', guest: 349, priceNote: '', featured: false, desc: 'Full-day access to everything IGNITE has to offer.',
           features: ['Full-day conference access', 'All morning & afternoon breakouts', 'Opening & closing keynotes', 'Networking breaks & Happy Hour', 'Event programming & materials', 'General attendee lunch'],
           href: 'register/?ticket=early', cta: 'Register — General', bg: '#fff', fg: '#0F1F35', priceColor: '#0F1F35', sub: 'rgba(15,31,53,.6)', featColor: 'rgba(15,31,53,.75)', border: '1px solid rgba(15,31,53,.1)', shadow: '0 2px 12px rgba(15,31,53,.05)', bullet: 'assets/IGNITE_Flame.png', btnBg: 'transparent', btnBorder: '2px solid #0F1F35', btnFg: '#0F1F35', btnShadow: 'none' },
-        { name: 'VIP', member: 295, guest: 449, priceNote: '', featured: true, desc: 'The full IGNITE experience — plus exclusive access to our most premium moments.',
+        { name: 'VIP', member: 295, soldOut: true, guest: 449, priceNote: '', featured: true, desc: 'The full IGNITE experience — plus exclusive access to our most premium moments.',
           features: ['Everything in General Admission', 'Exclusive VIP Lunch with keynote speakers', 'Priority seating at all sessions', 'VIP-only networking reception', 'Dedicated support & early entry'],
           href: 'register/?ticket=vip', cta: 'Register — VIP', bg: '#0F1F35', fg: '#fff', priceColor: '#E8792C', sub: 'rgba(255,255,255,.6)', featColor: 'rgba(255,255,255,.75)', border: '2px solid #E8792C', shadow: '0 16px 50px rgba(232,121,44,.25)', bullet: 'assets/IGNITE_Flame.png', btnBg: '#E8792C', btnBorder: 'none', btnFg: '#fff', btnShadow: '0 6px 24px rgba(232,121,44,.4)' },
-        { name: 'Group', member: 195, guest: 315, priceSuffix: '/person', priceNote: '5+ attendees', featured: false, desc: 'Bring your whole team and ignite your organization together — special per-person rate for groups of 5 or more.',
+        { name: 'Group', member: 195, badge: 'Limited Space Remaining', guest: 315, priceSuffix: '/person', priceNote: '5+ attendees', featured: false, desc: 'Bring your whole team and ignite your organization together — special per-person rate for groups of 5 or more.',
           features: ['Everything in General Admission', 'Reserved group seating block', 'Group invoice option available', 'Team discount on additional tickets'],
           href: 'register/?ticket=group', cta: 'Register — Group', bg: '#fff', fg: '#0F1F35', priceColor: '#0F1F35', sub: 'rgba(15,31,53,.6)', featColor: 'rgba(15,31,53,.75)', border: '1px solid rgba(15,31,53,.1)', shadow: '0 2px 12px rgba(15,31,53,.05)', bullet: 'assets/IGNITE_Flame.png', btnBg: 'transparent', btnBorder: '2px solid #0F1F35', btnFg: '#0F1F35', btnShadow: 'none' }
         ];
