@@ -425,6 +425,9 @@ a:hover{color:#0F1F35}
               </sc-for>
             </div>
           </div>
+          <sc-if value="{{ tier.soldOut }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;background:#0F1F35;color:#E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:700;font-size:44px;letter-spacing:.08em;text-transform:uppercase">Sold Out</div>
+          </sc-if>
           <a href="{{ tier.href }}" style="position:relative;display:block;margin-top:auto;text-align:center;padding:14px 0;border-radius:999px;background:{{ tier.btnBg }};border:{{ tier.btnBorder }};color:{{ tier.btnFg }};font-size:13.5px;font-weight:800;box-shadow:{{ tier.btnShadow }};cursor:{{ tier.btnCursor }};pointer-events:{{ tier.btnPE }}" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">{{ tier.cta }}</a>
         </div>
       </sc-for>
