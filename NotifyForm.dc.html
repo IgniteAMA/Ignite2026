@@ -19,7 +19,7 @@ a{color:#E8792C;text-decoration:none}
 a:hover{color:#0F1F35}
 </style>
 </helmet>
-<button onClick="{{ open }}" style="border:{{ linkBorder }};background:{{ linkBg }};padding:{{ linkPad }};border-radius:{{ linkRadius }};cursor:pointer;text-align:left;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:{{ linkSize }};font-weight:{{ linkWeight }};color:{{ linkColor }};text-decoration:{{ linkDecoration }};text-underline-offset:3px;box-shadow:{{ linkShadow }}" style-hover="{{ linkHover }}">{{ linkLabel }}</button>
+<button onClick="{{ open }}" style="border:{{ linkBorder }};background:{{ linkBg }};padding:{{ linkPad }};border-radius:{{ linkRadius }};cursor:pointer;text-align:left;font-family:'Gotham Rounded','Nunito',sans-serif;font-size:{{ linkSize }};font-weight:{{ linkWeight }};color:{{ linkColor }};text-decoration:{{ linkDecoration }};text-underline-offset:3px;white-space:nowrap;box-shadow:{{ linkShadow }}" style-hover="{{ linkHover }}">{{ linkLabel }}</button>
 
 <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
 <div role="dialog" aria-modal="true" aria-label="Notify me about IGNITE 2027" style="position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px">
@@ -155,7 +155,7 @@ class Component extends DCLogic {
       linkColor: p.linkColor ?? '#4FC3E8',
       linkSize: p.linkSize ?? '12.5px',
       linkWeight: p.linkWeight ?? '800',
-      linkDecoration: p.linkDecoration ?? 'underline',
+      linkDecoration: p.linkAsButton ? 'none' : (p.linkDecoration ?? 'underline'),
       isOpen: s.open, notSubmitted: !s.submitted, submitted: s.submitted,
       open: () => this.setState({ open: true, submitted: false }),
       close: () => this.setState({ open: false }),
