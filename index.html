@@ -131,11 +131,9 @@ a:hover{color:#0F1F35}
 </sc-if>
 <div style="position:fixed;top:0;left:0;right:0;z-index:100" data-screen-label="Global Nav">
   <div class="nav-eyebrow" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:7px 40px;background:#0F1F35;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff">
-    <span>Tuesday, November 10, 2026</span>
+    <span>IGNITE 2026 was a wrap — thank you!</span>
     <span style="opacity:.6">·</span>
-    <span>American Sign Museum</span>
-    <span style="opacity:.6">·</span>
-    <a href="register/" style="color:#fff;text-decoration:underline;text-underline-offset:3px">Register</a>
+    <dc-import name="NotifyForm" link-label="Notify me about 2027" link-color="#fff" link-size="12px" link-weight="800" link-decoration="underline" hint-size="150px,16px"></dc-import>
   </div>
   <div class="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:{{ navBg }};backdrop-filter:{{ navBlur }};box-shadow:{{ navShadow }};transition:background .35s ease, box-shadow .35s ease">
     <a href="#top" style="display:flex;align-items:center;gap:0;height:54px;overflow:hidden">
@@ -150,7 +148,7 @@ a:hover{color:#0F1F35}
       <a href="sponsors/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Sponsors</a>
       <a href="venue/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Venue</a>
       <a href="faq/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">FAQ</a>
-      <a href="register/" style="margin-left:auto;padding:10px 20px;border-radius:999px;background:#E8792C;color:#fff" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Register</a>
+      <div style="margin-left:auto"><dc-import name="NotifyForm" link-as-button="true" link-padding="10px 20px" link-label="Notify Me About 2027" link-color="#fff" link-size="13px" link-weight="700" hint-size="190px,38px"></dc-import></div>
     </div>
     <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}" style="align-items:center;justify-content:center;width:46px;height:46px;border:2px solid rgba(255,255,255,.3);border-radius:12px;background:rgba(255,255,255,.06);cursor:pointer;padding:0">
       <span style="position:relative;display:block;width:20px;height:14px">
@@ -168,7 +166,7 @@ a:hover{color:#0F1F35}
         <a href="sponsors/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Sponsors</a>
         <a href="venue/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Venue</a>
         <a href="faq/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">FAQ</a>
-        <a href="register/" onClick="{{ closeMenu }}" style="margin-top:14px;text-align:center;padding:15px 0;border-radius:999px;background:#E8792C;color:#fff;font-weight:800">Register Now</a>
+        <div style="margin-top:14px;display:flex;justify-content:center"><dc-import name="NotifyForm" link-as-button="true" link-label="Notify Me About 2027" link-color="#fff" link-size="16px" link-weight="800" hint-size="220px,50px"></dc-import></div>
       </div>
     </div>
   </sc-if>
@@ -187,13 +185,13 @@ a:hover{color:#0F1F35}
     </div>
     <div id="hero-lockup" style="display:inline-block"><h1 style="margin:0;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:{{ headlineSize }};line-height:.9;letter-spacing:-.02em;color:#fff;white-space:nowrap">Predictive <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Growth</span></h1>
     <div style="margin-top:16px;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:30px;line-height:1;letter-spacing:-.02em;color:#fff">Anticipate. Personalize. <span style="color:#7FDBFF;text-shadow:0 0 8px rgba(79,195,232,.55);animation:neonBuzz 8s infinite">Scale.</span></div></div>
-    <p style="margin:22px auto 0;max-width:660px;font-size:19px;font-weight:600;line-height:1.55;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.7),0 0 40px rgba(10,21,32,.6)">One day. Cincinnati's sharpest marketing &amp; CX minds, together for what's next in growth, data, and AI.</p>
+    <p style="margin:22px auto 0;max-width:660px;font-size:19px;font-weight:600;line-height:1.55;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.7),0 0 40px rgba(10,21,32,.6)">Thank you to everyone who joined Cincinnati's sharpest marketing &amp; CX minds for IGNITE 2026. We'll see you next year.</p>
     <div class="hero-ctas" style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:34px">
-      <a href="register/" style="padding:16px 34px;border-radius:999px;border:2px solid transparent;background:#E8792C;color:#fff;font-weight:800;font-size:15px;box-shadow:0 6px 30px rgba(232,121,44,.45)" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Register Now</a>
-      <a href="#glance" style="padding:16px 34px;border-radius:999px;border:2px solid rgba(255,255,255,.35);color:#fff;font-weight:800;font-size:15px" style-hover="background:rgba(255,255,255,.12);color:#fff">See the Agenda</a>
+      <dc-import name="NotifyForm" link-as-button="true" link-padding="18px 36px" link-label="Notify Me About 2027" link-color="#fff" link-size="15px" link-weight="800" hint-size="250px,56px"></dc-import>
+      <a href="#glance" style="padding:16px 34px;border-radius:999px;border:2px solid rgba(255,255,255,.35);color:#fff;font-weight:800;font-size:15px" style-hover="background:rgba(255,255,255,.12);color:#fff">See the 2026 Recap</a>
     </div>
     <div class="hero-datemeta" style="display:flex;align-items:center;justify-content:center;gap:16px;margin-top:44px;font-size:18px;font-weight:800;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.7),0 0 30px rgba(10,21,32,.6)">
-      <span>Tuesday, November 10, 2026</span>
+      <span>IGNITE 2026 · November 10</span>
       <img src="assets/IGNITE_Flame.png" alt="" style="height:26px;width:auto">
       <span>American Sign Museum</span>
     </div>
@@ -208,12 +206,13 @@ a:hover{color:#0F1F35}
       <div style="max-width:680px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
           <img src="assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
-          <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Keynote Speakers</span>
+          <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">2026 Keynote Speakers</span>
         </div>
         <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:clamp(44px,6.5vw,72px);line-height:.92;color:#0F1F35">The Voices <span style="color:#D2540A;text-shadow:0 1px 0 rgba(255,255,255,.4),0 0 10px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Lighting the Way</span></div>
         <p style="margin:20px 0 0;font-size:17px;line-height:1.7;color:rgba(15,31,53,.7)">Our opening keynote sets up what the whole day builds on: as AI answers replace search results, trust becomes the brand's most valuable asset. We close with the flip side — how to put data and AI to work without falling into the personalization trap.</p>
       </div>
       <a href="speakers/" style="flex:none;display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;border:2px solid rgba(15,31,53,.2);color:#0F1F35;font-size:13.5px;font-weight:800" style-hover="border-color:#E8792C;color:#E8792C">See all speakers →</a>
+      <dc-import name="SpeakerNominate" link-label="Nominate a 2027 speaker →" link-as-button="true" link-color="#fff" link-bg="#E8792C" link-size="13.5px" link-weight="800" hint-size="220px,48px"></dc-import>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:26px">
 
@@ -321,12 +320,12 @@ a:hover{color:#0F1F35}
       <div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
           <img src="assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
-          <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Agenda</span>
+          <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">2026 Recap</span>
         </div>
         <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:clamp(40px,6vw,64px);line-height:.92;color:#0F1F35">The Day at a <span style="color:#D2540A;text-shadow:0 1px 0 rgba(255,255,255,.4),0 0 10px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Glance</span></div>
         <p style="margin:12px 0 0;font-size:15px;color:rgba(15,31,53,.55)">Tuesday, November 10, 2026 · 8:30 AM – 5:30 PM</p>
       </div>
-      <a href="agenda/" style="flex:none;padding:12px 24px;border-radius:999px;background:#0F1F35;color:#fff;font-size:13px;font-weight:800;white-space:nowrap" style-hover="background:#E8792C;color:#fff">View Full Agenda →</a>
+      <a href="agenda/" style="flex:none;padding:12px 24px;border-radius:999px;background:#0F1F35;color:#fff;font-size:13px;font-weight:800;white-space:nowrap" style-hover="background:#E8792C;color:#fff">View the 2026 Agenda →</a>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:44px;align-items:stretch">
       <div style="position:relative;border-radius:20px;overflow:hidden;background:#0F1F35;box-shadow:0 8px 40px rgba(15,31,53,.2);min-height:420px">
@@ -365,78 +364,20 @@ a:hover{color:#0F1F35}
 </div>
 
 <!-- ═══════ REGISTER ═══════ -->
-<div id="register" data-screen-label="Register" style="background:#FAFAF8;padding:40px 0 100px">
+<div id="register" data-screen-label="Notify Me" style="background:#FAFAF8;padding:40px 0 100px">
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
-    <div style="text-align:center;margin-bottom:52px">
-      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px">
-        <img src="assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
-        <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Register</span>
-      </div>
-      <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:clamp(42px,6vw,68px);line-height:.95;color:#0F1F35">Secure Your <span style="color:#D2540A;text-shadow:0 1px 0 rgba(255,255,255,.4),0 0 10px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Spot</span></div>
-      <p style="margin:16px auto 0;max-width:520px;font-size:15px;line-height:1.7;color:rgba(15,31,53,.6)">Choose the experience that fits you best. Seats are limited — don't let the flame burn out before you register.</p>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:34px;padding:16px 24px;border-radius:999px;background:rgba(232,121,44,.08);border:1.5px solid rgba(232,121,44,.35);width:fit-content;margin-left:auto;margin-right:auto;box-shadow:0 4px 20px rgba(232,121,44,.12)">
-      <span style="font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#0F1F35">See pricing for</span>
-      <div role="radiogroup" aria-label="Attendee type" style="display:inline-flex;padding:5px;border-radius:999px;background:#fff;border:1px solid rgba(15,31,53,.12);box-shadow:0 2px 10px rgba(15,31,53,.08)">
-        <button role="radio" aria-checked="{{ isMember }}" onClick="{{ setMember }}" style="padding:12px 26px;border:none;border-radius:999px;background:{{ memberBtnBg }};color:{{ memberBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;box-shadow:{{ memberBtnShadow }}">AMA Member</button>
-        <button role="radio" aria-checked="{{ isGuest }}" onClick="{{ setGuest }}" style="padding:12px 26px;border:none;border-radius:999px;background:{{ guestBtnBg }};color:{{ guestBtnFg }};font-family:'Gotham Rounded','Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;box-shadow:{{ guestBtnShadow }}">Guest</button>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;align-items:stretch">
-      <sc-for list="{{ ticketTiers }}" as="tier" hint-placeholder-count="3">
-        <div style="position:relative;display:flex;flex-direction:column;border-radius:20px;padding:30px 28px;background:{{ tier.bg }};border:{{ tier.border }};box-shadow:{{ tier.shadow }};overflow:hidden">
-          <sc-if value="{{ tier.featured }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse 400px 300px at 100% 100%, rgba(232,121,44,.35), transparent 65%);pointer-events:none"></div>
-          </sc-if>
-          <div style="position:relative">
-            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px">
-              <div style="font-size:14px;font-weight:800;color:{{ tier.fg }}">{{ tier.name }}</div>
-              <sc-if value="{{ tier.badge }}" hint-placeholder-val="{{ false }}">
-                <div style="padding:5px 12px;border-radius:999px;background:#E8792C;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase">{{ tier.badge }}</div>
-              </sc-if>
-            </div>
-            <div style="position:relative;display:flex;align-items:baseline;gap:9px;margin-top:12px">
-              <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:58px;line-height:1;color:{{ tier.priceColor }}">{{ tier.price }}</span>
-              <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:{{ tier.priceColor }}">{{ tier.priceLabel }}</span>
-              <sc-if value="{{ tier.priceSuffix }}" hint-placeholder-val="{{ false }}">
-                <span style="font-size:12.5px;font-weight:600;color:{{ tier.sub }}">{{ tier.priceSuffix }}</span>
-              </sc-if>
-            </div>
-            <sc-if value="{{ tier.showSavings }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;align-items:baseline;gap:8px;margin-top:8px">
-                <span style="font-size:13.5px;font-weight:600;color:{{ tier.sub }}">Regular</span>
-                <span style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:22px;line-height:1;color:{{ tier.sub }};text-decoration:line-through;text-decoration-color:#E8792C;text-decoration-thickness:2px">{{ tier.regularPrice }}</span>
-                <span style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(79,195,232,.16);color:#1580A5">{{ tier.savings }}</span>
-              </div>
-            </sc-if>
-            <sc-if value="{{ tier.priceNote }}" hint-placeholder-val="{{ false }}">
-              <div style="display:inline-block;margin-top:12px;padding:4px 12px;border-radius:999px;background:rgba(232,121,44,.12);color:#C25E17;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase">{{ tier.priceNote }}</div>
-            </sc-if>
-            <p style="margin:10px 0 18px;font-size:13px;line-height:1.6;color:{{ tier.sub }}">{{ tier.desc }}</p>
-            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:26px">
-              <sc-for list="{{ tier.features }}" as="feat" hint-placeholder-count="6">
-                <div style="display:flex;align-items:flex-start;gap:9px">
-                  <img src="assets/IGNITE_Flame.png" alt="" style="height:13px;width:auto;margin-top:2px;flex:none">
-                  <span style="font-size:13px;line-height:1.5;color:{{ tier.featColor }}">{{ feat }}</span>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-          <sc-if value="{{ tier.soldOut }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(15,31,53,.62);color:#E8792C;font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:700;font-size:44px;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 2px 18px rgba(15,31,53,.9)">
-              <img src="assets/IGNITE_Flame.png" alt="" style="height:72px;width:auto;filter:drop-shadow(0 2px 14px rgba(15,31,53,.8))">
-              <span>Sold Out</span>
-            </div>
-          </sc-if>
-          <a href="{{ tier.href }}" style="position:relative;display:block;margin-top:auto;text-align:center;padding:14px 0;border-radius:999px;background:{{ tier.btnBg }};border:{{ tier.btnBorder }};color:{{ tier.btnFg }};font-size:13.5px;font-weight:800;box-shadow:{{ tier.btnShadow }};cursor:{{ tier.btnCursor }};pointer-events:{{ tier.btnPE }}" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">{{ tier.cta }}</a>
+    <div style="position:relative;overflow:hidden;text-align:center;padding:64px clamp(24px,5vw,60px);border-radius:28px;background:linear-gradient(150deg,#0F1F35,#1a3350);border:1px solid rgba(232,121,44,.35);box-shadow:0 12px 50px rgba(15,31,53,.2)">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 600px 360px at 50% 130%, rgba(232,121,44,.45), transparent 65%)"></div>
+      <div style="position:relative">
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px">
+          <img src="assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
+          <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">IGNITE 2027</span>
         </div>
-      </sc-for>
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:clamp(40px,6vw,64px);line-height:.95;color:#fff">Be First to <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Know</span></div>
+        <p style="margin:18px auto 30px;max-width:540px;font-size:15.5px;line-height:1.7;color:rgba(255,255,255,.7)">IGNITE 2026 is in the books. Join the list and we'll tell you the moment 2027 dates, tickets, and speakers are announced.</p>
+        <dc-import name="NotifyForm" link-as-button="true" link-padding="18px 36px" link-label="Notify Me About 2027" link-color="#fff" link-size="15px" link-weight="800" hint-size="250px,56px"></dc-import>
+      </div>
     </div>
-    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:34px auto 0;max-width:620px;padding:16px 26px;border-radius:16px;background:#fff;border:1px solid rgba(15,31,53,.1);box-shadow:0 2px 12px rgba(15,31,53,.05);text-align:center">
-      <span style="font-size:14px;font-weight:600;color:rgba(15,31,53,.7)">Not an AMA Cincinnati member? Members save on every tier.</span>
-      <a href="https://www.amacincinnati.org/get-involved/join-or-renew-your-membership/" target="_blank" rel="noopener" style="font-size:14px;font-weight:800;color:#E8792C;text-decoration:underline;text-underline-offset:3px" style-hover="color:#0F1F35">Become a member →</a>
-    </div>
-    <p style="text-align:center;margin:20px 0 0;font-size:11.5px;color:rgba(15,31,53,.4)">* Pricing subject to change. All prices USD. Member rates require an active AMA Cincinnati membership.</p>
   </div>
 </div>
 
@@ -460,10 +401,10 @@ a:hover{color:#0F1F35}
     </div>
     <div class="brand-cta" style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:32px 36px;border-radius:20px;background:rgba(232,121,44,.1);border:1px solid rgba(232,121,44,.35)">
       <div>
-        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(26px,5vw,34px);color:#fff;text-wrap:balance">Put Your Brand in the Room</div>
-        <p style="margin:6px 0 0;font-size:14px;line-height:1.6;color:rgba(255,255,255,.65);max-width:560px">IGNITE sponsors reach hundreds of Cincinnati-area marketing decision-makers — CMOs, brand managers, and marketing leaders — in one high-energy day.</p>
+        <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(26px,5vw,34px);color:#fff;text-wrap:balance">Sponsor IGNITE 2027</div>
+        <p style="margin:6px 0 0;font-size:14px;line-height:1.6;color:rgba(255,255,255,.65);max-width:560px">Thank you to our 2026 sponsors. Put your brand in front of hundreds of Cincinnati-area marketing decision-makers at IGNITE 2027 — talk to us about getting involved early.</p>
       </div>
-      <a href="sponsors/" class="brand-cta-btn" style="flex:none;padding:15px 30px;border-radius:999px;background:#E8792C;color:#fff;font-size:14px;font-weight:800;box-shadow:0 6px 24px rgba(232,121,44,.4);white-space:nowrap;text-align:center" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">View Sponsorship Opportunities →</a>
+      <a href="sponsors/" class="brand-cta-btn" style="flex:none;padding:15px 30px;border-radius:999px;background:#E8792C;color:#fff;font-size:14px;font-weight:800;box-shadow:0 6px 24px rgba(232,121,44,.4);white-space:nowrap;text-align:center" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Sponsor IGNITE 2027 →</a>
     </div>
   </div>
 </div>
@@ -541,14 +482,14 @@ a:hover{color:#0F1F35}
         <div style="display:flex;flex-direction:column;gap:11px">
           <a href="#why" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Why Attend</a>
           <a href="#glance" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Agenda</a>
-          <a href="register/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Register</a>
+          <dc-import name="NotifyForm" link-label="Notify Me About 2027" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="150px,20px"></dc-import>
           <a href="#testimonials" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Testimonials</a>
         </div>
       </div>
       <div>
         <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#4FC3E8;margin-bottom:18px">Get Involved</div>
         <div style="display:flex;flex-direction:column;gap:11px">
-          <a href="#sponsors" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Become a Sponsor</a>
+          <a href="#sponsors" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Sponsor IGNITE 2027</a>
           <dc-import name="SpeakerNominate" link-label="Speak at IGNITE'27" link-color="rgba(255,255,255,.55)" link-size="13.5px" hint-size="140px,20px"></dc-import>
           <dc-import name="VolunteerForm" link-label="Volunteer" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="90px,20px"></dc-import>
           <a href="https://www.amacincinnati.org" target="_blank" rel="noopener" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Join AMA Cincinnati</a>

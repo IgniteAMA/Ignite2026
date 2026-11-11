@@ -83,11 +83,9 @@ a:hover{color:#0F1F35}
 </sc-if>
 <div style="position:fixed;top:0;left:0;right:0;z-index:100" data-screen-label="Global Nav">
   <div class="nav-eyebrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;padding:7px 40px;background:#0F1F35;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff">
-    <span>Tuesday, November 10, 2026</span>
+    <span>IGNITE 2026 was a wrap — thank you!</span>
     <span style="opacity:.6">·</span>
-    <span>American Sign Museum</span>
-    <span style="opacity:.6">·</span>
-    <a href="../register/" style="color:#fff;text-decoration:underline;text-underline-offset:3px">Register</a>
+    <dc-import name="NotifyForm" link-label="Notify me about 2027" link-color="#fff" link-size="12px" link-weight="800" link-decoration="underline" hint-size="150px,16px"></dc-import>
   </div>
   <div class="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(10,21,32,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)">
     <a href="../" style="display:flex;align-items:center;gap:0;height:54px;overflow:hidden">
@@ -102,7 +100,7 @@ a:hover{color:#0F1F35}
       <a href="../sponsors/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Sponsors</a>
       <a href="../venue/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">Venue</a>
       <a href="../faq/" style="color:rgba(255,255,255,.85)" style-hover="color:#E8792C">FAQ</a>
-      <a href="../register/" style="margin-left:auto;padding:10px 20px;border-radius:999px;background:#E8792C;color:#fff" style-hover="background:#4FC3E8;color:#0F1F35;box-shadow:0 6px 30px rgba(79,195,232,.45)">Register</a>
+      <div style="margin-left:auto"><dc-import name="NotifyForm" link-as-button="true" link-padding="10px 20px" link-label="Notify Me About 2027" link-color="#fff" link-size="13px" link-weight="700" hint-size="190px,38px"></dc-import></div>
     </nav>
     <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}" style="align-items:center;justify-content:center;width:46px;height:46px;border:2px solid rgba(255,255,255,.3);border-radius:12px;background:rgba(255,255,255,.06);cursor:pointer;padding:0">
       <span style="position:relative;display:block;width:20px;height:14px">
@@ -120,7 +118,7 @@ a:hover{color:#0F1F35}
         <a href="../sponsors/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Sponsors</a>
         <a href="../venue/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Venue</a>
         <a href="../faq/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">FAQ</a>
-        <a href="../register/" onClick="{{ closeMenu }}" style="margin-top:14px;text-align:center;padding:15px 0;border-radius:999px;background:#E8792C;color:#fff;font-weight:800">Register Now</a>
+        <div style="margin-top:14px;display:flex;justify-content:center"><dc-import name="NotifyForm" link-as-button="true" link-label="Notify Me About 2027" link-color="#fff" link-size="16px" link-weight="800" hint-size="220px,50px"></dc-import></div>
       </div>
     </div>
   </sc-if>
@@ -275,7 +273,7 @@ a:hover{color:#0F1F35}
           <a href="../#why" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Why Attend</a>
           <a href="../agenda/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Agenda</a>
           <a href="../speakers/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Speakers</a>
-          <a href="../register/" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Register</a>
+          <dc-import name="NotifyForm" link-label="Notify Me About 2027" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="150px,20px"></dc-import>
         </div>
       </div>
       <div>
