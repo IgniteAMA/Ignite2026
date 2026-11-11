@@ -204,7 +204,7 @@ a:hover{color:#0F1F35}
           <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">2026 Keynote Speakers</span>
         </div>
         <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:clamp(44px,6.5vw,72px);line-height:.92;color:#0F1F35">The Voices <span style="color:#D2540A;text-shadow:0 1px 0 rgba(255,255,255,.4),0 0 10px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Lighting the Way</span></div>
-        <p style="margin:20px 0 0;font-size:17px;line-height:1.7;color:rgba(15,31,53,.7)">Our opening keynote sets up what the whole day builds on: as AI answers replace search results, trust becomes the brand's most valuable asset. We close with the flip side — how to put data and AI to work without falling into the personalization trap.</p>
+        <p style="margin:20px 0 0;font-size:17px;line-height:1.7;color:rgba(15,31,53,.7)">Our opening keynote set up what the whole day built on: as AI answers replace search results, trust becomes the brand's most valuable asset. We closed with the flip side — how to put data and AI to work without falling into the personalization trap.</p>
       </div>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
       <a href="speakers/" style="flex:none;display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;border:2px solid rgba(15,31,53,.2);color:#0F1F35;font-size:13.5px;font-weight:800" style-hover="border-color:#E8792C;color:#E8792C">See 2026 Speakers →</a>
@@ -268,8 +268,8 @@ a:hover{color:#0F1F35}
         <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Why Attend</span>
       </div>
       <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:clamp(44px,6.5vw,72px);line-height:.92;color:#0F1F35">Grow Smarter,<br><span style="color:#D2540A;text-shadow:0 1px 0 rgba(255,255,255,.4),0 0 10px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Not Louder.</span></div>
-      <p style="margin:22px 0 0;font-size:17px;line-height:1.75;color:rgba(15,31,53,.7)">Every year, AMA Cincinnati gathers the region's sharpest marketing and CX leaders for one high-energy day. This year, the fire is aimed at what's next: using data and AI to anticipate what customers need, personalize what you deliver, and turn it into growth you can prove — capped by a closing keynote on why more data alone won't make you a better marketer. No hype. No demos. Just what works.</p>
-      <p style="margin:16px 0 0;font-size:17px;line-height:1.75;color:rgba(15,31,53,.7)">You're under pressure to grow — leaner team, tighter budget, and a boss who's heard "AI" one too many times. IGNITE 2026 cuts through it, so you leave with more than notes. You leave with a plan you can defend tomorrow.</p>
+      <p style="margin:22px 0 0;font-size:17px;line-height:1.75;color:rgba(15,31,53,.7)">Every year, AMA Cincinnati gathers the region's sharpest marketing and CX leaders for one high-energy day. This year, the fire was aimed at what's next: using data and AI to anticipate what customers need, personalize what you deliver, and turn it into growth you can prove — capped by a closing keynote on why more data alone won't make you a better marketer. No hype. No demos. Just what worked.</p>
+      <p style="margin:16px 0 0;font-size:17px;line-height:1.75;color:rgba(15,31,53,.7)">Attendees came under pressure to grow — leaner teams, tighter budgets, and bosses who'd heard "AI" one too many times. IGNITE 2026 cut through it, so they left with more than notes. They left with a plan they could defend the next day.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px">
       <sc-for list="{{ whyCards }}" as="card" hint-placeholder-count="3">
@@ -294,7 +294,7 @@ a:hover{color:#0F1F35}
         <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Who It's For</span>
       </div>
       <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:clamp(40px,6vw,64px);line-height:.92;color:#fff">Built For The People <span style="color:transparent;-webkit-text-stroke:2px #FFC79E;text-shadow:0 0 4px #E8792C,0 0 11px rgba(232,121,44,.65),0 0 24px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Done Reacting.</span></div>
-      <p style="margin:20px 0 0;font-size:15.5px;line-height:1.75;color:rgba(255,255,255,.65)">From scrappy mid-market teams to enterprise brands — IGNITE is for leaders who are ready to predict what customers need instead of chasing what they already did.</p>
+      <p style="margin:20px 0 0;font-size:15.5px;line-height:1.75;color:rgba(255,255,255,.65)">From scrappy mid-market teams to enterprise brands — IGNITE was for leaders ready to predict what customers need instead of chasing what they already did.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
       <sc-for list="{{ audiences }}" as="aud" hint-placeholder-count="4">
@@ -608,16 +608,16 @@ class Component extends DCLogic {
       navShadow: heroScrolled ? '0 6px 24px rgba(0,0,0,.35)' : 'none',
 
       whyCards: [
-        { num: '01', title: 'Learn from the people actually doing it', desc: "IGNITE brings together the region's sharpest marketing and CX leaders — practitioners sharing real playbooks and hard metrics, not trends or product demos." },
-        { num: '02', title: 'Leave with more than notes', desc: 'Walk away with the language, the frameworks, and the proof to make your marketing more relevant, more human, and more accountable to the bottom line.' },
-        { num: '03', title: 'From prediction to loyalty', desc: 'See how data and AI turn prediction into personalization, and personalization into retention, loyalty, and measurable growth — the kind marketing and CX can defend together.' }
+        { num: '01', title: 'Learned from the people actually doing it', desc: "IGNITE brought together the region's sharpest marketing and CX leaders — practitioners sharing real playbooks and hard metrics, not trends or product demos." },
+        { num: '02', title: 'Left with more than notes', desc: 'Attendees walked away with the language, the frameworks, and the proof to make your marketing more relevant, more human, and more accountable to the bottom line.' },
+        { num: '03', title: 'From prediction to loyalty', desc: 'Sessions showed how data and AI turn prediction into personalization, and personalization into retention, loyalty, and measurable growth — the kind marketing and CX can defend together.' }
       ],
 
       audiences: [
         { title: 'Senior Marketers', desc: 'CMOs, directors, and brand leads accountable for growth.' },
         { title: 'CX Leaders', desc: 'Owners of the customer journey, retention, and loyalty.' },
         { title: 'Growth Strategists', desc: 'Data-minded operators turning signals into revenue.' },
-        { title: 'Marketing Teams', desc: 'Bring the whole crew — group rates make it easy.' }
+        { title: 'Marketing Teams', desc: 'Whole crews came together — group rates made it easy.' }
       ],
 
       agenda: [
