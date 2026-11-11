@@ -33,6 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    { "@type": "Question", "name": "When is IGNITE 2027?", "acceptedAnswer": { "@type": "Answer", "text": "We're still planning next year's event, and the date and venue haven't been announced yet. Sign up for updates and we'll email you as soon as details are available." } },
     { "@type": "Question", "name": "What's included in a VIP ticket?", "acceptedAnswer": { "@type": "Answer", "text": "Everything in General Admission, plus an exclusive VIP lunch with the keynote speakers, priority seating at all sessions, a VIP-only networking reception, and early entry." } },
     { "@type": "Question", "name": "Can I get a refund or transfer my ticket?", "acceptedAnswer": { "@type": "Answer", "text": "Tickets are refundable up to 7 days before the event. After that, you can transfer your ticket to a colleague at no charge — just contact us with their details." } },
     { "@type": "Question", "name": "Is there a group discount?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — teams of 5 or more register at $195/person for AMA members and $315/person for guests, and get a reserved seating block, a group invoice option, and a dedicated account manager." } },
@@ -174,7 +175,8 @@ a:hover{color:#0F1F35}
                   <span aria-hidden="true" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:{{ qa.chipBg }};color:{{ qa.chipFg }};font-size:16px;font-weight:700;transition:all .2s">{{ qa.chip }}</span>
                 </button>
                 <sc-if value="{{ qa.open }}" hint-placeholder-val="{{ false }}">
-                  <div style="padding:0 24px 22px;font-size:14px;line-height:1.75;color:rgba(15,31,53,.65)">{{ qa.a }}<sc-if value="{{ qa.linkHref }}" hint-placeholder-val="{{ false }}"> <a href="{{ qa.linkHref }}" target="_blank" rel="noopener" style="color:#E8792C;font-weight:700;text-decoration:underline;text-underline-offset:2px" style-hover="color:#4FC3E8">{{ qa.linkLabel }} →</a></sc-if></div>
+                  <div style="padding:0 24px 22px;font-size:14px;line-height:1.75;color:rgba(15,31,53,.65)">{{ qa.a }}<sc-if value="{{ qa.linkHref }}" hint-placeholder-val="{{ false }}"> <a href="{{ qa.linkHref }}" target="_blank" rel="noopener" style="color:#E8792C;font-weight:700;text-decoration:underline;text-underline-offset:2px" style-hover="color:#4FC3E8">{{ qa.linkLabel }} →</a></sc-if>
+                    <sc-if value="{{ qa.notify }}" hint-placeholder-val="{{ false }}"><div style="margin-top:16px"><dc-import name="NotifyForm" link-as-button="true" link-padding="13px 26px" link-label="Notify Me About 2027" link-color="#fff" link-size="13.5px" link-weight="800" hint-size="220px,44px"></dc-import></div></sc-if></div>
                 </sc-if>
               </div>
             </sc-for>
@@ -281,6 +283,9 @@ class Component extends DCLogic {
     );
 
     const data = [
+      { name: 'IGNITE 2027', key: 'next', items: [
+        { q: 'When is IGNITE 2027?', a: "We're still planning next year's event, and the date and venue haven't been announced yet. Sign up for updates and we'll email you as soon as details are available.", notify: true }
+      ] },
       { name: 'Registration & Tickets', key: 'reg', items: [
         { q: "What's included in a VIP ticket?", a: 'Everything in General Admission, plus an exclusive VIP lunch with the keynote speakers, priority seating at all sessions, a VIP-only networking reception, and early entry.' },
         { q: 'Can I get a refund or transfer my ticket?', a: 'Tickets are refundable up to 7 days before the event. After that, you can transfer your ticket to a colleague at no charge — just contact us with their details.' },
@@ -319,6 +324,7 @@ class Component extends DCLogic {
             a: item.a,
             linkHref: item.link ? item.link.href : '',
             linkLabel: item.link ? item.link.label : '',
+            notify: !!item.notify,
             open: open === item.id,
             chip: open === item.id ? '−' : '+',
             chipBg: open === item.id ? '#E8792C' : 'rgba(15,31,53,.08)',
