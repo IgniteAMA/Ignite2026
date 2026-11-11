@@ -73,7 +73,8 @@ a:hover{color:#0F1F35}
   <div onClick="{{ closeMenu }}" aria-hidden="true" style="position:fixed;inset:0;z-index:90;background:rgba(10,21,32,.55);backdrop-filter:blur(6px);animation:navBackdropFade .3s ease"></div>
 </sc-if>
 <div style="position:fixed;top:0;left:0;right:0;z-index:100" data-screen-label="Global Nav">
-  <div class="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:14px clamp(20px,4vw,40px);background:rgba(10,21,32,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)">
+  <div class="nav-bar" style="position:relative;z-index:0;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(20px,4vw,40px)">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background:rgba(10,21,32,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px rgba(0,0,0,.35)"></div>
     <a href="../" style="display:flex;align-items:center;gap:0;height:54px;overflow:hidden">
       <img src="../assets/IGNITE_Emblem.png" alt="IGNITE" style="flex:none;height:44px;width:auto">
       <span style="display:block;overflow:hidden;max-width:{{ wordmarkW }};opacity:{{ wordmarkOp }};transition:max-width .55s cubic-bezier(.22,.9,.24,1),opacity .4s ease,margin-left .55s cubic-bezier(.22,.9,.24,1);margin-left:{{ wordmarkGap }}">
@@ -97,7 +98,7 @@ a:hover{color:#0F1F35}
     </button>
   </div>
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="background:rgba(10,21,32,.98);backdrop-filter:blur(12px);box-shadow:0 12px 30px rgba(0,0,0,.4);padding:8px 20px 22px;animation:menuDrop .28s ease">
+    <div style="background:rgba(10,21,32,.98);box-shadow:0 12px 30px rgba(0,0,0,.4);padding:8px 20px 22px;animation:menuDrop .28s ease">
       <div style="display:flex;flex-direction:column;gap:2px;font-size:16px;font-weight:700">
         <a href="../agenda/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Agenda</a>
         <a href="../speakers/" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)">Speakers</a>
