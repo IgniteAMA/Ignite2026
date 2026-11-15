@@ -120,6 +120,32 @@ a:hover{color:#0F1F35}
 .glance-dot{display:none!important}
 .glance-label-row{flex-wrap:wrap!important;row-gap:5px!important}
 }
+/* gallery */
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-flow:dense;gap:12px}
+.gal-tile{position:relative;display:block;width:100%;aspect-ratio:3/2;padding:0;border:0;border-radius:14px;overflow:hidden;background:#E9E6E1;cursor:zoom-in;box-shadow:0 2px 12px rgba(15,31,53,.06)}
+.gal-tile.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gal-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;transition:transform .6s cubic-bezier(.22,.9,.24,1),filter .3s}
+.gal-tile::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 0 rgba(232,121,44,0);transition:box-shadow .25s}
+.gal-tile:hover img{transform:scale(1.06)}
+.gal-tile:hover::after,.gal-tile:focus-visible::after{box-shadow:inset 0 0 0 3px #E8792C}
+.gal-tile:focus-visible{outline:none}
+.gal-more{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;border:2px solid #0F1F35;background:transparent;color:#0F1F35;font:inherit;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s}
+.gal-more:hover{background:#0F1F35;color:#fff}
+.gal-lb{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(10,21,32,.94);backdrop-filter:blur(8px);animation:navBackdropFade .25s ease;touch-action:pan-y}
+.gal-lb img{max-width:min(92vw,1600px);max-height:84vh;width:auto;height:auto;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5);user-select:none;-webkit-user-drag:none;animation:galIn .3s ease}
+.gal-btn{position:absolute;display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:22px;cursor:pointer;transition:all .2s;font-family:inherit}
+.gal-btn:hover{background:#E8792C;border-color:#E8792C}
+.gal-prev{left:clamp(10px,2.5vw,32px);top:50%;transform:translateY(-50%)}
+.gal-next{right:clamp(10px,2.5vw,32px);top:50%;transform:translateY(-50%)}
+.gal-close{top:18px;right:18px;width:46px;height:46px;font-size:20px}
+.gal-count{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:800;letter-spacing:.18em;color:rgba(255,255,255,.7)}
+@keyframes galIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+@media (max-width:760px){
+.gal-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+.gal-tile{border-radius:10px}
+.gal-prev,.gal-next{top:auto;bottom:12px;transform:none;width:46px;height:46px}
+.gal-count{bottom:28px}
+}
 @keyframes menuDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes navBackdropFade{from{opacity:0}to{opacity:1}}
 </style>
@@ -407,6 +433,21 @@ a:hover{color:#0F1F35}
   </div>
 </div>
 
+<!-- ═══════ PHOTO GALLERY ═══════ -->
+<div id="gallery" data-screen-label="Photo Gallery" style="background:#FAFAF8;padding:100px 0 20px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="text-align:center;margin-bottom:44px">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px">
+        <img src="assets/IGNITE_Flame.png" alt="" style="height:18px;width:auto">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#E8792C">Photo Gallery</span>
+      </div>
+      <div style="font-family:'Gotham Rounded','Barlow Semi Condensed',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:clamp(40px,6vw,64px);line-height:.95;color:#0F1F35">IGNITE 2026 in <span style="color:#D2540A;text-shadow:0 1px 0 rgba(255,255,255,.4),0 0 10px rgba(232,121,44,.35);animation:neonBuzz 8s infinite">Pictures</span></div>
+      <p style="margin:16px auto 0;max-width:560px;font-size:15px;line-height:1.65;color:rgba(15,31,53,.6)">A look back at the day at the American Sign Museum. Tap any photo to view it full size.</p>
+    </div>
+    {{ galleryEl }}
+  </div>
+</div>
+
 <!-- ═══════ TESTIMONIALS ═══════ -->
 <div id="testimonials" data-screen-label="Testimonials" style="background:#FAFAF8;padding:100px 0 70px">
   <div style="max-width:900px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
@@ -481,6 +522,7 @@ a:hover{color:#0F1F35}
           <a href="#why" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Why Attend</a>
           <a href="#glance" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Agenda</a>
           <dc-import name="NotifyForm" link-label="Notify Me About 2027" link-color="rgba(255,255,255,.55)" link-size="13.5px" link-weight="400" link-decoration="none" hint-size="150px,20px"></dc-import>
+          <a href="#gallery" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Photo Gallery</a>
           <a href="#testimonials" style="font-size:13.5px;color:rgba(255,255,255,.55)" style-hover="color:#E8792C">Testimonials</a>
         </div>
       </div>
@@ -520,9 +562,35 @@ a:hover{color:#0F1F35}
   &quot;showEmbers&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;section&quot;: &quot;Hero&quot;, &quot;tsType&quot;: &quot;boolean&quot;}
 }">
 class Component extends DCLogic {
-  state = { heroScrolled: false, tIdx: 0, audience: 'member', menuOpen: false };
+  state = {
+    heroScrolled: false, tIdx: 0, audience: 'member', menuOpen: false,
+    // Event photos (assets/gallery), shuffled fresh on every visit.
+    galOrder: (() => {
+      const a = Array.from({ length: 117 }, (_, i) => i + 1);
+      for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+      return a;
+    })(),
+    galShown: 20,
+    galOpen: null
+  };
+
+  galOpenAt(i) { this._galReturn = document.activeElement; this.setState({ galOpen: i }); document.documentElement.style.overflow = 'hidden'; }
+  galClose() {
+    this.setState({ galOpen: null }); document.documentElement.style.overflow = '';
+    if (this._galReturn && this._galReturn.focus) this._galReturn.focus({ preventScroll: true });
+  }
+  galStep(d) {
+    this.setState(s => s.galOpen == null ? null : ({ galOpen: (s.galOpen + d + s.galOrder.length) % s.galOrder.length }));
+  }
 
   componentDidMount() {
+    this._onGalKey = (e) => {
+      if (this.state.galOpen == null) return;
+      if (e.key === 'Escape') this.galClose();
+      else if (e.key === 'ArrowRight') this.galStep(1);
+      else if (e.key === 'ArrowLeft') this.galStep(-1);
+    };
+    window.addEventListener('keydown', this._onGalKey);
     this._onScroll = () => {
       // Go dark only once the billboard IGNITE logo has scrolled up behind the nav (~110px tall).
       const logo = document.querySelector('[data-hero-logo]');
@@ -539,6 +607,8 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('keydown', this._onGalKey);
+    document.documentElement.style.overflow = '';
   }
 
   renderVals() {
@@ -572,6 +642,51 @@ class Component extends DCLogic {
       style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }
     }, React.createElement('source', { src: 'assets/IGNITE_Website_BRoll_2.mp4', type: 'video/mp4' }));
 
+    // ── Photo gallery ──
+    const h = React.createElement;
+    const galOrder = this.state.galOrder;
+    const galPortrait = new Set([8, 28, 45, 79, 102]);
+    const galSrc = (n, size) => 'assets/gallery/' + size + '/ignite-2026-' + String(n).padStart(3, '0') + '.jpg';
+    const galShown = Math.min(this.state.galShown, galOrder.length);
+    const galOpen = this.state.galOpen;
+    const galTiles = galOrder.slice(0, galShown).map((n, i) => {
+      // Every batch of 10 features two large tiles (landscape only) — keeps the 4-col / 2-col grid rows full.
+      const big = (i % 10 === 0 || i % 10 === 6) && !galPortrait.has(n);
+      return h('button', {
+        key: n, type: 'button', className: 'gal-tile' + (big ? ' big' : ''),
+        'aria-label': 'View photo ' + (i + 1) + ' of ' + galOrder.length,
+        onClick: () => this.galOpenAt(i)
+      }, h('img', { src: galSrc(n, 'thumb'), alt: 'IGNITE 2026 event photo', loading: 'lazy', decoding: 'async', width: 720, height: 480 }));
+    });
+    let touchX = null;
+    const galLightbox = galOpen == null ? null : h('div', {
+      key: 'lb', className: 'gal-lb', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Photo viewer',
+      onClick: (e) => { if (e.target === e.currentTarget) this.galClose(); },
+      onTouchStart: (e) => { touchX = e.touches[0].clientX; },
+      onTouchEnd: (e) => {
+        if (touchX == null) return;
+        const dx = e.changedTouches[0].clientX - touchX; touchX = null;
+        if (Math.abs(dx) > 45) this.galStep(dx < 0 ? 1 : -1);
+      }
+    },
+      h('img', { key: 'img-' + galOpen, src: galSrc(galOrder[galOpen], 'full'), alt: 'IGNITE 2026 event photo ' + (galOpen + 1) }),
+      // Preload neighbours so arrowing through feels instant.
+      h('link', { rel: 'preload', as: 'image', href: galSrc(galOrder[(galOpen + 1) % galOrder.length], 'full') }),
+      h('link', { rel: 'preload', as: 'image', href: galSrc(galOrder[(galOpen - 1 + galOrder.length) % galOrder.length], 'full') }),
+      h('button', { type: 'button', className: 'gal-btn gal-close', 'aria-label': 'Close', autoFocus: true, onClick: () => this.galClose() }, '✕'),
+      h('button', { type: 'button', className: 'gal-btn gal-prev', 'aria-label': 'Previous photo', onClick: () => this.galStep(-1) }, '←'),
+      h('button', { type: 'button', className: 'gal-btn gal-next', 'aria-label': 'Next photo', onClick: () => this.galStep(1) }, '→'),
+      h('div', { className: 'gal-count' }, (galOpen + 1) + ' / ' + galOrder.length)
+    );
+    const galleryEl = h('div', { key: 'gallery' },
+      h('div', { className: 'gal-grid' }, galTiles),
+      galShown < galOrder.length ? h('div', { style: { textAlign: 'center', marginTop: '36px' } },
+        h('button', { type: 'button', className: 'gal-more', onClick: () => this.setState(s => ({ galShown: s.galShown + 20 })) },
+          'Show more photos', h('span', { style: { opacity: .55, fontWeight: 700 } }, (galOrder.length - galShown) + ' more'))
+      ) : null,
+      galLightbox
+    );
+
     const testimonials = [
       { quote: "Everything about the experience of the CX conference was thoughtful and mindful. From the wayfinding signage, to the snacks and food (and Mt Dew!), and the massage chair, it took our attendee experience into consideration. The content was great, the large board for presenters to utilize was great and made it easy to see and digest. I loved it!", name: '', role: 'IGNITE! Past Attendee', initials: 'CX', color: '#E8792C' },
       { quote: "This was a superb conference. I came back raving about it and will not stop saying good things until I come back next year and inevitably have more good things to say after that.", name: '', role: 'IGNITE! Past Attendee', initials: 'IG', color: '#0F1F35' },
@@ -585,6 +700,7 @@ class Component extends DCLogic {
 
     return {
       embers: showEmbers ? embersEl : null,
+      galleryEl,
       heroVideo: mkVideo('hero-video'),
       glanceVideo: mkVideo('glance-video'),
       logoWidth: 'min(' + (this.props.logoWidth ?? 620) + 'px, 84vw)',
